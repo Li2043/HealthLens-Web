@@ -1,0 +1,172 @@
+# HealthLens — Student Wellbeing & Support Hub
+
+**Version 0.1** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+
+---
+
+## Project Overview
+
+HealthLens is a frontend-only portfolio project that helps university students find wellbeing and support resources quickly. It demonstrates practical skills in HTML, CSS, JavaScript, responsive layout, digital content organisation, and WCAG-informed accessibility.
+
+The site includes a searchable Support Finder, wellbeing tips, an FAQ accordion, a validated contact form, and an accessibility statement. It is designed to be deployed via GitHub Pages with no backend or build step required.
+
+> **Important:** This is a student project. It does not provide medical advice, diagnosis, or treatment recommendations.
+
+---
+
+## Why I Built This
+
+I built HealthLens to show how thoughtful web content and UX can help students navigate support options during stressful periods. For a Web & Digital Content Coordinator role — particularly at a students' union — I wanted a live example that combines:
+
+- Clear, student-friendly content structure
+- Practical front-end development without unnecessary frameworks
+- Accessibility as a core design requirement, not an afterthought
+- Safe, responsible wording around wellbeing topics
+
+This project was designed to practise:
+
+- **HTML / CSS / JavaScript** — semantic markup, layout, and interactivity
+- **Responsive layout** — mobile-first patterns with flexible grids
+- **Accessible forms** — visible labels, validation, and error messaging
+- **Searchable and filterable content** — dynamic resource cards from structured data
+- **Digital content structure** — organised sections, headings, and signposting
+- **UX thinking** — clarity, urgency levels, and suggested next steps
+- **Git / GitHub workflow** — clean repo structure ready for version control and deployment
+- **WCAG-informed design decisions** — keyboard access, focus states, contrast, and plain language
+
+---
+
+## Target Users
+
+- **University students** looking for wellbeing and support signposting
+- **Student services teams** evaluating how content can be organised online
+- **Employers / reviewers** assessing front-end, content, and accessibility skills
+
+---
+
+## Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Support Finder** | 8 resource cards with category, urgency, and suggested next steps |
+| **Search & filter** | Keyword search plus category filter buttons (All, Academic, Wellbeing, etc.) |
+| **Wellbeing Tips** | 4 short, non-medical self-reflection tips |
+| **FAQ accordion** | Expand/collapse with keyboard support and `aria-expanded` |
+| **Contact form** | Frontend validation with accessible error messages |
+| **Accessibility statement** | Documents the project's inclusive design approach |
+| **Skip link** | "Skip to main content" for keyboard and screen reader users |
+
+---
+
+## Tech Stack
+
+- **HTML5** — semantic elements (`header`, `nav`, `main`, `section`, `article`, `footer`)
+- **CSS3** — custom properties, flexbox, grid, media queries
+- **Vanilla JavaScript** — no frameworks, no build tools
+- **GitHub Pages** — static hosting
+
+No React, TypeScript, backend, database, authentication, AI, or external APIs in V0.1.
+
+---
+
+## Accessibility Considerations
+
+HealthLens follows WCAG-informed practices throughout:
+
+- Semantic HTML with logical heading hierarchy
+- Visible labels on all form fields (not placeholder-only)
+- Keyboard-accessible navigation, filters, accordion, and form
+- Strong `:focus-visible` styles on interactive elements
+- Readable colour contrast and font sizes
+- `aria-expanded` on FAQ buttons and accordion panels
+- Live region announcements for search/filter results
+- Reduced-motion support via `prefers-reduced-motion`
+- Clear non-medical wording and disclaimers
+
+See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed review checklist.
+
+---
+
+## How to Run Locally
+
+1. **Clone or download** this repository:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/healthlens.git
+   cd healthlens
+   ```
+
+2. **Open the site** — no install or build step required:
+   - Double-click `index.html`, or
+   - Use a local server (recommended for best behaviour):
+     ```bash
+     # Python 3
+     python -m http.server 8000
+     ```
+     Then visit `http://localhost:8000`
+
+3. **Verify functionality:**
+   - Search and category filters update resource cards
+   - FAQ accordion opens/closes with mouse and keyboard
+   - Contact form shows validation errors and success message
+
+---
+
+## How to Deploy with GitHub Pages
+
+1. Push this project to a GitHub repository.
+2. Go to **Settings → Pages** in your repository.
+3. Under **Build and deployment**, set:
+   - **Source:** Deploy from a branch
+   - **Branch:** `main` (or `master`) → `/ (root)`
+4. Save. GitHub will publish the site at:
+   ```
+   https://YOUR-USERNAME.github.io/healthlens/
+   ```
+5. Confirm `index.html`, `styles.css`, and `script.js` are in the repository root.
+
+---
+
+## What I Learned
+
+- Structuring support content with urgency levels helps students prioritise next steps
+- Dynamic rendering from a JavaScript array keeps content maintainable without a CMS
+- Accessible forms require visible labels, clear errors, and logical focus management
+- Filter buttons benefit from `aria-pressed` to communicate state to assistive technology
+- A skip link and strong focus styles make a meaningful difference for keyboard users
+- Safe wording matters on wellbeing topics — signposting beats pseudo-medical advice
+
+---
+
+## Future Improvements
+
+- Add real university and Bristol SU resource links (with permission and regular review)
+- Expand resource data and categories based on student feedback
+- Add a print-friendly stylesheet for offline reference
+- Conduct testing with screen readers and real students
+- Add dark mode with accessible contrast checks
+- Integrate a lightweight CMS or JSON file for easier content updates
+- Add automated accessibility testing in CI (e.g. axe-core, pa11y)
+
+---
+
+## File Structure
+
+```
+healthlens/
+├── index.html
+├── styles.css
+├── script.js
+├── README.md
+├── accessibility-checklist.md
+└── assets/          (optional — for future icons/images)
+```
+
+---
+
+## Licence & Disclaimer
+
+This is a portfolio demo project. Content is for illustration only and does not constitute medical or professional advice. Always use official university and NHS services for health and wellbeing concerns.
+
+---
+
+*Built as Version 0.1 for a Web & Digital Content Coordinator application.*

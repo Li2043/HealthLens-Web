@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HealthLens helps university students find wellbeing and support resources quickly. Search, filter, and explore student support options — not medical advice.">
+  <title>HealthLens — Student Wellbeing &amp; Support Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="#hero">HealthLens</a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open navigation menu"
+      >
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#support-finder">Support Finder</a></li>
+          <li><a href="#wellbeing-tips">Wellbeing Tips</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <h1 id="hero-heading">Find the right wellbeing support, faster</h1>
+        <p class="hero-lead">
+          HealthLens helps university students search and filter wellbeing and support resources in one place.
+          Use the Support Finder to explore options by topic, urgency, and suggested next steps.
+        </p>
+        <p class="disclaimer" role="note">
+          <strong>Please note:</strong> This site is a student project and does not provide medical advice.
+        </p>
+      </div>
+    </section>
+
+    <section id="support-finder" class="section support-finder" aria-labelledby="support-finder-heading">
+      <div class="container">
+        <h2 id="support-finder-heading">Support Finder</h2>
+        <p class="section-intro">
+          Browse support resources below. Use search and category filters to find what fits your situation.
+        </p>
+
+        <div class="finder-controls">
+          <div class="search-wrapper">
+            <label for="resource-search">Search support resources</label>
+            <input
+              type="search"
+              id="resource-search"
+              name="resource-search"
+              autocomplete="off"
+              placeholder="e.g. stress, housing, urgent"
+            >
+          </div>
+
+          <fieldset class="filter-fieldset">
+            <legend>Filter by category</legend>
+            <div class="filter-buttons" role="group" aria-label="Category filters">
+              <button type="button" class="filter-btn is-active" data-category="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn" data-category="academic" aria-pressed="false">Academic</button>
+              <button type="button" class="filter-btn" data-category="wellbeing" aria-pressed="false">Wellbeing</button>
+              <button type="button" class="filter-btn" data-category="housing" aria-pressed="false">Housing</button>
+              <button type="button" class="filter-btn" data-category="finance" aria-pressed="false">Finance</button>
+              <button type="button" class="filter-btn" data-category="international" aria-pressed="false">International</button>
+              <button type="button" class="filter-btn" data-category="community" aria-pressed="false">Community</button>
+              <button type="button" class="filter-btn" data-category="urgent" aria-pressed="false">Urgent</button>
+            </div>
+          </fieldset>
+        </div>
+
+        <p id="results-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+
+        <div id="resource-grid" class="resource-grid" aria-live="polite" aria-relevant="additions removals">
+          <!-- Support cards rendered by script.js -->
+        </div>
+
+        <p id="no-results" class="no-results" hidden>
+          No matching resources found. Try a different search term or category.
+        </p>
+      </div>
+    </section>
+
+    <section id="wellbeing-tips" class="section wellbeing-tips" aria-labelledby="wellbeing-tips-heading">
+      <div class="container">
+        <h2 id="wellbeing-tips-heading">Wellbeing Tips</h2>
+        <p class="section-intro">
+          Simple, non-medical ideas for self-reflection and everyday student wellbeing.
+        </p>
+        <ul class="tips-list">
+          <li class="tip-card">
+            <h3>Track patterns, not perfection</h3>
+            <p>Notice what affects your mood or energy over time. Small patterns can help you plan rest, study, and social time more realistically.</p>
+          </li>
+          <li class="tip-card">
+            <h3>Ask for help early</h3>
+            <p>You do not need to wait until things feel overwhelming. Student support services exist for everyday concerns as well as urgent situations.</p>
+          </li>
+          <li class="tip-card">
+            <h3>Break tasks into smaller steps</h3>
+            <p>Large deadlines and life admin feel more manageable when you split them into clear, achievable actions with short breaks in between.</p>
+          </li>
+          <li class="tip-card">
+            <h3>Use trusted resources for serious concerns</h3>
+            <p>For ongoing or serious wellbeing concerns, speak to your university support team or trusted NHS resources rather than relying on general online content.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <p class="section-intro">Quick answers about how to use HealthLens and what it can — and cannot — offer.</p>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                class="accordion-trigger"
+                id="faq-trigger-1"
+                aria-expanded="false"
+                aria-controls="faq-panel-1"
+              >
+                Is this medical advice?
+              </button>
+            </h3>
+            <div id="faq-panel-1" class="accordion-panel" role="region" aria-labelledby="faq-trigger-1" hidden>
+              <p>
+                No. HealthLens is a student project designed to help you discover wellbeing and support resources.
+                It does not diagnose conditions, predict health outcomes, or recommend treatments.
+                Always seek professional support for medical or mental health concerns.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                class="accordion-trigger"
+                id="faq-trigger-2"
+                aria-expanded="false"
+                aria-controls="faq-panel-2"
+              >
+                What should I do in an emergency?
+              </button>
+            </h3>
+            <div id="faq-panel-2" class="accordion-panel" role="region" aria-labelledby="faq-trigger-2" hidden>
+              <p>
+                If you or someone else is in immediate danger, call 999. For urgent mental health support in the UK,
+                you can contact NHS 111 or visit your nearest A&amp;E. Your university may also offer an out-of-hours
+                wellbeing helpline — check their official website for current contact details.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                class="accordion-trigger"
+                id="faq-trigger-3"
+                aria-expanded="false"
+                aria-controls="faq-panel-3"
+              >
+                How should I choose the right support?
+              </button>
+            </h3>
+            <div id="faq-panel-3" class="accordion-panel" role="region" aria-labelledby="faq-trigger-3" hidden>
+              <p>
+                Start with the urgency level on each card. Low urgency items may suit self-guided resources or peer groups.
+                Medium urgency may benefit from speaking to a tutor, adviser, or wellbeing team. High urgency cards point
+                toward immediate or specialist support. When unsure, contact your student services hub for guidance.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                type="button"
+                class="accordion-trigger"
+                id="faq-trigger-4"
+                aria-expanded="false"
+                aria-controls="faq-panel-4"
+              >
+                Why is accessibility important for student support pages?
+              </button>
+            </h3>
+            <div id="faq-panel-4" class="accordion-panel" role="region" aria-labelledby="faq-trigger-4" hidden>
+              <p>
+                Students access support in many contexts — on phones between lectures, with screen readers, or under stress
+                when clarity matters most. Accessible design ensures everyone can find help quickly, understand content,
+                and use forms and navigation without unnecessary barriers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading">Contact</h2>
+        <p class="section-intro">
+          Send a demo enquiry about this project. No data is stored or transmitted.
+        </p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" required autocomplete="name">
+            <span class="field-error" id="contact-name-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" required autocomplete="email">
+            <span class="field-error" id="contact-email-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-topic">Topic</label>
+            <select id="contact-topic" name="topic" required>
+              <option value="">Select a topic</option>
+              <option value="general">General enquiry</option>
+              <option value="support-finder">Support Finder feedback</option>
+              <option value="accessibility">Accessibility feedback</option>
+              <option value="content">Content suggestion</option>
+            </select>
+            <span class="field-error" id="contact-topic-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required minlength="10"></textarea>
+            <span class="field-error" id="contact-message-error" role="alert"></span>
+          </div>
+
+          <div class="form-field form-field--checkbox">
+            <input type="checkbox" id="contact-consent" name="consent" required>
+            <label for="contact-consent">I understand this demo does not provide medical advice.</label>
+            <span class="field-error" id="contact-consent-error" role="alert"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send enquiry</button>
+
+          <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
+            Thank you. This is a demo form, so no data has been sent.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="accessibility" class="section accessibility-statement" aria-labelledby="accessibility-heading">
+      <div class="container">
+        <h2 id="accessibility-heading">Accessibility Statement</h2>
+        <p class="section-intro">
+          This project aims to follow WCAG-informed practices so student support content is clear and usable for everyone.
+        </p>
+        <ul class="accessibility-list">
+          <li><strong>Semantic HTML</strong> — landmarks such as header, nav, main, section, article, and footer structure the page logically.</li>
+          <li><strong>Clear heading hierarchy</strong> — headings follow a meaningful order from h1 to h3.</li>
+          <li><strong>Visible labels</strong> — every form field has an associated label; placeholders are supplementary only.</li>
+          <li><strong>Keyboard-friendly interactions</strong> — navigation, filters, accordion, and forms work with keyboard alone.</li>
+          <li><strong>Visible focus states</strong> — links, buttons, and form controls show a clear focus indicator.</li>
+          <li><strong>Readable contrast</strong> — text and interactive elements use accessible colour contrast.</li>
+          <li><strong>Responsive layout</strong> — content adapts for mobile, tablet, and desktop screen sizes.</li>
+          <li><strong>Clear non-medical wording</strong> — content focuses on wellbeing support and signposting, not diagnosis or treatment.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 HealthLens — Student Wellbeing &amp; Support Hub</p>
+      <p class="footer-note">A portfolio project for demonstrating web content, UX, and accessibility skills. Not medical advice.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
