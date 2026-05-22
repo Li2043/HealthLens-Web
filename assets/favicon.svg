@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="HealthLens">
+  <rect width="32" height="32" rx="8" fill="#1e4e8c"/>
+  <path fill="#ffffff" d="M16 7c-3.2 3.8-6 6.2-6 10.2A6 6 0 0 0 16 23a6 6 0 0 0 6-5.8C22 13.2 19.2 10.8 16 7z"/>
+  <circle cx="16" cy="16" r="2.5" fill="#5eead4"/>
+</svg>

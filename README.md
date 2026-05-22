@@ -1,6 +1,8 @@
 # HealthLens — Student Wellbeing & Support Hub
-https://li2043.github.io/HealthLens-Web/
-**Version 0.1** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+
+**Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
+
+**Version 0.2** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
 
 ---
 
@@ -54,6 +56,8 @@ This project was designed to practise:
 | **FAQ accordion** | Expand/collapse with keyboard support and `aria-expanded` |
 | **Contact form** | Frontend validation with accessible error messages |
 | **Accessibility statement** | Documents the project's inclusive design approach |
+| **Crisis banner** | Prominent urgent help signposting with 999 / NHS 111 guidance |
+| **Results count** | Visible filter feedback plus screen reader live region |
 | **Skip link** | "Skip to main content" for keyboard and screen reader users |
 
 ---
@@ -65,7 +69,26 @@ This project was designed to practise:
 - **Vanilla JavaScript** — no frameworks, no build tools
 - **GitHub Pages** — static hosting
 
-No React, TypeScript, backend, database, authentication, AI, or external APIs in V0.1.
+No React, TypeScript, backend, database, authentication, AI, or external APIs in V0.2.
+
+---
+
+## Version 0.2 — Visual Upgrade
+
+This release refines layout and visual hierarchy while keeping the same accessible, vanilla stack:
+
+| Improvement | Description |
+|-------------|-------------|
+| **Hero redesign** | Two-column layout with “How it works” steps and clear call-to-action buttons |
+| **Urgent help banner** | High-contrast crisis signposting with link to urgent filter |
+| **Enhanced resource cards** | Category icons, colour-coded pills, urgency dots, and urgent card styling |
+| **Results count** | Visible “Showing X of Y resources” feedback |
+| **Section styling** | Eyebrow labels, alternating backgrounds, improved spacing |
+| **Contact as feedback** | Form presented in a card layout with clearer demo purpose |
+| **Footer refresh** | Three-column footer with page links and disclaimer |
+| **Favicon** | Simple SVG brand mark in `assets/favicon.svg` |
+
+Design references: [GOV.UK Design System](https://design-system.service.gov.uk/), [W3C WAI](https://www.w3.org/WAI/design-develop/), and [Inclusive Components](https://inclusive-components.design/) — prioritising clarity and contrast over decorative effects.
 
 ---
 
@@ -91,8 +114,8 @@ See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed re
 
 1. **Clone or download** this repository:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/healthlens.git
-   cd healthlens
+   git clone https://github.com/Li2043/HealthLens-Web.git
+   cd HealthLens-Web
    ```
 
 2. **Open the site** — no install or build step required:
@@ -120,7 +143,7 @@ See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed re
    - **Branch:** `main` (or `master`) → `/ (root)`
 4. Save. GitHub will publish the site at:
    ```
-   https://YOUR-USERNAME.github.io/healthlens/
+   https://li2043.github.io/HealthLens-Web/
    ```
 5. Confirm `index.html`, `styles.css`, and `script.js` are in the repository root.
 
@@ -133,19 +156,24 @@ See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed re
 - Accessible forms require visible labels, clear errors, and logical focus management
 - Filter buttons benefit from `aria-pressed` to communicate state to assistive technology
 - A skip link and strong focus styles make a meaningful difference for keyboard users
-- Safe wording matters on wellbeing topics — signposting beats pseudo-medical advice
+- Urgency is shown with colour **and** text labels, not colour alone
+- Visual hierarchy can improve without sacrificing WCAG-informed practices
+- A dedicated crisis banner helps signpost urgent support responsibly
+
+---
+
+## Changelog
+
+- **v0.2** — Visual refresh: hero panel, crisis banner, card icons, footer, favicon
+- **v0.1** — Initial static release with Support Finder, FAQ, form validation, and accessibility docs
 
 ---
 
 ## Future Improvements
 
-- Add real university and Bristol SU resource links (with permission and regular review)
-- Expand resource data and categories based on student feedback
-- Add a print-friendly stylesheet for offline reference
-- Conduct testing with screen readers and real students
-- Add dark mode with accessible contrast checks
 - Integrate a lightweight CMS or JSON file for easier content updates
 - Add automated accessibility testing in CI (e.g. axe-core, pa11y)
+- Add real Bristol SU and university signposting links (with permission)
 
 ---
 
@@ -158,7 +186,8 @@ healthlens/
 ├── script.js
 ├── README.md
 ├── accessibility-checklist.md
-└── assets/          (optional — for future icons/images)
+└── assets/
+    └── favicon.svg
 ```
 
 ---
@@ -169,4 +198,4 @@ This is a portfolio demo project. Content is for illustration only and does not 
 
 ---
 
-*Built as Version 0.1 for a Web & Digital Content Coordinator application.*
+*Built as Version 0.2 for a Web & Digital Content Coordinator application.*

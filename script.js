@@ -1,11 +1,8 @@
 /**
  * HealthLens — Student Wellbeing & Support Hub
- * Version 0.1 — vanilla JavaScript
+ * Version 0.2 — vanilla JavaScript
  */
 
-/* --------------------------------------------------------------------------
-   Support resources data
-   -------------------------------------------------------------------------- */
 const supportResources = [
   {
     id: "academic-stress",
@@ -81,12 +78,20 @@ const supportResources = [
   }
 ];
 
-/* --------------------------------------------------------------------------
-   DOM references
-   -------------------------------------------------------------------------- */
+const categoryIcons = {
+  academic: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" stroke="currentColor" stroke-width="2"/></svg>`,
+  wellbeing: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" stroke="currentColor" stroke-width="2"/></svg>`,
+  housing: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="2"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2"/></svg>`,
+  finance: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg>`,
+  international: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" stroke="currentColor" stroke-width="2"/></svg>`,
+  community: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/></svg>`,
+  urgent: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`
+};
+
 const resourceGrid = document.getElementById("resource-grid");
 const noResults = document.getElementById("no-results");
 const resultsStatus = document.getElementById("results-status");
+const resultsCount = document.getElementById("results-count");
 const searchInput = document.getElementById("resource-search");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const accordionTriggers = document.querySelectorAll(".accordion-trigger");
@@ -94,29 +99,34 @@ const contactForm = document.getElementById("contact-form");
 const formSuccess = document.getElementById("form-success");
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.getElementById("site-nav");
+const crisisJumpLink = document.querySelector("[data-category-jump]");
 
-/* --------------------------------------------------------------------------
-   State
-   -------------------------------------------------------------------------- */
 let activeCategory = "all";
 let searchQuery = "";
 
-/* --------------------------------------------------------------------------
-   Support Finder — render cards
-   -------------------------------------------------------------------------- */
 function getUrgencyClass(urgency) {
-  const level = urgency.toLowerCase();
-  return `urgency-badge--${level}`;
+  return `urgency-badge--${urgency.toLowerCase()}`;
+}
+
+function getCategoryIcon(category) {
+  return categoryIcons[category] || categoryIcons.community;
 }
 
 function createResourceCard(resource) {
   const article = document.createElement("article");
-  article.className = "resource-card";
+  const isUrgent = resource.urgency.toLowerCase() === "high";
+
+  article.className = isUrgent
+    ? "resource-card resource-card--urgent"
+    : "resource-card";
   article.dataset.category = resource.category;
   article.dataset.id = resource.id;
 
   article.innerHTML = `
-    <span class="resource-card__category">${resource.categoryLabel}</span>
+    <div class="resource-card__header">
+      <span class="resource-card__icon">${getCategoryIcon(resource.category)}</span>
+      <span class="category-pill category-pill--${resource.category}">${resource.categoryLabel}</span>
+    </div>
     <h3 class="resource-card__title">${resource.title}</h3>
     <p class="resource-card__description">${resource.description}</p>
     <span class="urgency-badge ${getUrgencyClass(resource.urgency)}" aria-label="Urgency level: ${resource.urgency}">
@@ -150,12 +160,12 @@ function resourceMatchesFilter(resource) {
     .join(" ")
     .toLowerCase();
 
-  const matchesSearch = searchableText.includes(query);
-  return matchesCategory && matchesSearch;
+  return matchesCategory && searchableText.includes(query);
 }
 
 function renderResources() {
   const filtered = supportResources.filter(resourceMatchesFilter);
+  const total = supportResources.length;
 
   resourceGrid.innerHTML = "";
 
@@ -166,16 +176,21 @@ function renderResources() {
   const hasResults = filtered.length > 0;
   noResults.hidden = hasResults;
 
+  const countMessage = hasResults
+    ? `Showing ${filtered.length} of ${total} resources`
+    : "Showing 0 resources";
+
   const statusMessage = hasResults
     ? `${filtered.length} support resource${filtered.length === 1 ? "" : "s"} found.`
     : "No matching resources found.";
 
+  if (resultsCount) {
+    resultsCount.textContent = countMessage;
+  }
+
   resultsStatus.textContent = statusMessage;
 }
 
-/* --------------------------------------------------------------------------
-   Support Finder — search and filter handlers
-   -------------------------------------------------------------------------- */
 function setActiveFilter(button) {
   filterButtons.forEach((btn) => {
     const isActive = btn === button;
@@ -185,6 +200,16 @@ function setActiveFilter(button) {
 
   activeCategory = button.dataset.category;
   renderResources();
+}
+
+function activateCategoryFilter(category) {
+  const targetButton = Array.from(filterButtons).find(
+    (button) => button.dataset.category === category
+  );
+
+  if (targetButton) {
+    setActiveFilter(targetButton);
+  }
 }
 
 searchInput.addEventListener("input", (event) => {
@@ -198,9 +223,23 @@ filterButtons.forEach((button) => {
   });
 });
 
-/* --------------------------------------------------------------------------
-   FAQ Accordion
-   -------------------------------------------------------------------------- */
+if (crisisJumpLink) {
+  crisisJumpLink.addEventListener("click", (event) => {
+    const category = crisisJumpLink.dataset.categoryJump;
+    if (!category) {
+      return;
+    }
+
+    event.preventDefault();
+    activateCategoryFilter(category);
+
+    const supportFinder = document.getElementById("support-finder");
+    if (supportFinder) {
+      supportFinder.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+}
+
 function closeAccordionItem(trigger) {
   trigger.setAttribute("aria-expanded", "false");
   const panel = document.getElementById(trigger.getAttribute("aria-controls"));
@@ -235,9 +274,6 @@ accordionTriggers.forEach((trigger) => {
   });
 });
 
-/* --------------------------------------------------------------------------
-   Contact Form Validation
-   -------------------------------------------------------------------------- */
 const formFields = {
   name: {
     input: document.getElementById("contact-name"),
@@ -372,9 +408,6 @@ Object.values(formFields).forEach((field) => {
   });
 });
 
-/* --------------------------------------------------------------------------
-   Mobile navigation toggle
-   -------------------------------------------------------------------------- */
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
@@ -394,7 +427,4 @@ if (navToggle && siteNav) {
   });
 }
 
-/* --------------------------------------------------------------------------
-   Initialise
-   -------------------------------------------------------------------------- */
 renderResources();

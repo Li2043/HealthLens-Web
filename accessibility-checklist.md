@@ -1,6 +1,6 @@
 # HealthLens Accessibility Checklist
 
-A practical review checklist for Version 0.1 of the HealthLens student support site. Use this when testing locally, before deployment, or when making future updates.
+A practical review checklist for Version 0.2 of the HealthLens student support site.
 
 ---
 
@@ -75,6 +75,9 @@ A practical review checklist for Version 0.1 of the HealthLens student support s
 
 - [ ] Hero section explains the site purpose in plain English
 - [ ] Support cards include title, category, description, urgency, and next step
+- [ ] Urgent help banner is readable and not conveyed by colour alone (includes text for 999 / NHS 111)
+- [ ] Visible results count updates when filters change
+- [ ] Resource card icons are decorative (`aria-hidden`) and urgency includes text labels
 - [ ] "No matching resources found" message appears when filters return nothing
 - [ ] Search/filter results are announced via live region (`aria-live`)
 - [ ] FAQ answers are concise and actionable
@@ -125,4 +128,4 @@ Document these when reviewing or presenting the project:
 
 ---
 
-*Last updated: Version 0.1*
+*Last updated: Version 0.2*

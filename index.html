@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="HealthLens helps university students find wellbeing and support resources quickly. Search, filter, and explore student support options — not medical advice.">
   <title>HealthLens — Student Wellbeing &amp; Support Hub</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +13,10 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-logo" href="#hero">HealthLens</a>
+      <a class="site-logo" href="#hero">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
       <button
         class="nav-toggle"
         type="button"
@@ -37,24 +41,80 @@
 
   <main id="main-content">
     <section id="hero" class="hero" aria-labelledby="hero-heading">
-      <div class="container hero-inner">
-        <h1 id="hero-heading">Find the right wellbeing support, faster</h1>
-        <p class="hero-lead">
-          HealthLens helps university students search and filter wellbeing and support resources in one place.
-          Use the Support Finder to explore options by topic, urgency, and suggested next steps.
-        </p>
-        <p class="disclaimer" role="note">
-          <strong>Please note:</strong> This site is a student project and does not provide medical advice.
-        </p>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Student Wellbeing &amp; Support Hub</p>
+          <h1 id="hero-heading">Find the right wellbeing support, faster</h1>
+          <p class="hero-lead">
+            HealthLens helps university students search and filter wellbeing and support resources in one place.
+            Explore options by topic, urgency level, and suggested next steps.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#support-finder">Explore Support Finder</a>
+            <a class="btn btn-secondary" href="#urgent-help">Urgent help information</a>
+          </div>
+          <p class="disclaimer" role="note">
+            <strong>Please note:</strong> This site is a student project and does not provide medical advice.
+          </p>
+        </div>
+
+        <aside class="hero-panel" aria-labelledby="how-it-works-heading">
+          <h2 id="how-it-works-heading" class="hero-panel__title">How it works</h2>
+          <ol class="hero-steps">
+            <li class="hero-step">
+              <span class="hero-step__number" aria-hidden="true">1</span>
+              <div>
+                <strong>Search or browse</strong>
+                <p>Use keywords or category filters to narrow down support resources.</p>
+              </div>
+            </li>
+            <li class="hero-step">
+              <span class="hero-step__number" aria-hidden="true">2</span>
+              <div>
+                <strong>Check urgency</strong>
+                <p>Each card shows Low, Medium, or High urgency so you can prioritise your next move.</p>
+              </div>
+            </li>
+            <li class="hero-step">
+              <span class="hero-step__number" aria-hidden="true">3</span>
+              <div>
+                <strong>Take a suggested step</strong>
+                <p>Follow the signposted next step and use trusted university or NHS services when needed.</p>
+              </div>
+            </li>
+          </ol>
+        </aside>
       </div>
     </section>
 
-    <section id="support-finder" class="section support-finder" aria-labelledby="support-finder-heading">
+    <aside id="urgent-help" class="crisis-banner" aria-labelledby="crisis-heading">
+      <div class="container crisis-banner__inner">
+        <div class="crisis-banner__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="crisis-banner__content">
+          <h2 id="crisis-heading">Need urgent help?</h2>
+          <p>
+            If you or someone else is in immediate danger, call <strong>999</strong>.
+            For urgent mental health support in the UK, contact <strong>NHS 111</strong> or visit your nearest A&amp;E.
+          </p>
+        </div>
+        <a class="btn btn-crisis" href="#support-finder" data-category-jump="urgent">View urgent resources</a>
+      </div>
+    </aside>
+
+    <section id="support-finder" class="section section--alt support-finder" aria-labelledby="support-finder-heading">
       <div class="container">
-        <h2 id="support-finder-heading">Support Finder</h2>
-        <p class="section-intro">
-          Browse support resources below. Use search and category filters to find what fits your situation.
-        </p>
+        <header class="section-header">
+          <p class="section-eyebrow">Support Finder</p>
+          <h2 id="support-finder-heading">Browse student support resources</h2>
+          <p class="section-intro">
+            Use search and category filters to find resources that fit your situation.
+            Content last reviewed: May 2026.
+          </p>
+        </header>
 
         <div class="finder-controls">
           <div class="search-wrapper">
@@ -83,9 +143,10 @@
           </fieldset>
         </div>
 
+        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true">Showing 8 of 8 resources</p>
         <p id="results-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
 
-        <div id="resource-grid" class="resource-grid" aria-live="polite" aria-relevant="additions removals">
+        <div id="resource-grid" class="resource-grid">
           <!-- Support cards rendered by script.js -->
         </div>
 
@@ -97,24 +158,32 @@
 
     <section id="wellbeing-tips" class="section wellbeing-tips" aria-labelledby="wellbeing-tips-heading">
       <div class="container">
-        <h2 id="wellbeing-tips-heading">Wellbeing Tips</h2>
-        <p class="section-intro">
-          Simple, non-medical ideas for self-reflection and everyday student wellbeing.
-        </p>
+        <header class="section-header">
+          <p class="section-eyebrow">Everyday wellbeing</p>
+          <h2 id="wellbeing-tips-heading">Wellbeing Tips</h2>
+          <p class="section-intro">
+            Simple, non-medical ideas for self-reflection and everyday student wellbeing.
+          </p>
+        </header>
+
         <ul class="tips-list">
           <li class="tip-card">
+            <span class="tip-card__number" aria-hidden="true">01</span>
             <h3>Track patterns, not perfection</h3>
             <p>Notice what affects your mood or energy over time. Small patterns can help you plan rest, study, and social time more realistically.</p>
           </li>
           <li class="tip-card">
+            <span class="tip-card__number" aria-hidden="true">02</span>
             <h3>Ask for help early</h3>
             <p>You do not need to wait until things feel overwhelming. Student support services exist for everyday concerns as well as urgent situations.</p>
           </li>
           <li class="tip-card">
+            <span class="tip-card__number" aria-hidden="true">03</span>
             <h3>Break tasks into smaller steps</h3>
             <p>Large deadlines and life admin feel more manageable when you split them into clear, achievable actions with short breaks in between.</p>
           </li>
           <li class="tip-card">
+            <span class="tip-card__number" aria-hidden="true">04</span>
             <h3>Use trusted resources for serious concerns</h3>
             <p>For ongoing or serious wellbeing concerns, speak to your university support team or trusted NHS resources rather than relying on general online content.</p>
           </li>
@@ -122,10 +191,13 @@
       </div>
     </section>
 
-    <section id="faq" class="section faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <h2 id="faq-heading">Frequently Asked Questions</h2>
-        <p class="section-intro">Quick answers about how to use HealthLens and what it can — and cannot — offer.</p>
+    <section id="faq" class="section section--alt faq" aria-labelledby="faq-heading">
+      <div class="container container--narrow">
+        <header class="section-header section-header--center">
+          <p class="section-eyebrow">Common questions</p>
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+          <p class="section-intro">Quick answers about how to use HealthLens and what it can — and cannot — offer.</p>
+        </header>
 
         <div class="accordion">
           <div class="accordion-item">
@@ -217,63 +289,72 @@
 
     <section id="contact" class="section contact" aria-labelledby="contact-heading">
       <div class="container">
-        <h2 id="contact-heading">Contact</h2>
-        <p class="section-intro">
-          Send a demo enquiry about this project. No data is stored or transmitted.
-        </p>
+        <div class="contact-layout">
+          <header class="section-header">
+            <p class="section-eyebrow">Feedback</p>
+            <h2 id="contact-heading">Share your feedback</h2>
+            <p class="section-intro">
+              Tell us what you think of this demo project. No data is stored or transmitted.
+            </p>
+          </header>
 
-        <form id="contact-form" class="contact-form" novalidate>
-          <div class="form-field">
-            <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="name" required autocomplete="name">
-            <span class="field-error" id="contact-name-error" role="alert"></span>
-          </div>
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required autocomplete="name">
+              <span class="field-error" id="contact-name-error" role="alert"></span>
+            </div>
 
-          <div class="form-field">
-            <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" name="email" required autocomplete="email">
-            <span class="field-error" id="contact-email-error" role="alert"></span>
-          </div>
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required autocomplete="email">
+              <span class="field-error" id="contact-email-error" role="alert"></span>
+            </div>
 
-          <div class="form-field">
-            <label for="contact-topic">Topic</label>
-            <select id="contact-topic" name="topic" required>
-              <option value="">Select a topic</option>
-              <option value="general">General enquiry</option>
-              <option value="support-finder">Support Finder feedback</option>
-              <option value="accessibility">Accessibility feedback</option>
-              <option value="content">Content suggestion</option>
-            </select>
-            <span class="field-error" id="contact-topic-error" role="alert"></span>
-          </div>
+            <div class="form-field">
+              <label for="contact-topic">Topic</label>
+              <select id="contact-topic" name="topic" required>
+                <option value="">Select a topic</option>
+                <option value="general">General enquiry</option>
+                <option value="support-finder">Support Finder feedback</option>
+                <option value="accessibility">Accessibility feedback</option>
+                <option value="content">Content suggestion</option>
+              </select>
+              <span class="field-error" id="contact-topic-error" role="alert"></span>
+            </div>
 
-          <div class="form-field">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" rows="5" required minlength="10"></textarea>
-            <span class="field-error" id="contact-message-error" role="alert"></span>
-          </div>
+            <div class="form-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" required minlength="10"></textarea>
+              <span class="field-error" id="contact-message-error" role="alert"></span>
+            </div>
 
-          <div class="form-field form-field--checkbox">
-            <input type="checkbox" id="contact-consent" name="consent" required>
-            <label for="contact-consent">I understand this demo does not provide medical advice.</label>
-            <span class="field-error" id="contact-consent-error" role="alert"></span>
-          </div>
+            <div class="form-field form-field--checkbox">
+              <input type="checkbox" id="contact-consent" name="consent" required>
+              <label for="contact-consent">I understand this demo does not provide medical advice.</label>
+              <span class="field-error" id="contact-consent-error" role="alert"></span>
+            </div>
 
-          <button type="submit" class="btn btn-primary">Send enquiry</button>
+            <button type="submit" class="btn btn-primary">Send feedback</button>
 
-          <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
-            Thank you. This is a demo form, so no data has been sent.
-          </div>
-        </form>
+            <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
+              Thank you. This is a demo form, so no data has been sent.
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
-    <section id="accessibility" class="section accessibility-statement" aria-labelledby="accessibility-heading">
+    <section id="accessibility" class="section section--alt accessibility-statement" aria-labelledby="accessibility-heading">
       <div class="container">
-        <h2 id="accessibility-heading">Accessibility Statement</h2>
-        <p class="section-intro">
-          This project aims to follow WCAG-informed practices so student support content is clear and usable for everyone.
-        </p>
+        <header class="section-header">
+          <p class="section-eyebrow">Inclusive design</p>
+          <h2 id="accessibility-heading">Accessibility Statement</h2>
+          <p class="section-intro">
+            This project aims to follow WCAG-informed practices so student support content is clear and usable for everyone.
+          </p>
+        </header>
+
         <ul class="accessibility-list">
           <li><strong>Semantic HTML</strong> — landmarks such as header, nav, main, section, article, and footer structure the page logically.</li>
           <li><strong>Clear heading hierarchy</strong> — headings follow a meaningful order from h1 to h3.</li>
@@ -289,9 +370,27 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; 2026 HealthLens — Student Wellbeing &amp; Support Hub</p>
-      <p class="footer-note">A portfolio project for demonstrating web content, UX, and accessibility skills. Not medical advice.</p>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">Student Wellbeing &amp; Support Hub — a portfolio demo project.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">On this page</p>
+        <ul>
+          <li><a href="#support-finder">Support Finder</a></li>
+          <li><a href="#wellbeing-tips">Wellbeing Tips</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Not medical advice.</strong> For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
     </div>
   </footer>
 
