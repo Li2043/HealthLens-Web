@@ -783,6 +783,27 @@ ol {
   border-radius: var(--radius-xl);
 }
 
+.resource-loading,
+.resource-load-error {
+  grid-column: 1 / -1;
+  padding: var(--space-xl);
+  text-align: center;
+  border-radius: var(--radius-xl);
+}
+
+.resource-loading {
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+}
+
+.resource-load-error {
+  color: var(--color-error);
+  background: var(--color-error-bg);
+  border: 2px solid var(--color-error);
+  font-weight: 600;
+}
+
 /* Wellbeing tips */
 .tips-list {
   display: grid;

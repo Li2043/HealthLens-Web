@@ -1,0 +1,134 @@
+[
+  {
+    "id": "academic-stress",
+    "title": "Academic Stress",
+    "category": "academic",
+    "urgency": "Medium",
+    "description": "Signposting for coursework pressure, assessment concerns, extensions, academic appeals, or uncertainty about study progress.",
+    "nextStep": "Read the academic advice options on Bristol SU and contact the relevant support team early.",
+    "sourceLabel": "Bristol SU Academic Advice",
+    "sourceUrl": "https://www.bristolsu.org.uk/support-centre/academic-advice",
+    "linkText": "View academic advice"
+  },
+  {
+    "id": "university-academic-support",
+    "title": "University Academic Support",
+    "category": "academic",
+    "urgency": "Medium",
+    "description": "Signposting to University guidance on assessment support, exceptional circumstances, absence from teaching or exams, and academic integrity.",
+    "nextStep": "Check the University academic advice page for the right process.",
+    "sourceLabel": "University of Bristol Academic Advice",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/",
+    "linkText": "View University academic support"
+  },
+  {
+    "id": "mental-wellbeing",
+    "title": "Mental Wellbeing",
+    "category": "wellbeing",
+    "urgency": "Medium",
+    "description": "Signposting for students who are finding things difficult and want guidance or a wellbeing appointment.",
+    "nextStep": "Book a wellbeing appointment or read about the University's wellbeing services.",
+    "sourceLabel": "University of Bristol Wellbeing Appointment",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/managing-student-life/book-an-appointment/",
+    "linkText": "Book a wellbeing appointment"
+  },
+  {
+    "id": "health-welfare",
+    "title": "Health and Welfare",
+    "category": "wellbeing",
+    "urgency": "Medium",
+    "description": "Signposting to Bristol SU guidance on health, welfare and student support, including routes to wellbeing advice.",
+    "nextStep": "Check the SU Health & Welfare support page.",
+    "sourceLabel": "Bristol SU Health & Welfare",
+    "sourceUrl": "https://www.bristolsu.org.uk/support-centre/health-and-welfare",
+    "linkText": "View health and welfare support"
+  },
+  {
+    "id": "housing-concerns",
+    "title": "Housing Concerns",
+    "category": "housing",
+    "urgency": "Medium",
+    "description": "Signposting for renting, housing problems, tenancy questions, or understanding rights and responsibilities as a student tenant.",
+    "nextStep": "Contact Bristol SU Housing Advice for independent student housing support.",
+    "sourceLabel": "Bristol SU Housing Advice",
+    "sourceUrl": "https://www.bristolsu.org.uk/housing-advice",
+    "linkText": "View housing advice"
+  },
+  {
+    "id": "financial-worries",
+    "title": "Financial Worries",
+    "category": "finance",
+    "urgency": "Medium",
+    "description": "Signposting for students worried about money, budgeting, cost of living, fees, or financial difficulty.",
+    "nextStep": "Read the University's money advice and support options.",
+    "sourceLabel": "University of Bristol Money Advice",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/finances/advice/",
+    "linkText": "View money advice"
+  },
+  {
+    "id": "international-support",
+    "title": "International Student Support",
+    "category": "international",
+    "urgency": "Low",
+    "description": "Signposting to academic, personal and practical support for international students at the University of Bristol.",
+    "nextStep": "Explore international student support and relevant services.",
+    "sourceLabel": "University of Bristol International Student Support",
+    "sourceUrl": "https://www.bristol.ac.uk/international/why/support/",
+    "linkText": "View international support"
+  },
+  {
+    "id": "disability-support",
+    "title": "Disability Support",
+    "category": "wellbeing",
+    "urgency": "Medium",
+    "description": "Signposting to support for students with disabilities, learning differences, mental health conditions, or physical and sensory impairments.",
+    "nextStep": "Read about disability support and study support plans.",
+    "sourceLabel": "University of Bristol Disability Support",
+    "sourceUrl": "https://www.bristol.ac.uk/students/support/disability-support/",
+    "linkText": "View disability support"
+  },
+  {
+    "id": "societies-belonging",
+    "title": "Societies and Belonging",
+    "category": "community",
+    "urgency": "Low",
+    "description": "Signposting to student groups, societies, networks and activities to build connection and belonging.",
+    "nextStep": "Browse Bristol SU groups and societies.",
+    "sourceLabel": "Bristol SU Groups",
+    "sourceUrl": "https://www.bristolsu.org.uk/groups",
+    "linkText": "Browse student groups"
+  },
+  {
+    "id": "volunteering-community",
+    "title": "Volunteering and Community",
+    "category": "community",
+    "urgency": "Low",
+    "description": "Signposting to volunteering opportunities and community impact activities through Bristol SU.",
+    "nextStep": "Explore volunteering opportunities and student community activities.",
+    "sourceLabel": "Bristol SU Volunteering",
+    "sourceUrl": "https://www.bristolsu.org.uk/community-impact",
+    "linkText": "Explore volunteering"
+  },
+  {
+    "id": "urgent-mental-health",
+    "title": "Urgent Mental Health Support",
+    "category": "urgent",
+    "urgency": "High",
+    "description": "If you need urgent mental health help but it is not an immediate emergency, NHS 111 can direct you to the right support.",
+    "nextStep": "Use NHS 111 online or call 111. If you or someone else is in immediate danger, call 999 or go to A&E.",
+    "sourceLabel": "NHS urgent mental health help",
+    "sourceUrl": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/",
+    "linkText": "Get urgent NHS help"
+  },
+  {
+    "id": "someone-to-talk-to",
+    "title": "Someone to Talk To",
+    "category": "urgent",
+    "urgency": "High",
+    "description": "Signposting to Samaritans for confidential listening support for anyone who needs to talk.",
+    "nextStep": "Call Samaritans free on 116 123 if you need someone to talk to.",
+    "sourceLabel": "Samaritans",
+    "sourceUrl": "https://www.samaritans.org/how-we-can-help/contact-samaritan/",
+    "linkText": "Contact Samaritans"
+  }
+]

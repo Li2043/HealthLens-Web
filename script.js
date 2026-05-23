@@ -1,154 +1,19 @@
 /**
  * HealthLens — Student Wellbeing & Support Hub
- * Version 0.2 — official support signposting links
+ * Version 0.1 — static HTML, CSS and JavaScript
  */
 
-const supportResources = [
-  {
-    id: "academic-stress",
-    title: "Academic Stress",
-    category: "academic",
-    categoryLabel: "Academic",
-    description: "Support for coursework pressure, assessment concerns, extensions, academic appeals, or uncertainty about study progress.",
-    urgency: "Medium",
-    nextStep: "Read the academic advice options and contact the relevant support team early.",
-    sourceLabel: "Bristol SU Academic Advice",
-    sourceUrl: "https://www.bristolsu.org.uk/support-centre/academic-advice",
-    linkText: "View academic advice"
-  },
-  {
-    id: "university-academic-support",
-    title: "University Academic Support",
-    category: "academic",
-    categoryLabel: "Academic",
-    description: "University guidance for assessment support, exceptional circumstances, absence from teaching or exams, and academic integrity.",
-    urgency: "Medium",
-    nextStep: "Check the University's academic advice page for the right process.",
-    sourceLabel: "University of Bristol Academic Advice",
-    sourceUrl: "https://www.bristol.ac.uk/students/support/academic-advice/",
-    linkText: "View University academic support"
-  },
-  {
-    id: "mental-wellbeing",
-    title: "Mental Wellbeing",
-    category: "wellbeing",
-    categoryLabel: "Wellbeing",
-    description: "Support for students who are finding things difficult and want guidance, signposting, or a wellbeing appointment.",
-    urgency: "Medium",
-    nextStep: "Book a wellbeing appointment or read about the University's wellbeing services.",
-    sourceLabel: "University of Bristol Wellbeing Appointment",
-    sourceUrl: "https://www.bristol.ac.uk/students/support/managing-student-life/book-an-appointment/",
-    linkText: "Book a wellbeing appointment"
-  },
-  {
-    id: "health-welfare",
-    title: "Health and Welfare",
-    category: "wellbeing",
-    categoryLabel: "Wellbeing",
-    description: "Bristol SU guidance on health, welfare and student support, including routes to wellbeing advice.",
-    urgency: "Medium",
-    nextStep: "Check the SU Health & Welfare support page.",
-    sourceLabel: "Bristol SU Health & Welfare",
-    sourceUrl: "https://www.bristolsu.org.uk/support-centre/health-and-welfare",
-    linkText: "View health and welfare support"
-  },
-  {
-    id: "housing-concerns",
-    title: "Housing Concerns",
-    category: "housing",
-    categoryLabel: "Housing",
-    description: "Support for renting, housing problems, tenancy questions, or understanding rights and responsibilities as a student tenant.",
-    urgency: "Medium",
-    nextStep: "Contact Bristol SU Housing Advice for independent student housing support.",
-    sourceLabel: "Bristol SU Housing Advice",
-    sourceUrl: "https://www.bristolsu.org.uk/housing-advice",
-    linkText: "View housing advice"
-  },
-  {
-    id: "financial-worries",
-    title: "Financial Worries",
-    category: "finance",
-    categoryLabel: "Finance",
-    description: "Guidance for students worried about money, budgeting, cost of living, fees, or financial difficulty.",
-    urgency: "Medium",
-    nextStep: "Read the University's money advice and support options.",
-    sourceLabel: "University of Bristol Money Advice",
-    sourceUrl: "https://www.bristol.ac.uk/students/support/finances/advice/",
-    linkText: "View money advice"
-  },
-  {
-    id: "international-support",
-    title: "International Student Support",
-    category: "international",
-    categoryLabel: "International",
-    description: "Academic, personal and practical support for international students at the University of Bristol.",
-    urgency: "Low",
-    nextStep: "Explore international student support and relevant services.",
-    sourceLabel: "University of Bristol International Student Support",
-    sourceUrl: "https://www.bristol.ac.uk/international/why/support/",
-    linkText: "View international support"
-  },
-  {
-    id: "disability-support",
-    title: "Disability Support",
-    category: "wellbeing",
-    categoryLabel: "Wellbeing",
-    description: "Support for students with disabilities, learning differences, mental health conditions, or physical and sensory impairments.",
-    urgency: "Medium",
-    nextStep: "Read about disability support and study support plans.",
-    sourceLabel: "University of Bristol Disability Support",
-    sourceUrl: "https://www.bristol.ac.uk/students/support/disability-support/",
-    linkText: "View disability support"
-  },
-  {
-    id: "societies-belonging",
-    title: "Societies and Belonging",
-    category: "community",
-    categoryLabel: "Community",
-    description: "Find student groups, societies, networks and activities to build connection and belonging.",
-    urgency: "Low",
-    nextStep: "Browse Bristol SU groups and societies.",
-    sourceLabel: "Bristol SU Groups",
-    sourceUrl: "https://www.bristolsu.org.uk/groups",
-    linkText: "Browse student groups"
-  },
-  {
-    id: "volunteering-community",
-    title: "Volunteering and Community",
-    category: "community",
-    categoryLabel: "Community",
-    description: "Find volunteering opportunities and community impact activities through Bristol SU.",
-    urgency: "Low",
-    nextStep: "Explore volunteering opportunities and student community activities.",
-    sourceLabel: "Bristol SU Volunteering",
-    sourceUrl: "https://www.bristolsu.org.uk/community-impact",
-    linkText: "Explore volunteering"
-  },
-  {
-    id: "urgent-mental-health",
-    title: "Urgent Mental Health Support",
-    category: "urgent",
-    categoryLabel: "Urgent",
-    description: "If you need urgent mental health help but it is not an immediate emergency, NHS 111 can direct you to the right support.",
-    urgency: "High",
-    nextStep: "Use NHS 111 online or call 111. If you or someone else is in immediate danger, call 999 or go to A&E.",
-    sourceLabel: "NHS urgent mental health help",
-    sourceUrl: "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/",
-    linkText: "Get urgent NHS help"
-  },
-  {
-    id: "someone-to-talk-to",
-    title: "Someone to Talk To",
-    category: "urgent",
-    categoryLabel: "Urgent",
-    description: "Samaritans offers confidential listening support for anyone who needs to talk.",
-    urgency: "High",
-    nextStep: "Call Samaritans free on 116 123 if you need someone to talk to.",
-    sourceLabel: "Samaritans",
-    sourceUrl: "https://www.samaritans.org/how-we-can-help/contact-samaritan/",
-    linkText: "Contact Samaritans"
-  }
-];
+const RESOURCES_URL = "./data/resources.json";
+
+const categoryLabels = {
+  academic: "Academic",
+  wellbeing: "Wellbeing",
+  housing: "Housing",
+  finance: "Finance",
+  international: "International",
+  community: "Community",
+  urgent: "Urgent"
+};
 
 const categoryIcons = {
   academic: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" stroke="currentColor" stroke-width="2"/></svg>`,
@@ -173,8 +38,22 @@ const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.getElementById("site-nav");
 const crisisJumpLink = document.querySelector("[data-category-jump]");
 
+let supportResources = [];
+let resourcesLoaded = false;
+let loadFailed = false;
 let activeCategory = "all";
 let searchQuery = "";
+
+function getCategoryLabel(category) {
+  return categoryLabels[category] || category;
+}
+
+function normalizeResource(resource) {
+  return {
+    ...resource,
+    categoryLabel: getCategoryLabel(resource.category)
+  };
+}
 
 function getUrgencyClass(urgency) {
   return `urgency-badge--${urgency.toLowerCase()}`;
@@ -185,7 +64,7 @@ function getCategoryIcon(category) {
 }
 
 function escapeHtml(text) {
-  return text
+  return String(text)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
@@ -237,6 +116,26 @@ function createResourceCard(resource) {
   return article;
 }
 
+function showLoadError() {
+  loadFailed = true;
+  resourcesLoaded = false;
+  resourceGrid.innerHTML = "";
+
+  const errorMessage = document.createElement("p");
+  errorMessage.className = "resource-load-error";
+  errorMessage.setAttribute("role", "alert");
+  errorMessage.textContent = "Support resources could not be loaded. Please try again later.";
+  resourceGrid.appendChild(errorMessage);
+
+  noResults.hidden = true;
+
+  if (resultsCount) {
+    resultsCount.textContent = "Support resources unavailable";
+  }
+
+  resultsStatus.textContent = "Support resources could not be loaded.";
+}
+
 function resourceMatchesFilter(resource) {
   const matchesCategory =
     activeCategory === "all" || resource.category === activeCategory;
@@ -262,6 +161,24 @@ function resourceMatchesFilter(resource) {
 }
 
 function renderResources() {
+  if (loadFailed) {
+    return;
+  }
+
+  if (!resourcesLoaded) {
+    resourceGrid.innerHTML = "";
+    const loadingMessage = document.createElement("p");
+    loadingMessage.className = "resource-loading";
+    loadingMessage.textContent = "Loading support resources…";
+    resourceGrid.appendChild(loadingMessage);
+
+    if (resultsCount) {
+      resultsCount.textContent = "Loading support resources…";
+    }
+
+    return;
+  }
+
   const filtered = supportResources.filter(resourceMatchesFilter);
   const total = supportResources.length;
 
@@ -287,6 +204,33 @@ function renderResources() {
   }
 
   resultsStatus.textContent = statusMessage;
+}
+
+async function loadResources() {
+  renderResources();
+
+  try {
+    const response = await fetch(RESOURCES_URL);
+
+    if (!response.ok) {
+      throw new Error(`Failed to load resources: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const resources = Array.isArray(data) ? data : data.resources;
+
+    if (!Array.isArray(resources) || resources.length === 0) {
+      throw new Error("Resources data is empty or invalid");
+    }
+
+    supportResources = resources.map(normalizeResource);
+    resourcesLoaded = true;
+    loadFailed = false;
+    renderResources();
+  } catch (error) {
+    console.error("HealthLens: unable to load support resources.", error);
+    showLoadError();
+  }
 }
 
 function setActiveFilter(button) {
@@ -525,4 +469,4 @@ if (navToggle && siteNav) {
   });
 }
 
-renderResources();
+loadResources();
