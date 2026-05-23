@@ -1,6 +1,6 @@
 /**
  * HealthLens — Student Wellbeing & Support Hub
- * Version 0.1 — static HTML, CSS and JavaScript
+ * Version 0.5 — static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
@@ -37,6 +37,9 @@ const formSuccess = document.getElementById("form-success");
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.getElementById("site-nav");
 const crisisJumpLink = document.querySelector("[data-category-jump]");
+const themeToggle = document.getElementById("theme-toggle");
+
+const THEME_STORAGE_KEY = "healthlens-theme";
 
 let supportResources = [];
 let resourcesLoaded = false;
@@ -469,4 +472,76 @@ if (navToggle && siteNav) {
   });
 }
 
+function getSystemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function getStoredTheme() {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
+  } catch (error) {
+    console.warn("HealthLens: theme preference could not be read.", error);
+  }
+
+  return getSystemTheme();
+}
+
+function updateThemeToggle(theme) {
+  if (!themeToggle) {
+    return;
+  }
+
+  const isDark = theme === "dark";
+  const icon = themeToggle.querySelector(".theme-toggle__icon");
+  const text = themeToggle.querySelector(".theme-toggle__text");
+
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+
+  if (icon) {
+    icon.textContent = isDark ? "☀" : "☾";
+  }
+
+  if (text) {
+    text.textContent = isDark ? "Light mode" : "Dark mode";
+  }
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  updateThemeToggle(theme);
+}
+
+function initThemeToggle() {
+  if (!themeToggle) {
+    return;
+  }
+
+  const currentTheme =
+    document.documentElement.getAttribute("data-theme") || getStoredTheme();
+  applyTheme(currentTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const nextTheme =
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "light"
+        : "dark";
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    } catch (error) {
+      console.warn("HealthLens: theme preference could not be saved.", error);
+    }
+
+    applyTheme(nextTheme);
+  });
+}
+
+initThemeToggle();
 loadResources();

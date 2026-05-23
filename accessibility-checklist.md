@@ -1,6 +1,6 @@
 # HealthLens Accessibility Checklist
 
-A practical review checklist for Version 0.1 of the HealthLens student support site. Use this when testing locally (via a local server), before deployment, or when making future updates.
+A practical review checklist for Version 0.5 of the HealthLens student support site.
 
 ---
 
@@ -26,6 +26,7 @@ A practical review checklist for Version 0.1 of the HealthLens student support s
 - [ ] External support links are reachable by keyboard with visible focus
 - [ ] Form fields follow a logical tab order
 - [ ] Submit button is keyboard accessible
+- [ ] Theme toggle in header is keyboard reachable and updates `aria-pressed`
 - [ ] Mobile nav toggle works with keyboard and updates `aria-expanded`
 - [ ] No keyboard traps in modals or overlays
 
@@ -115,7 +116,17 @@ A practical review checklist for Version 0.1 of the HealthLens student support s
 - [ ] Visible results count updates when filters change
 - [ ] "No matching resources found" message appears when filters return nothing
 - [ ] Search/filter results are announced via live region (`aria-live`)
-- [ ] Contact section states the form is a demo
+- [ ] Print preview shows resource cards, official URLs, disclaimers, and accessibility statement
+- [ ] Print view hides navigation, search, filters, and demo contact form
+- [ ] System dark mode (if enabled) keeps text, links, and focus states readable
+
+---
+
+## Accessibility Testing Record
+
+- [ ] Manual keyboard checklist completed (see [`accessibility-test-report.md`](accessibility-test-report.md))
+- [ ] Lighthouse Accessibility score recorded in test report
+- [ ] axe DevTools scan recorded in test report
 
 ---
 
@@ -126,7 +137,8 @@ A practical review checklist for Version 0.1 of the HealthLens student support s
 - [ ] **No automated a11y testing** — manual checklist only
 - [ ] **Single page** — no separate pages for individual resources
 - [ ] **English only** — no translation or localisation yet
-- [ ] **Link review** — official URLs should be checked periodically for changes
+- [ ] **Print stylesheet** — FAQ answers print expanded; controls hidden
+- [ ] **Theme preference** — manual toggle; saved in `localStorage`
 
 ---
 
@@ -145,8 +157,9 @@ Run all tests through a local server (`python -m http.server 8000`), not by doub
 9. Submit empty form — confirm errors appear
 10. Submit valid form with consent checked — confirm success message
 11. Resize browser to mobile width — confirm nav toggle and layout work
-12. Check browser console — confirm no errors on load
+12. Test print preview (Ctrl+P) — cards and URLs visible
+13. Check browser console — confirm no errors on load
 
 ---
 
-*Last updated: Version 0.1*
+*Last updated: Version 0.5*

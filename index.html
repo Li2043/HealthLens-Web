@@ -7,6 +7,22 @@
   <title>HealthLens — Student Wellbeing &amp; Support Hub</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,17 +33,29 @@
         <span class="site-logo__mark" aria-hidden="true"></span>
         <span class="site-logo__text">HealthLens</span>
       </a>
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-nav"
-        aria-label="Open navigation menu"
-      >
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-      </button>
+      <div class="header-actions">
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open navigation menu"
+        >
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="#support-finder">Support Finder</a></li>
@@ -367,7 +395,7 @@
           <li><strong>Semantic HTML</strong> — landmarks such as header, nav, main, section, article, and footer structure the page logically.</li>
           <li><strong>Clear heading hierarchy</strong> — headings follow a meaningful order from h1 to h3.</li>
           <li><strong>Visible labels</strong> — every form field has an associated label; placeholders are supplementary only.</li>
-          <li><strong>Keyboard-friendly interactions</strong> — navigation, filters, accordion, and forms work with keyboard alone.</li>
+          <li><strong>Keyboard-friendly interactions</strong> — navigation, theme toggle, filters, accordion, and forms work with keyboard alone.</li>
           <li><strong>Visible focus states</strong> — links, buttons, and form controls show a clear focus indicator.</li>
           <li><strong>Readable contrast</strong> — text and interactive elements use accessible colour contrast.</li>
           <li><strong>Responsive layout</strong> — content adapts for mobile, tablet, and desktop screen sizes.</li>

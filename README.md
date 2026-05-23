@@ -2,7 +2,22 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 0.1** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+**Version 0.5** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+
+---
+
+## V0.5 Update Summary
+
+Version 0.5 focuses on **accessibility evidence**, **offline usability**, and **system-aware presentation** — without adding new product features or frameworks.
+
+| Addition | Purpose |
+|----------|---------|
+| **Print CSS** | Lets students print support signposting cards with official URLs for offline reference |
+| **System dark mode** | Respects `prefers-color-scheme: dark` with contrast-safe CSS variables |
+| **Accessibility test report** | Documents manual testing, link safety review, and placeholders for Lighthouse/axe |
+| **CHANGELOG** | Records project evolution from V0.1 to V0.5 |
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 
@@ -37,19 +52,36 @@ I used official support links to practise responsible digital content design, sa
 | **Support Finder** | 12 signposting cards with official links, urgency levels, and suggested next steps |
 | **External JSON content** | Support resources loaded from `data/resources.json` |
 | **Search & filter** | Keyword search plus category filter buttons (All, Academic, Wellbeing, etc.) |
+| **Print-friendly layout** | `@media print` stylesheet for offline support reference |
+| **Dark mode toggle** | Manual light/dark switch in header; preference saved in `localStorage` |
 | **Wellbeing Tips** | 4 short, non-medical self-reflection tips |
 | **FAQ accordion** | Expand/collapse with keyboard support and `aria-expanded` |
-| **Feedback form** | Frontend validation with accessible error messages |
+| **Feedback form** | Frontend validation with accessible error messages (demo only) |
 | **Crisis banner** | Prominent urgent help signposting with 999 / NHS 111 guidance |
-| **Accessibility statement** | Documents the project's inclusive design approach |
+| **Accessibility testing record** | [`accessibility-test-report.md`](accessibility-test-report.md) |
 | **Skip link** | "Skip to main content" for keyboard and screen reader users |
+
+---
+
+## Screenshots (Placeholder)
+
+_Add portfolio screenshots here before submission:_
+
+| Screenshot | Description |
+|------------|-------------|
+| _[Add image]_ | Desktop — Support Finder with resource cards |
+| _[Add image]_ | Mobile — responsive layout and crisis banner |
+| _[Add image]_ | Print preview — offline support reference |
+| _[Add image]_ | Lighthouse accessibility score (optional) |
+
+Suggested path: `assets/screenshots/` (create when ready)
 
 ---
 
 ## Tech Stack
 
 - **HTML5** — semantic elements (`header`, `nav`, `main`, `section`, `article`, `footer`)
-- **CSS3** — custom properties, flexbox, grid, media queries
+- **CSS3** — custom properties, flexbox, grid, print and dark-mode media queries
 - **Vanilla JavaScript** — `fetch`, async/await, no frameworks, no build tools
 - **JSON** — structured support content in `data/resources.json`
 - **GitHub Pages** — static hosting
@@ -62,21 +94,19 @@ No React, TypeScript, backend, database, authentication, AI, or external APIs.
 
 The support resources are stored in `data/resources.json` to separate digital content from rendering logic. This makes the project easier to maintain and closer to a real content-managed website workflow.
 
-Each resource object includes:
-
-| Field | Purpose |
-|-------|---------|
-| `id` | Unique identifier for the card |
-| `title` | Clear card heading |
-| `category` | Filter category (`academic`, `wellbeing`, `housing`, etc.) |
-| `urgency` | Low, Medium, or High |
-| `description` | Short, plain-English summary |
-| `nextStep` | Practical suggested action |
-| `sourceLabel` | Official organisation or page name |
-| `sourceUrl` | Official external URL |
-| `linkText` | Specific, accessible link label |
+Each resource object includes: `id`, `title`, `category`, `urgency`, `description`, `nextStep`, `sourceLabel`, `sourceUrl`, and `linkText`.
 
 `script.js` fetches `./data/resources.json` using a relative path, normalises the data, and renders cards dynamically. If loading fails, a clear error message is shown in the Support Finder area.
+
+---
+
+## Content Governance
+
+- **Official links only** — Bristol SU, University of Bristol, NHS, and Samaritans
+- **Review date** — Content last reviewed: May 2026 (noted in Support Finder)
+- **Non-affiliation** — HealthLens is a student portfolio project, not an official service
+- **Update workflow** — Edit `data/resources.json` for content changes; verify links periodically
+- **Safe wording** — Signposting language only; no diagnosis, treatment advice, or outcome promises
 
 ---
 
@@ -88,14 +118,27 @@ HealthLens follows WCAG-informed practices throughout:
 - Visible labels on all form fields (not placeholder-only)
 - Keyboard-accessible navigation, filters, accordion, and form
 - Strong `:focus-visible` styles on links, buttons, and form controls
-- Readable colour contrast and font sizes
-- `aria-expanded` on FAQ buttons and accordion panels
-- Live region announcements for search/filter results
+- Readable colour contrast in light mode, dark mode, and print
+- `aria-expanded` on FAQ buttons; live regions for filter results
 - Descriptive external link text with clear new-tab labelling
 - Reduced-motion support via `prefers-reduced-motion`
 - Clear non-medical wording and disclaimers
 
-See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed review checklist.
+**Testing documentation:**
+- [`accessibility-checklist.md`](accessibility-checklist.md) — pre-release checklist
+- [`accessibility-test-report.md`](accessibility-test-report.md) — V0.5 test record with Lighthouse/axe placeholders
+
+### Accessibility Testing Method (V0.5)
+
+1. Run site locally via `python -m http.server 8000`
+2. Complete manual keyboard-only checklist (Tab, Shift+Tab, Enter, Space)
+3. Run Chrome Lighthouse → Accessibility category
+4. Run axe DevTools full-page scan
+5. Test print preview (Ctrl+P) — confirm cards, links, and disclaimers print correctly
+6. Test at 320px, 768px, and 1280px viewport widths
+7. Test light/dark mode using the header toggle
+8. Check browser console for errors on load and interaction
+9. Record Lighthouse and axe results in `accessibility-test-report.md`
 
 ---
 
@@ -110,66 +153,60 @@ HealthLens **signposts to** official support resources. It does not provide coun
 | **NHS** | Urgent mental health help |
 | **Samaritans** | Confidential listening support |
 
-All external links open in a new tab with `rel="noopener noreferrer"`, descriptive link text, and accessible labels.
-
 ---
 
 ## How to Run Locally
 
-A local server is required so `fetch()` can load `data/resources.json`. Opening `index.html` directly in the browser (double-click) will not load the JSON file correctly.
+A local server is required so `fetch()` can load `data/resources.json`. **Do not** rely on double-clicking `index.html`.
 
-1. **Clone or download** this repository:
-   ```bash
-   git clone https://github.com/Li2043/HealthLens-Web.git
-   cd HealthLens-Web
-   ```
+```bash
+git clone https://github.com/Li2043/HealthLens-Web.git
+cd HealthLens-Web
+python -m http.server 8000
+```
 
-2. **Start a local server:**
-   ```bash
-   # Python 3
-   python -m http.server 8000
-   ```
+Visit `http://localhost:8000`
 
-3. **Visit** `http://localhost:8000`
-
-4. **Verify functionality:**
-   - Support cards load from `data/resources.json`
-   - Search for `housing`, `money`, and `urgent`
-   - Category filters update the card list
-   - FAQ accordion works with keyboard
-   - Contact form validation works
-   - Official links open in a new tab
+**Verify:**
+- 12 support cards load from JSON
+- Search: `housing`, `money`, `urgent`
+- All category filters work
+- FAQ keyboard interaction
+- Form validation
+- Print preview (Ctrl+P)
+- Browser console has no errors
 
 ---
 
 ## How to Deploy with GitHub Pages
 
-1. Push this project to a GitHub repository.
-2. Go to **Settings → Pages** in your repository.
-3. Under **Build and deployment**, set:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` → `/ (root)`
-4. Save. GitHub will publish the site at:
-   ```
-   https://li2043.github.io/HealthLens-Web/
-   ```
-5. Confirm these files are in the repository:
-   - `index.html`
-   - `styles.css`
-   - `script.js`
-   - `data/resources.json`
+1. Push to GitHub repository `main` branch
+2. **Settings → Pages** → Deploy from branch `main` → `/ (root)`
+3. Live URL: `https://li2043.github.io/HealthLens-Web/`
+4. Confirm `data/resources.json` is included in the repository
 
-All asset paths use relative URLs (`./styles.css`, `./script.js`, `./data/resources.json`) so the site works on GitHub Pages.
+All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`).
+
+---
+
+## Known Limitations
+
+- **Demo form** — no data is sent or stored
+- **Local server required** for JSON loading during development
+- **Manual a11y testing** — Lighthouse/axe scores should be added to test report before submission
+- **Theme preference** — saved in browser `localStorage`; first visit follows system setting if none saved
+- **English only** — no localisation
+- **Link maintenance** — official URLs should be reviewed periodically
+- **Not affiliated** — portfolio project only; not an official university or SU website
 
 ---
 
 ## Future Improvements
 
-- Schedule regular review of official link URLs and page content
-- Add automated accessibility testing in CI (e.g. axe-core, pa11y)
-- Add a print-friendly stylesheet for offline reference
-- Conduct testing with screen readers and real students
-- Add dark mode with accessible contrast checks
+- Add Lighthouse and axe scores to CI or pre-deploy checklist
+- Screen reader testing with NVDA / VoiceOver
+- Scheduled content review workflow for `data/resources.json`
+- Portfolio screenshots in `assets/screenshots/`
 
 ---
 
@@ -181,7 +218,9 @@ healthlens/
 ├── styles.css
 ├── script.js
 ├── README.md
+├── CHANGELOG.md
 ├── accessibility-checklist.md
+├── accessibility-test-report.md
 ├── data/
 │   └── resources.json
 └── assets/
@@ -196,4 +235,4 @@ This is a portfolio demo project. Content is for illustration only and does not 
 
 ---
 
-*Built as Version 0.1 for a Web & Digital Content Coordinator application.*
+*Built as Version 0.5 for a Web & Digital Content Coordinator application.*

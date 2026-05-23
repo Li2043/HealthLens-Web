@@ -1,6 +1,6 @@
 /* ==========================================================================
    HealthLens — Student Wellbeing & Support Hub
-   Version 0.2 styles
+   Version 0.5 styles
    ========================================================================== */
 
 :root {
@@ -254,6 +254,40 @@ ol {
   font-size: var(--font-size-xl);
   font-weight: 800;
   letter-spacing: -0.02em;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 2.75rem;
+  padding: 0.5rem 0.85rem;
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.theme-toggle__icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .nav-toggle {
@@ -1173,5 +1207,333 @@ ol {
 
   .resource-card:hover {
     transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Dark mode — manual toggle via html[data-theme="dark"]
+   Also respects system preference on first visit until user chooses
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #0f172a;
+  --color-bg-alt: #111827;
+  --color-surface: #1e293b;
+  --color-text: #f8fafc;
+  --color-text-muted: #cbd5e1;
+  --color-primary: #93c5fd;
+  --color-primary-dark: #bfdbfe;
+  --color-primary-light: #1e3a5f;
+  --color-accent: #5eead4;
+  --color-accent-light: #134e4a;
+  --color-border: #475569;
+  --color-border-light: #334155;
+  --color-focus: #93c5fd;
+  --color-focus-ring: rgba(147, 197, 253, 0.35);
+  --color-error: #fca5a5;
+  --color-error-bg: #450a0a;
+  --color-success: #86efac;
+  --color-success-bg: #14532d;
+  --color-crisis-bg: #7f1d1d;
+  --color-crisis-text: #ffffff;
+  --color-crisis-border: #991b1b;
+  --color-urgency-low: #86efac;
+  --color-urgency-low-bg: #14532d;
+  --color-urgency-low-border: #166534;
+  --color-urgency-medium: #fcd34d;
+  --color-urgency-medium-bg: #422006;
+  --color-urgency-medium-border: #92400e;
+  --color-urgency-high: #fca5a5;
+  --color-urgency-high-bg: #450a0a;
+  --color-urgency-high-border: #991b1b;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+html[data-theme="dark"] .site-header {
+  background: rgba(30, 41, 59, 0.96);
+  border-bottom-color: var(--color-border-light);
+}
+
+html[data-theme="dark"] .hero {
+  background: linear-gradient(180deg, #1e3a5f 0%, var(--color-bg) 100%);
+}
+
+html[data-theme="dark"] .crisis-banner p {
+  color: #fecaca;
+}
+
+html[data-theme="dark"] .resource-card--urgent {
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-urgency-high-bg) 100%);
+}
+
+html[data-theme="dark"] .resource-card__link:hover {
+  color: var(--color-text);
+  background: var(--color-primary-light);
+}
+
+html[data-theme="dark"] .resource-card--urgent .resource-card__link:hover {
+  color: #fff;
+  background: var(--color-urgency-high);
+}
+
+html[data-theme="dark"] .site-footer {
+  background: #020617;
+  color: #cbd5e1;
+}
+
+html[data-theme="dark"] .footer-logo,
+html[data-theme="dark"] .footer-nav__title {
+  color: #f8fafc;
+}
+
+html[data-theme="dark"] .footer-tagline,
+html[data-theme="dark"] .footer-copy,
+html[data-theme="dark"] .footer-disclaimer,
+html[data-theme="dark"] .footer-nav a {
+  color: #94a3b8;
+}
+
+html[data-theme="dark"] .footer-nav a:hover {
+  color: #f8fafc;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 480px) {
+  .theme-toggle__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .theme-toggle {
+    min-width: 2.75rem;
+    justify-content: center;
+    padding-inline: 0.65rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Print stylesheet — offline reference for support signposting
+   -------------------------------------------------------------------------- */
+@page {
+  margin: 1.5cm;
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .skip-link,
+  .site-header,
+  .nav-toggle,
+  .hero-actions,
+  .hero-panel,
+  .finder-controls,
+  .results-count,
+  .no-results,
+  .resource-loading,
+  .resource-load-error,
+  .btn-crisis,
+  #contact,
+  .footer-nav,
+  .resource-card__link-icon,
+  .resource-card__link-note,
+  .accordion-trigger::after {
+    display: none !important;
+  }
+
+  .container {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .section {
+    padding-block: 1rem;
+    break-inside: avoid;
+  }
+
+  .section--alt {
+    background: transparent !important;
+  }
+
+  .hero,
+  .crisis-banner,
+  .support-finder,
+  .wellbeing-tips,
+  .faq,
+  .accessibility-statement {
+    break-before: auto;
+  }
+
+  .hero {
+    padding-block: 0 0.5rem;
+    border-bottom: 1pt solid #000;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-eyebrow,
+  .section-eyebrow {
+    color: #000 !important;
+  }
+
+  .hero-lead,
+  .section-intro,
+  .resource-card__description,
+  .tip-card p,
+  .accordion-panel p,
+  .support-signposting-note,
+  .disclaimer {
+    color: #000 !important;
+  }
+
+  .disclaimer,
+  .support-signposting-note,
+  .crisis-banner,
+  .resource-card,
+  .tip-card,
+  .accordion-item,
+  .accessibility-list li {
+    border: 1pt solid #000 !important;
+    border-radius: 0 !important;
+    padding: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .crisis-banner {
+    break-inside: avoid;
+  }
+
+  .crisis-banner__content h2,
+  .crisis-banner__content p,
+  .crisis-banner strong {
+    color: #000 !important;
+  }
+
+  .resource-grid,
+  .tips-list,
+  .accessibility-list {
+    display: block !important;
+  }
+
+  .resource-card,
+  .tip-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .resource-card__link,
+  .footer-nav a,
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  .resource-card__link[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    font-weight: 400;
+    word-break: break-all;
+  }
+
+  .category-pill,
+  .urgency-badge {
+    border: 1pt solid #000 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  .accordion-item {
+    break-inside: avoid;
+  }
+
+  .accordion-trigger {
+    display: block !important;
+    width: 100%;
+    padding: 0 0 0.25rem !important;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #000 !important;
+    background: none !important;
+    border: none !important;
+    text-align: left;
+    pointer-events: none;
+  }
+
+  .accordion-panel,
+  .accordion-panel[hidden] {
+    display: block !important;
+    visibility: visible !important;
+    padding: 0 0 0.5rem !important;
+  }
+
+  .site-footer {
+    border-top: 1pt solid #000;
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .footer-logo,
+  .footer-tagline,
+  .footer-disclaimer,
+  .footer-copy {
+    color: #000 !important;
+  }
+
+  h1 {
+    font-size: 18pt;
+  }
+
+  h2 {
+    font-size: 14pt;
+  }
+
+  h3 {
+    font-size: 12pt;
   }
 }
