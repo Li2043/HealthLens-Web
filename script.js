@@ -41,6 +41,48 @@ const themeToggle = document.getElementById("theme-toggle");
 
 const THEME_STORAGE_KEY = "healthlens-theme";
 
+function getHeaderOffset() {
+  const header = document.querySelector(".site-header");
+  return header ? header.offsetHeight : 0;
+}
+
+function scrollToElement(element) {
+  if (!element) {
+    return;
+  }
+
+  const top =
+    element.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+
+  window.scrollTo({
+    top: Math.max(top, 0),
+    behavior: "smooth"
+  });
+}
+
+function initInPageLinks() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (link.hasAttribute("data-category-jump")) {
+        return;
+      }
+
+      const href = link.getAttribute("href");
+      if (!href || href === "#") {
+        return;
+      }
+
+      const target = document.querySelector(href);
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      scrollToElement(target);
+    });
+  });
+}
+
 let supportResources = [];
 let resourcesLoaded = false;
 let loadFailed = false;
@@ -278,10 +320,9 @@ if (crisisJumpLink) {
     event.preventDefault();
     activateCategoryFilter(category);
 
-    const supportFinder = document.getElementById("support-finder");
-    if (supportFinder) {
-      supportFinder.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    requestAnimationFrame(() => {
+      scrollToElement(document.getElementById("resource-grid"));
+    });
   });
 }
 
@@ -495,7 +536,8 @@ function updateThemeToggle(theme) {
   }
 
   const isDark = theme === "dark";
-  const icon = themeToggle.querySelector(".theme-toggle__icon");
+  const lightIcon = themeToggle.querySelector(".theme-toggle__icon--light");
+  const darkIcon = themeToggle.querySelector(".theme-toggle__icon--dark");
   const text = themeToggle.querySelector(".theme-toggle__text");
 
   themeToggle.setAttribute("aria-pressed", String(isDark));
@@ -504,8 +546,12 @@ function updateThemeToggle(theme) {
     isDark ? "Switch to light mode" : "Switch to dark mode"
   );
 
-  if (icon) {
-    icon.textContent = isDark ? "☀" : "☾";
+  if (lightIcon) {
+    lightIcon.hidden = isDark;
+  }
+
+  if (darkIcon) {
+    darkIcon.hidden = !isDark;
   }
 
   if (text) {
@@ -544,4 +590,5 @@ function initThemeToggle() {
 }
 
 initThemeToggle();
+initInPageLinks();
 loadResources();
