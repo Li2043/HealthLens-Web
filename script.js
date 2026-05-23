@@ -1,6 +1,6 @@
 /**
  * HealthLens — International Student Wellbeing Navigator
- * Version 0.7 — static HTML, CSS and JavaScript
+ * Version 0.8 — multi-page static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
@@ -28,7 +28,10 @@ const categoryIcons = {
   "urgent-help": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`
 };
 
+const THEME_STORAGE_KEY = "healthlens-theme";
+
 const resourceGrid = document.getElementById("resource-grid");
+const featuredResourcesGrid = document.getElementById("featured-resources");
 const noResults = document.getElementById("no-results");
 const resultsStatus = document.getElementById("results-status");
 const resultsCount = document.getElementById("results-count");
@@ -39,12 +42,20 @@ const contactForm = document.getElementById("contact-form");
 const formSuccess = document.getElementById("form-success");
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.getElementById("site-nav");
-const crisisJumpLink = document.querySelector("[data-category-jump]");
+const crisisJumpLinks = document.querySelectorAll("[data-category-jump]");
 const themeToggle = document.getElementById("theme-toggle");
 const careOptionsList = document.getElementById("care-options-list");
 const careOptionsError = document.getElementById("care-options-error");
 
-const THEME_STORAGE_KEY = "healthlens-theme";
+let supportResources = [];
+let resourcesLoaded = false;
+let loadFailed = false;
+let activeCategory = "all";
+let searchQuery = "";
+
+let careOptions = [];
+let careOptionsLoaded = false;
+let careOptionsLoadFailed = false;
 
 function getHeaderOffset() {
   const header = document.querySelector(".site-header");
@@ -73,7 +84,7 @@ function initInPageLinks() {
       }
 
       const href = link.getAttribute("href");
-      if (!href || href === "#") {
+      if (!href || href === "#" || href.includes("#") && href.indexOf("#") > 0) {
         return;
       }
 
@@ -87,16 +98,6 @@ function initInPageLinks() {
     });
   });
 }
-
-let supportResources = [];
-let resourcesLoaded = false;
-let loadFailed = false;
-let activeCategory = "all";
-let searchQuery = "";
-
-let careOptions = [];
-let careOptionsLoaded = false;
-let careOptionsLoadFailed = false;
 
 function getCategoryLabel(category) {
   return categoryLabels[category] || category;
@@ -117,134 +118,18 @@ function getCategoryIcon(category) {
   return categoryIcons[category] || categoryIcons.community;
 }
 
-function renderListItems(items) {
-  return items
-    .map((item) => `<li>${escapeHtml(item)}</li>`)
-    .join("");
-}
-
-function createCareOptionCard(option) {
-  const article = document.createElement("article");
-  const isEmergency = option.id === "emergency";
-  const linkAriaLabel = `${option.linkText} (${option.sourceLabel}, opens official page in new tab)`;
-
-  article.className = isEmergency
-    ? "care-option-card care-option-card--emergency"
-    : "care-option-card";
-  article.dataset.id = option.id;
-
-  article.innerHTML = `
-    <span class="care-option-card__category">${escapeHtml(option.category)}</span>
-    <h3 class="care-option-card__title">${escapeHtml(option.title)}</h3>
-    <p class="care-option-card__summary">${escapeHtml(option.summary)}</p>
-    <div class="care-option-card__lists">
-      <div class="care-option-card__list-block">
-        <strong>Suitable for</strong>
-        <ul>${renderListItems(option.suitableFor)}</ul>
-      </div>
-      <div class="care-option-card__list-block care-option-card__list-block--not">
-        <strong>Not suitable for</strong>
-        <ul>${renderListItems(option.notSuitableFor)}</ul>
-      </div>
-    </div>
-    <p class="care-option-card__safety" role="note">
-      <strong>Safety note:</strong> ${escapeHtml(option.safetyNote)}
-    </p>
-    <a
-      class="care-option-card__link"
-      href="${escapeHtml(option.sourceUrl)}"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="${escapeHtml(linkAriaLabel)}"
-    >
-      <span>${escapeHtml(option.linkText)}</span>
-      <span class="care-option-card__link-icon" aria-hidden="true">↗</span>
-      <span class="care-option-card__link-note">Opens official page in new tab</span>
-    </a>
-  `;
-
-  return article;
-}
-
-function showCareOptionsError(message) {
-  if (!careOptionsList || !careOptionsError) {
-    return;
-  }
-
-  careOptionsList.innerHTML = "";
-  careOptionsError.textContent = message;
-  careOptionsError.hidden = false;
-}
-
-function renderCareOptions() {
-  if (!careOptionsList) {
-    return;
-  }
-
-  if (careOptionsLoadFailed) {
-    return;
-  }
-
-  if (!careOptionsLoaded) {
-    careOptionsList.innerHTML = "";
-    const loadingMessage = document.createElement("p");
-    loadingMessage.className = "care-options-loading";
-    loadingMessage.textContent = "Loading care options…";
-    careOptionsList.appendChild(loadingMessage);
-
-    if (careOptionsError) {
-      careOptionsError.hidden = true;
-    }
-
-    return;
-  }
-
-  careOptionsList.innerHTML = "";
-
-  if (careOptionsError) {
-    careOptionsError.hidden = true;
-  }
-
-  careOptions.forEach((option) => {
-    careOptionsList.appendChild(createCareOptionCard(option));
-  });
-}
-
-async function loadCareOptions() {
-  renderCareOptions();
-
-  try {
-    const response = await fetch(CARE_OPTIONS_URL);
-
-    if (!response.ok) {
-      throw new Error(`Failed to load care options: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const options = Array.isArray(data) ? data : data.options;
-
-    if (!Array.isArray(options) || options.length === 0) {
-      throw new Error("Care options data is empty or invalid");
-    }
-
-    careOptions = options;
-    careOptionsLoaded = true;
-    careOptionsLoadFailed = false;
-    renderCareOptions();
-  } catch (error) {
-    console.error("HealthLens: unable to load care options.", error);
-    careOptionsLoadFailed = true;
-    careOptionsLoaded = false;
-    showCareOptionsError("Care options could not be loaded. Please try again later.");
-  }
-}
-
 function escapeHtml(text) {
   return String(text)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function renderListItems(items) {
+  return items
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("");
 }
 
 function createResourceCard(resource) {
@@ -303,7 +188,54 @@ function createResourceCard(resource) {
   return article;
 }
 
+function createCareOptionCard(option) {
+  const article = document.createElement("article");
+  const isEmergency = option.id === "emergency";
+  const linkAriaLabel = `${option.linkText} (${option.sourceLabel}, opens official page in new tab)`;
+
+  article.className = isEmergency
+    ? "care-option-card care-option-card--emergency"
+    : "care-option-card";
+  article.dataset.id = option.id;
+
+  article.innerHTML = `
+    <span class="care-option-card__category">${escapeHtml(option.category)}</span>
+    <h3 class="care-option-card__title">${escapeHtml(option.title)}</h3>
+    <p class="care-option-card__summary">${escapeHtml(option.summary)}</p>
+    <div class="care-option-card__lists">
+      <div class="care-option-card__list-block">
+        <strong>Suitable for</strong>
+        <ul>${renderListItems(option.suitableFor)}</ul>
+      </div>
+      <div class="care-option-card__list-block care-option-card__list-block--not">
+        <strong>Not suitable for</strong>
+        <ul>${renderListItems(option.notSuitableFor)}</ul>
+      </div>
+    </div>
+    <p class="care-option-card__safety" role="note">
+      <strong>Safety note:</strong> ${escapeHtml(option.safetyNote)}
+    </p>
+    <a
+      class="care-option-card__link"
+      href="${escapeHtml(option.sourceUrl)}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="${escapeHtml(linkAriaLabel)}"
+    >
+      <span>${escapeHtml(option.linkText)}</span>
+      <span class="care-option-card__link-icon" aria-hidden="true">↗</span>
+      <span class="care-option-card__link-note">Opens official page in new tab</span>
+    </a>
+  `;
+
+  return article;
+}
+
 function showLoadError() {
+  if (!resourceGrid) {
+    return;
+  }
+
   loadFailed = true;
   resourcesLoaded = false;
   resourceGrid.innerHTML = "";
@@ -314,13 +246,17 @@ function showLoadError() {
   errorMessage.textContent = "Support resources could not be loaded. Please try again later.";
   resourceGrid.appendChild(errorMessage);
 
-  noResults.hidden = true;
+  if (noResults) {
+    noResults.hidden = true;
+  }
 
   if (resultsCount) {
     resultsCount.textContent = "Support resources unavailable";
   }
 
-  resultsStatus.textContent = "Support resources could not be loaded.";
+  if (resultsStatus) {
+    resultsStatus.textContent = "Support resources could not be loaded.";
+  }
 }
 
 function resourceMatchesFilter(resource) {
@@ -350,7 +286,7 @@ function resourceMatchesFilter(resource) {
 }
 
 function renderSupportResources() {
-  if (loadFailed) {
+  if (!resourceGrid || loadFailed) {
     return;
   }
 
@@ -377,14 +313,15 @@ function renderSupportResources() {
     resourceGrid.appendChild(createResourceCard(resource));
   });
 
-  const hasResults = filtered.length > 0;
-  noResults.hidden = hasResults;
+  if (noResults) {
+    noResults.hidden = filtered.length > 0;
+  }
 
-  const countMessage = hasResults
+  const countMessage = filtered.length > 0
     ? `Showing ${filtered.length} of ${total} resources`
     : "Showing 0 resources";
 
-  const statusMessage = hasResults
+  const statusMessage = filtered.length > 0
     ? `${filtered.length} support resource${filtered.length === 1 ? "" : "s"} found.`
     : "No matching resources found.";
 
@@ -392,33 +329,106 @@ function renderSupportResources() {
     resultsCount.textContent = countMessage;
   }
 
-  resultsStatus.textContent = statusMessage;
+  if (resultsStatus) {
+    resultsStatus.textContent = statusMessage;
+  }
+}
+
+function renderFeaturedResources() {
+  if (!featuredResourcesGrid || !resourcesLoaded || loadFailed) {
+    return;
+  }
+
+  const featuredIds = (featuredResourcesGrid.dataset.featuredIds || "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean);
+
+  let featured = supportResources;
+  if (featuredIds.length > 0) {
+    featured = featuredIds
+      .map((id) => supportResources.find((resource) => resource.id === id))
+      .filter(Boolean);
+  } else {
+    featured = supportResources.slice(0, 4);
+  }
+
+  featuredResourcesGrid.innerHTML = "";
+  featured.forEach((resource) => {
+    featuredResourcesGrid.appendChild(createResourceCard(resource));
+  });
+}
+
+async function fetchSupportResources() {
+  if (resourcesLoaded || loadFailed) {
+    return supportResources;
+  }
+
+  const response = await fetch(RESOURCES_URL);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load resources: ${response.status}`);
+  }
+
+  const data = await response.json();
+  const resources = Array.isArray(data) ? data : data.resources;
+
+  if (!Array.isArray(resources) || resources.length === 0) {
+    throw new Error("Resources data is empty or invalid");
+  }
+
+  supportResources = resources.map(normalizeResource);
+  resourcesLoaded = true;
+  loadFailed = false;
+  return supportResources;
 }
 
 async function loadSupportResources() {
-  renderSupportResources();
+  if (!resourceGrid && !featuredResourcesGrid) {
+    return;
+  }
+
+  if (resourceGrid) {
+    renderSupportResources();
+  }
+
+  if (featuredResourcesGrid) {
+    featuredResourcesGrid.innerHTML = "";
+    const loadingMessage = document.createElement("p");
+    loadingMessage.className = "resource-loading";
+    loadingMessage.textContent = "Loading featured resources…";
+    featuredResourcesGrid.appendChild(loadingMessage);
+  }
 
   try {
-    const response = await fetch(RESOURCES_URL);
-
-    if (!response.ok) {
-      throw new Error(`Failed to load resources: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const resources = Array.isArray(data) ? data : data.resources;
-
-    if (!Array.isArray(resources) || resources.length === 0) {
-      throw new Error("Resources data is empty or invalid");
-    }
-
-    supportResources = resources.map(normalizeResource);
-    resourcesLoaded = true;
-    loadFailed = false;
+    await fetchSupportResources();
+    applyInitialCategoryFromUrl();
     renderSupportResources();
+    renderFeaturedResources();
   } catch (error) {
     console.error("HealthLens: unable to load support resources.", error);
+    if (featuredResourcesGrid) {
+      featuredResourcesGrid.innerHTML = "";
+      const errorMessage = document.createElement("p");
+      errorMessage.className = "resource-load-error";
+      errorMessage.setAttribute("role", "alert");
+      errorMessage.textContent = "Featured resources could not be loaded.";
+      featuredResourcesGrid.appendChild(errorMessage);
+    }
     showLoadError();
+  }
+}
+
+function applyInitialCategoryFromUrl() {
+  if (!resourceGrid || filterButtons.length === 0) {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("category");
+
+  if (category && category !== "all") {
+    activateCategoryFilter(category);
   }
 }
 
@@ -443,43 +453,139 @@ function activateCategoryFilter(category) {
   }
 }
 
-searchInput.addEventListener("input", (event) => {
-  searchQuery = event.target.value;
-  renderSupportResources();
-});
+function initSupportFinder() {
+  if (!resourceGrid) {
+    return;
+  }
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    setActiveFilter(button);
-  });
-});
+  if (searchInput) {
+    searchInput.addEventListener("input", (event) => {
+      searchQuery = event.target.value;
+      renderSupportResources();
+    });
+  }
 
-if (crisisJumpLink) {
-  crisisJumpLink.addEventListener("click", (event) => {
-    const category = crisisJumpLink.dataset.categoryJump;
-    if (!category) {
-      return;
-    }
-
-    event.preventDefault();
-    activateCategoryFilter(category);
-
-    requestAnimationFrame(() => {
-      scrollToElement(document.getElementById("resource-grid"));
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setActiveFilter(button);
     });
   });
+
+  crisisJumpLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const category = link.dataset.categoryJump;
+      if (!category) {
+        return;
+      }
+
+      if (resourceGrid) {
+        event.preventDefault();
+        activateCategoryFilter(category);
+        requestAnimationFrame(() => {
+          scrollToElement(resourceGrid);
+        });
+      }
+    });
+  });
+
+  loadSupportResources();
+}
+
+function showCareOptionsError(message) {
+  if (!careOptionsList || !careOptionsError) {
+    return;
+  }
+
+  careOptionsList.innerHTML = "";
+  careOptionsError.textContent = message;
+  careOptionsError.hidden = false;
+}
+
+function renderCareOptions() {
+  if (!careOptionsList || careOptionsLoadFailed) {
+    return;
+  }
+
+  if (!careOptionsLoaded) {
+    careOptionsList.innerHTML = "";
+    const loadingMessage = document.createElement("p");
+    loadingMessage.className = "care-options-loading";
+    loadingMessage.textContent = "Loading care options…";
+    careOptionsList.appendChild(loadingMessage);
+
+    if (careOptionsError) {
+      careOptionsError.hidden = true;
+    }
+
+    return;
+  }
+
+  careOptionsList.innerHTML = "";
+
+  if (careOptionsError) {
+    careOptionsError.hidden = true;
+  }
+
+  careOptions.forEach((option) => {
+    careOptionsList.appendChild(createCareOptionCard(option));
+  });
+}
+
+function initCareOptions() {
+  if (!careOptionsList) {
+    return;
+  }
+
+  loadCareOptions();
+}
+
+async function loadCareOptions() {
+  if (!careOptionsList) {
+    return;
+  }
+
+  renderCareOptions();
+
+  try {
+    const response = await fetch(CARE_OPTIONS_URL);
+
+    if (!response.ok) {
+      throw new Error(`Failed to load care options: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const options = Array.isArray(data) ? data : data.options;
+
+    if (!Array.isArray(options) || options.length === 0) {
+      throw new Error("Care options data is empty or invalid");
+    }
+
+    careOptions = options;
+    careOptionsLoaded = true;
+    careOptionsLoadFailed = false;
+    renderCareOptions();
+  } catch (error) {
+    console.error("HealthLens: unable to load care options.", error);
+    careOptionsLoadFailed = true;
+    careOptionsLoaded = false;
+    showCareOptionsError("Care options could not be loaded. Please try again later.");
+  }
 }
 
 function closeAccordionItem(trigger) {
   trigger.setAttribute("aria-expanded", "false");
   const panel = document.getElementById(trigger.getAttribute("aria-controls"));
-  panel.hidden = true;
+  if (panel) {
+    panel.hidden = true;
+  }
 }
 
 function openAccordionItem(trigger) {
   trigger.setAttribute("aria-expanded", "true");
   const panel = document.getElementById(trigger.getAttribute("aria-controls"));
-  panel.hidden = false;
+  if (panel) {
+    panel.hidden = false;
+  }
 }
 
 function toggleAccordion(trigger) {
@@ -498,147 +604,159 @@ function toggleAccordion(trigger) {
   }
 }
 
-accordionTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", () => {
-    toggleAccordion(trigger);
-  });
-});
-
-const formFields = {
-  name: {
-    input: document.getElementById("contact-name"),
-    error: document.getElementById("contact-name-error"),
-    validate: (value) => {
-      if (!value.trim()) {
-        return "Please enter your name.";
-      }
-      return "";
-    }
-  },
-  email: {
-    input: document.getElementById("contact-email"),
-    error: document.getElementById("contact-email-error"),
-    validate: (value) => {
-      if (!value.trim()) {
-        return "Please enter your email address.";
-      }
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(value.trim())) {
-        return "Please enter a valid email address.";
-      }
-      return "";
-    }
-  },
-  topic: {
-    input: document.getElementById("contact-topic"),
-    error: document.getElementById("contact-topic-error"),
-    validate: (value) => {
-      if (!value) {
-        return "Please select a topic.";
-      }
-      return "";
-    }
-  },
-  message: {
-    input: document.getElementById("contact-message"),
-    error: document.getElementById("contact-message-error"),
-    validate: (value) => {
-      if (!value.trim()) {
-        return "Please enter a message.";
-      }
-      if (value.trim().length < 10) {
-        return "Your message must be at least 10 characters long.";
-      }
-      return "";
-    }
-  },
-  consent: {
-    input: document.getElementById("contact-consent"),
-    error: document.getElementById("contact-consent-error"),
-    validate: (checked) => {
-      if (!checked) {
-        return "You must confirm that you understand this demo provides signposting only and does not provide professional advice.";
-      }
-      return "";
-    }
+function initAccordion() {
+  if (accordionTriggers.length === 0) {
+    return;
   }
-};
 
-function setFieldError(field, message) {
-  const wrapper = field.input.closest(".form-field");
-  field.error.textContent = message;
-
-  if (message) {
-    wrapper.classList.add("has-error");
-    field.input.setAttribute("aria-invalid", "true");
-    field.input.setAttribute("aria-describedby", field.error.id);
-  } else {
-    wrapper.classList.remove("has-error");
-    field.input.removeAttribute("aria-invalid");
-    field.input.removeAttribute("aria-describedby");
-  }
-}
-
-function validateForm() {
-  let isValid = true;
-
-  Object.values(formFields).forEach((field) => {
-    const value =
-      field.input.type === "checkbox"
-        ? field.input.checked
-        : field.input.value;
-
-    const errorMessage = field.validate(value);
-    setFieldError(field, errorMessage);
-
-    if (errorMessage) {
-      isValid = false;
-    }
-  });
-
-  return isValid;
-}
-
-function clearFormErrors() {
-  Object.values(formFields).forEach((field) => {
-    setFieldError(field, "");
+  accordionTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      toggleAccordion(trigger);
+    });
   });
 }
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  formSuccess.hidden = true;
-  clearFormErrors();
+function initContactForm() {
+  if (!contactForm) {
+    return;
+  }
 
-  if (validateForm()) {
-    formSuccess.hidden = false;
-    contactForm.reset();
-    formSuccess.focus();
-  } else {
-    const firstInvalid = contactForm.querySelector("[aria-invalid='true']");
-    if (firstInvalid) {
-      firstInvalid.focus();
+  const formFields = {
+    name: {
+      input: document.getElementById("contact-name"),
+      error: document.getElementById("contact-name-error"),
+      validate: (value) => (value.trim() ? "" : "Please enter your name.")
+    },
+    email: {
+      input: document.getElementById("contact-email"),
+      error: document.getElementById("contact-email-error"),
+      validate: (value) => {
+        if (!value.trim()) {
+          return "Please enter your email address.";
+        }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(value.trim()) ? "" : "Please enter a valid email address.";
+      }
+    },
+    topic: {
+      input: document.getElementById("contact-topic"),
+      error: document.getElementById("contact-topic-error"),
+      validate: (value) => (value ? "" : "Please select a topic.")
+    },
+    message: {
+      input: document.getElementById("contact-message"),
+      error: document.getElementById("contact-message-error"),
+      validate: (value) => {
+        if (!value.trim()) {
+          return "Please enter a message.";
+        }
+        return value.trim().length < 10
+          ? "Your message must be at least 10 characters long."
+          : "";
+      }
+    },
+    consent: {
+      input: document.getElementById("contact-consent"),
+      error: document.getElementById("contact-consent-error"),
+      validate: (checked) =>
+        checked
+          ? ""
+          : "You must confirm that you understand this demo provides signposting only and does not provide professional advice."
+    }
+  };
+
+  function setFieldError(field, message) {
+    if (!field.input || !field.error) {
+      return;
+    }
+
+    const wrapper = field.input.closest(".form-field");
+    field.error.textContent = message;
+
+    if (message) {
+      wrapper.classList.add("has-error");
+      field.input.setAttribute("aria-invalid", "true");
+      field.input.setAttribute("aria-describedby", field.error.id);
+    } else {
+      wrapper.classList.remove("has-error");
+      field.input.removeAttribute("aria-invalid");
+      field.input.removeAttribute("aria-describedby");
     }
   }
-});
 
-Object.values(formFields).forEach((field) => {
-  const eventType = field.input.type === "checkbox" ? "change" : "input";
+  function validateForm() {
+    let isValid = true;
 
-  field.input.addEventListener(eventType, () => {
-    const value =
-      field.input.type === "checkbox"
-        ? field.input.checked
-        : field.input.value;
+    Object.values(formFields).forEach((field) => {
+      const value =
+        field.input.type === "checkbox"
+          ? field.input.checked
+          : field.input.value;
 
-    const errorMessage = field.validate(value);
-    if (!errorMessage) {
+      const errorMessage = field.validate(value);
+      setFieldError(field, errorMessage);
+
+      if (errorMessage) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  }
+
+  function clearFormErrors() {
+    Object.values(formFields).forEach((field) => {
       setFieldError(field, "");
+    });
+  }
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (formSuccess) {
+      formSuccess.hidden = true;
+    }
+    clearFormErrors();
+
+    if (validateForm()) {
+      if (formSuccess) {
+        formSuccess.hidden = false;
+        formSuccess.focus();
+      }
+      contactForm.reset();
+    } else {
+      const firstInvalid = contactForm.querySelector("[aria-invalid='true']");
+      if (firstInvalid) {
+        firstInvalid.focus();
+      }
     }
   });
-});
 
-if (navToggle && siteNav) {
+  Object.values(formFields).forEach((field) => {
+    if (!field.input) {
+      return;
+    }
+
+    const eventType = field.input.type === "checkbox" ? "change" : "input";
+
+    field.input.addEventListener(eventType, () => {
+      const value =
+        field.input.type === "checkbox"
+          ? field.input.checked
+          : field.input.value;
+
+      const errorMessage = field.validate(value);
+      if (!errorMessage) {
+        setFieldError(field, "");
+      }
+    });
+  });
+}
+
+function initMobileNav() {
+  if (!navToggle || !siteNav) {
+    return;
+  }
+
   navToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -733,7 +851,19 @@ function initThemeToggle() {
   });
 }
 
+function initFeaturedResourcesOnly() {
+  if (!featuredResourcesGrid || resourceGrid) {
+    return;
+  }
+
+  loadSupportResources();
+}
+
 initThemeToggle();
 initInPageLinks();
-loadSupportResources();
-loadCareOptions();
+initMobileNav();
+initSupportFinder();
+initFeaturedResourcesOnly();
+initCareOptions();
+initAccordion();
+initContactForm();

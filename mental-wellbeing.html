@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mental wellbeing resources for international students — stress, loneliness, sleep, university support and urgent help signposting.">
+  <title>Mental Wellbeing — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html" aria-current="page">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./index.html">Home</a></li>
+          <li><span aria-current="page">Mental Wellbeing</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="topic-hero">
+      <div class="container">
+        <h1>Mental Wellbeing</h1>
+        <p class="topic-summary">Resources and practical signposting for stress, loneliness, sleep, academic pressure and knowing where to ask for support.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>What you can find here</h2>
+        <ul class="topic-summary">
+          <li>Signposting for academic pressure, stress and study-related worries</li>
+          <li>Resources for loneliness, belonging and building connections</li>
+          <li>Links to university wellbeing services and NHS self-help guidance</li>
+          <li>Urgent mental health support routes when you need help quickly</li>
+        </ul>
+        <p>This page is for signposting and general wellbeing information. If you need urgent help, use official urgent support routes.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Quick links</h2>
+        <ul class="quick-links-grid">
+          <li class="quick-link-card">
+            <h3>University of Bristol Wellbeing</h3>
+            <p>University guidance on student life, wellbeing services and support options.</p>
+            <a href="https://www.bristol.ac.uk/study/undergraduate/student-life/wellbeing/" target="_blank" rel="noopener noreferrer">View UoB wellbeing information (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>Bristol SU Health &amp; Welfare</h3>
+            <p>Independent student union signposting for health, welfare and support routes.</p>
+            <a href="https://www.bristolsu.org.uk/support-centre/health-and-welfare" target="_blank" rel="noopener noreferrer">View Bristol SU health and welfare (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>NHS Every Mind Matters</h3>
+            <p>NHS self-help guidance for stress, sleep, anxiety and everyday mental wellbeing.</p>
+            <a href="https://www.nhs.uk/every-mind-matters/" target="_blank" rel="noopener noreferrer">Visit Every Mind Matters (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>Samaritans</h3>
+            <p>Confidential listening support for anyone who needs someone to talk to.</p>
+            <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank" rel="noopener noreferrer">Contact Samaritans (opens in new tab)</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Common situations</h2>
+        <ul>
+          <li>You feel overwhelmed by coursework, exams or academic deadlines</li>
+          <li>You feel lonely or disconnected after moving to a new country</li>
+          <li>Your sleep or daily routine has been disrupted by stress</li>
+          <li>You want to book a university wellbeing appointment</li>
+          <li>You need urgent mental health support but it is not an immediate emergency</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Academic pressure and stress</h2>
+        <p>Coursework, assessments and adapting to a new academic system can be stressful. Bristol SU and the University offer academic and wellbeing advice routes. Contacting support early can help you understand your options.</p>
+        <p><a href="https://www.bristolsu.org.uk/support-centre/academic-advice" target="_blank" rel="noopener noreferrer">View Bristol SU academic advice (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Loneliness and belonging</h2>
+        <p>Moving abroad can feel isolating at first. Student groups, societies and community activities can help you build connections. See the Community &amp; Sport page for more signposting.</p>
+        <p><a href="./community-activities-sport.html">Explore community and sport resources</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Sleep and routine</h2>
+        <p>Changes in environment, time zones and study pressure can affect sleep and daily routines. NHS Every Mind Matters offers general self-help guidance — not personalised medical advice.</p>
+        <p><a href="https://www.nhs.uk/every-mind-matters/" target="_blank" rel="noopener noreferrer">Visit NHS Every Mind Matters (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>University wellbeing support</h2>
+        <p>The University of Bristol offers wellbeing appointments and support for students who want guidance or a conversation about what they are going through.</p>
+        <p><a href="https://www.bristol.ac.uk/students/support/managing-student-life/book-an-appointment/" target="_blank" rel="noopener noreferrer">Book a wellbeing appointment (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Urgent mental health support</h2>
+        <p>If you need urgent mental health support but it is not an immediate emergency, NHS 111 can direct you to the right service. If you or someone else is in immediate danger, call 999 or go to A&amp;E.</p>
+        <p>Samaritans offers confidential listening support — call 116 123 free, any time.</p>
+        <p><a href="https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/" target="_blank" rel="noopener noreferrer">Get urgent NHS mental health help (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Featured resources</h2>
+        <div class="featured-resources-grid">
+          <article class="quick-link-card">
+            <h3>Mental Wellbeing Appointments</h3>
+            <p>Book a wellbeing appointment or read about University wellbeing services.</p>
+            <a href="https://www.bristol.ac.uk/students/support/managing-student-life/book-an-appointment/" target="_blank" rel="noopener noreferrer">Book a wellbeing appointment (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Someone to Talk To</h3>
+            <p>Samaritans offers confidential listening support for anyone who needs to talk.</p>
+            <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank" rel="noopener noreferrer">Contact Samaritans (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Urgent Mental Wellbeing Support</h3>
+            <p>Official NHS guidance on where to get urgent help for mental health concerns.</p>
+            <a href="https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/" target="_blank" rel="noopener noreferrer">Get urgent NHS help (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Every Mind Matters</h3>
+            <p>NHS self-help tools and guidance for everyday mental wellbeing.</p>
+            <a href="https://www.nhs.uk/every-mind-matters/" target="_blank" rel="noopener noreferrer">Visit Every Mind Matters (opens in new tab)</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Related topics</h2>
+        <ul class="related-topics">
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./resources.html?category=urgent-help">Urgent Help resources</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="source-note" role="note"><strong>Signposting only.</strong> This page does not provide therapy, diagnosis or crisis counselling. If you need urgent help, use official urgent support routes. For emergencies, call 999.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

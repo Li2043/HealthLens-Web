@@ -2,7 +2,31 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 0.7** · A responsive student-facing information website built for a Web & Digital Content Coordinator application.
+**Version 0.8** · A multi-page static website for international student wellbeing and practical support signposting.
+
+---
+
+## V0.8 Update Summary
+
+**V0.8 — Multi-page information architecture**
+
+HealthLens was expanded from a single-page resource finder into a **multi-page static website**. The new structure separates resources into topic hubs for international essentials, healthcare, mental wellbeing, housing and bills, money and everyday spending, community and sport, and source policy. This version focuses on information architecture, consistent navigation, accessible page templates and clearer content boundaries.
+
+### Site pages
+
+| Page | File |
+|------|------|
+| Home | `index.html` |
+| Resources | `resources.html` |
+| International Essentials | `international-essentials.html` |
+| Health & Healthcare | `health-healthcare.html` |
+| Mental Wellbeing | `mental-wellbeing.html` |
+| Housing & Bills | `housing-bills.html` |
+| Money & Everyday Spending | `money-spending.html` |
+| Community, Activities & Sport | `community-activities-sport.html` |
+| About / Source Policy | `about.html` |
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 
@@ -125,13 +149,13 @@ python -m http.server 8000
 Visit `http://localhost:8000`
 
 **Verify:**
-- Hero shows International Student Wellbeing Navigator positioning
-- 12 support cards load with source labels
-- Category filters use updated labels
-- Source Policy section reachable from hero CTA
-- Care Options Guide loads (secondary section)
-- Print preview, dark mode, FAQ and form validation still work
-- No console errors
+- All 9 pages load with shared header, footer and navigation
+- `aria-current="page"` highlights the active nav link
+- Resource Library search and filters work on `resources.html`
+- Featured resources preview loads on the homepage
+- Care Options load on `health-healthcare.html` only
+- Dark mode, print preview and keyboard navigation work across pages
+- No console errors on pages without Support Finder
 
 ---
 
@@ -160,6 +184,14 @@ Visit `http://localhost:8000`
 ```
 healthlens/
 ├── index.html
+├── resources.html
+├── international-essentials.html
+├── health-healthcare.html
+├── mental-wellbeing.html
+├── housing-bills.html
+├── money-spending.html
+├── community-activities-sport.html
+├── about.html
 ├── styles.css
 ├── script.js
 ├── README.md
@@ -189,4 +221,4 @@ This is a portfolio demo project. Content is for illustration only and does not 
 
 ---
 
-*Built as Version 0.7 for a Web & Digital Content Coordinator application.*
+*Built as Version 0.8 for a Web & Digital Content Coordinator application.*

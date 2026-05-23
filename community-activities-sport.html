@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Community, activities and sport resources for international students — societies, volunteering and low-cost ways to build belonging.">
+  <title>Community &amp; Sport — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html" aria-current="page">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./index.html">Home</a></li>
+          <li><span aria-current="page">Community &amp; Sport</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="topic-hero">
+      <div class="container">
+        <h1>Community, Activities &amp; Sport</h1>
+        <p class="topic-summary">Resources for finding student groups, volunteering, activities, sport and low-cost ways to build belonging in the UK.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>What you can find here</h2>
+        <ul class="topic-summary">
+          <li>Student societies and groups at the University of Bristol</li>
+          <li>Volunteering and community impact opportunities</li>
+          <li>Sport and active wellbeing through official university channels</li>
+          <li>Ideas for low-cost activities and making connections as an international student</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Quick links</h2>
+        <ul class="quick-links-grid">
+          <li class="quick-link-card">
+            <h3>Bristol SU Student Groups</h3>
+            <p>Browse societies, networks and student groups to find people with shared interests.</p>
+            <a href="https://www.bristolsu.org.uk/student-groups" target="_blank" rel="noopener noreferrer">Browse Bristol SU student groups (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>Bristol SU Community Impact</h3>
+            <p>Volunteering opportunities and community activities through the students' union.</p>
+            <a href="https://www.bristolsu.org.uk/community-impact" target="_blank" rel="noopener noreferrer">Explore Bristol SU community impact (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>University of Bristol Sport</h3>
+            <p>Official university sport facilities, clubs and active wellbeing programmes.</p>
+            <a href="https://www.bristol.ac.uk/sport/" target="_blank" rel="noopener noreferrer">Visit UoB Sport (opens in new tab)</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Common situations</h2>
+        <ul>
+          <li>You want to meet people outside your course</li>
+          <li>You are looking for a society related to your culture, hobbies or interests</li>
+          <li>You want to try a new sport or stay active on a student budget</li>
+          <li>You are interested in volunteering in the local community</li>
+          <li>You feel disconnected and want low-cost ways to build belonging</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Student groups and societies</h2>
+        <p>Bristol SU hosts hundreds of student groups — from academic societies to cultural networks and hobby clubs. Joining a group can be a practical way to meet people and feel part of campus life.</p>
+        <p><a href="https://www.bristolsu.org.uk/groups" target="_blank" rel="noopener noreferrer">Browse Bristol SU groups and societies (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Volunteering and community</h2>
+        <p>Volunteering can help you connect with the local community while building skills and experience. Bristol SU Community Impact lists opportunities designed for students.</p>
+        <p><a href="https://www.bristolsu.org.uk/community-impact" target="_blank" rel="noopener noreferrer">Explore volunteering opportunities (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Sports and active wellbeing</h2>
+        <p>The University of Bristol Sport centre offers clubs, classes and facilities for students at different levels — from beginners to competitive athletes.</p>
+        <p><a href="https://www.bristol.ac.uk/sport/" target="_blank" rel="noopener noreferrer">Visit University of Bristol Sport (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Low-cost activities</h2>
+        <p>Many student groups and SU events are free or low-cost. Parks, libraries, campus events and society socials can be affordable ways to explore Bristol and meet people without overspending.</p>
+        <p>See the Money &amp; Spending page for budgeting guidance.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Making connections as an international student</h2>
+        <p>Building a social network in a new country takes time. Cultural societies, language exchanges, sport clubs and volunteering can all help. It is normal to feel lonely at first — see the Mental Wellbeing page for support signposting.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Featured resources</h2>
+        <div class="featured-resources-grid">
+          <article class="quick-link-card">
+            <h3>Societies and Belonging</h3>
+            <p>Student groups, societies and networks to help build connection and belonging.</p>
+            <a href="https://www.bristolsu.org.uk/groups" target="_blank" rel="noopener noreferrer">Browse student groups (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Volunteering and Community</h3>
+            <p>Volunteering opportunities and community impact activities through Bristol SU.</p>
+            <a href="https://www.bristolsu.org.uk/community-impact" target="_blank" rel="noopener noreferrer">Explore volunteering (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>University of Bristol Sport</h3>
+            <p>Official sport facilities, clubs and active wellbeing programmes for students.</p>
+            <a href="https://www.bristol.ac.uk/sport/" target="_blank" rel="noopener noreferrer">Visit UoB Sport (opens in new tab)</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Related topics</h2>
+        <ul class="related-topics">
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./resources.html?category=community">Community resources</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="source-note" role="note"><strong>Signposting only.</strong> HealthLens links to official university and students' union pages. It does not list unofficial events or recommend specific activities. Always check the original source for times, costs and availability.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

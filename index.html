@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HealthLens is a student project that helps international students in the UK navigate official and expert resources for studying, wellbeing, housing, money, community and urgent help.">
+  <meta name="description" content="HealthLens helps international students in the UK navigate official and expert resources for studying, wellbeing, healthcare, housing, money, community and everyday life.">
   <title>HealthLens — International Student Wellbeing Navigator</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
@@ -29,50 +29,36 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-logo" href="#hero">
+      <a class="site-logo" href="./index.html">
         <span class="site-logo__mark" aria-hidden="true"></span>
         <span class="site-logo__text">HealthLens</span>
       </a>
 
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="#support-finder">Support Finder</a></li>
-          <li><a href="#care-options">Care Options</a></li>
-          <li><a href="#wellbeing-guides">Wellbeing Guides</a></li>
-          <li><a href="#source-policy">Source Policy</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html" aria-current="page">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button
-          type="button"
-          id="theme-toggle"
-          class="theme-toggle"
-          aria-label="Switch to dark mode"
-          aria-pressed="false"
-        >
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
           <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </span>
           <span class="theme-toggle__text">Dark mode</span>
         </button>
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          aria-label="Open navigation menu"
-        >
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
           <span class="nav-toggle-bar" aria-hidden="true"></span>
           <span class="nav-toggle-bar" aria-hidden="true"></span>
           <span class="nav-toggle-bar" aria-hidden="true"></span>
@@ -88,11 +74,11 @@
           <p class="hero-eyebrow">International Student Wellbeing Navigator</p>
           <h1 id="hero-heading">Find trusted support for student life in the UK</h1>
           <p class="hero-lead">
-            HealthLens helps international students navigate official and expert resources for studying, wellbeing, housing, money, community and urgent help.
+            HealthLens helps international students navigate official and expert resources for studying, wellbeing, healthcare, housing, money, community and everyday life.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#support-finder">Explore support resources</a>
-            <a class="btn btn-secondary" href="#source-policy">Read source policy</a>
+            <a class="btn btn-primary" href="./resources.html">Explore resources</a>
+            <a class="btn btn-secondary" href="./about.html#source-policy">Read source policy</a>
           </div>
           <p class="disclaimer" role="note">
             <strong>Please note:</strong> This is a student project designed to practise accessible digital content and responsible signposting.
@@ -120,348 +106,94 @@
       </div>
     </section>
 
-    <aside id="urgent-help" class="crisis-banner" aria-labelledby="crisis-heading">
+    <section class="section section--alt" aria-labelledby="topics-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Topic hubs</p>
+          <h2 id="topics-heading">Explore by topic</h2>
+          <p class="section-intro">Choose a topic hub for quick links, common situations and featured resources.</p>
+        </header>
+
+        <ul class="topic-cards-grid">
+          <li class="topic-card">
+            <span class="topic-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" stroke="currentColor" stroke-width="2"/></svg></span>
+            <h3>International Essentials</h3>
+            <p>Key resources for understanding UK university, healthcare, money and support systems as an international student.</p>
+            <a class="topic-card__link" href="./international-essentials.html">Explore topic</a>
+          </li>
+          <li class="topic-card">
+            <span class="topic-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <h3>Health &amp; Healthcare</h3>
+            <p>Understand GP registration, pharmacies, NHS 111 and everyday health information — with links to official guidance.</p>
+            <a class="topic-card__link" href="./health-healthcare.html">Explore topic</a>
+          </li>
+          <li class="topic-card">
+            <span class="topic-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" stroke="currentColor" stroke-width="2"/></svg></span>
+            <h3>Mental Wellbeing</h3>
+            <p>Signposting for stress, loneliness, sleep, academic pressure and knowing where to ask for support.</p>
+            <a class="topic-card__link" href="./mental-wellbeing.html">Explore topic</a>
+          </li>
+          <li class="topic-card">
+            <span class="topic-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="2"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2"/></svg></span>
+            <h3>Housing &amp; Bills</h3>
+            <p>Resources for renting, deposits, repairs, bills and where to get housing advice as a student.</p>
+            <a class="topic-card__link" href="./housing-bills.html">Explore topic</a>
+          </li>
+          <li class="topic-card">
+            <span class="topic-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg></span>
+            <h3>Money &amp; Everyday Spending</h3>
+            <p>Budgeting, bank accounts, student discounts, scams and emergency financial support signposting.</p>
+            <a class="topic-card__link" href="./money-spending.html">Explore topic</a>
+          </li>
+          <li class="topic-card">
+            <span class="topic-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></span>
+            <h3>Community, Activities &amp; Sport</h3>
+            <p>Find student groups, volunteering, sport and low-cost ways to build belonging in the UK.</p>
+            <a class="topic-card__link" href="./community-activities-sport.html">Explore topic</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="featured-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Resource library</p>
+          <h2 id="featured-heading">Featured resources</h2>
+          <p class="section-intro">A preview of trusted resources from the full library. Each card includes source labels and a suggested next step.</p>
+        </header>
+
+        <div id="featured-resources" class="featured-resources-grid" data-featured-ids="international-support,mental-wellbeing,housing-concerns,urgent-mental-health" aria-live="polite"></div>
+
+        <p class="content-meta"><a href="./resources.html">View all resources in the Resource Library</a></p>
+      </div>
+    </section>
+
+    <aside class="crisis-banner" aria-labelledby="crisis-heading">
       <div class="container crisis-banner__inner">
         <div class="crisis-banner__icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="crisis-banner__content">
           <h2 id="crisis-heading">Need urgent help?</h2>
-          <p>
-            If you or someone else is in immediate danger, call <strong>999</strong>.
-            For urgent mental health support in the UK, contact <strong>NHS 111</strong> or visit your nearest A&amp;E.
-          </p>
+          <p>If you or someone else is in immediate danger, call <strong>999</strong>. For urgent support that is not life-threatening, contact <strong>NHS 111</strong> or visit your nearest A&amp;E.</p>
         </div>
-        <a class="btn btn-crisis" href="#resource-grid" data-category-jump="urgent-help">View urgent resources</a>
+        <a class="btn btn-crisis" href="./resources.html?category=urgent-help">View urgent resources</a>
       </div>
     </aside>
 
-    <section id="support-finder" class="section section--alt support-finder" aria-labelledby="support-finder-heading">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-eyebrow">Support Finder</p>
-          <h2 id="support-finder-heading">Find trusted support resources</h2>
-          <p class="section-intro">
-            Search and filter by topic to find official and expert resources with plain-English summaries, source labels and suggested next steps.
-          </p>
-          <p class="content-meta">Content last reviewed: May 2026.</p>
-        </header>
-
-        <div class="finder-controls">
-          <div class="search-wrapper">
-            <label for="resource-search">Search support resources</label>
-            <input
-              type="search"
-              id="resource-search"
-              name="resource-search"
-              autocomplete="off"
-              placeholder="e.g. academic, housing, money, international, urgent"
-            >
-          </div>
-
-          <fieldset class="filter-fieldset">
-            <legend>Filter by category</legend>
-            <div class="filter-buttons" role="group" aria-label="Category filters">
-              <button type="button" class="filter-btn is-active" data-category="all" aria-pressed="true">All</button>
-              <button type="button" class="filter-btn" data-category="academic" aria-pressed="false">Academic</button>
-              <button type="button" class="filter-btn" data-category="physical-wellbeing" aria-pressed="false">Physical Wellbeing</button>
-              <button type="button" class="filter-btn" data-category="mental-wellbeing" aria-pressed="false">Mental Wellbeing</button>
-              <button type="button" class="filter-btn" data-category="housing" aria-pressed="false">Housing</button>
-              <button type="button" class="filter-btn" data-category="money" aria-pressed="false">Money</button>
-              <button type="button" class="filter-btn" data-category="international-life" aria-pressed="false">International Life</button>
-              <button type="button" class="filter-btn" data-category="community" aria-pressed="false">Community</button>
-              <button type="button" class="filter-btn" data-category="urgent-help" aria-pressed="false">Urgent Help</button>
-            </div>
-          </fieldset>
-        </div>
-
-        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true">Loading support resources…</p>
-        <p id="results-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
-
-        <div id="resource-grid" class="resource-grid">
-          <!-- Support cards rendered by script.js -->
-        </div>
-
-        <p class="support-note support-note--urgent" role="note">
-          <strong>Please note:</strong> This student project signposts to official and expert services.
-          It does not provide medical, legal, financial, immigration or emergency advice.
-          If you or someone else is in immediate danger, call 999 or go to A&amp;E.
-        </p>
-
-        <p id="no-results" class="no-results" hidden>
-          No matching resources found. Try a different search term or category.
-        </p>
-      </div>
-    </section>
-
-    <section id="care-options" class="section care-options-section care-options-section--secondary" aria-labelledby="care-options-heading">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-eyebrow">Secondary guide</p>
-          <h2 id="care-options-heading">Care Options Guide</h2>
-          <p class="section-intro">
-            The Care Options Guide explains common UK healthcare support routes. It does not assess symptoms or decide where you should go.
-            If you are unsure and need medical help now, use NHS 111. If you or someone else is in immediate danger, call 999 or go to A&amp;E.
-          </p>
-        </header>
-
-        <p class="care-options-disclaimer" role="note">
-          <strong>Please note:</strong> This student project signposts to official services.
-          It does not provide medical advice, emergency response, or symptom assessment.
-        </p>
-
-        <p id="care-options-error" class="error-message" role="alert" hidden></p>
-
-        <div id="care-options-list" class="care-options-grid" aria-live="polite" aria-atomic="true">
-          <!-- Care option cards rendered by script.js -->
-        </div>
-
-        <aside class="pharmacy-first-panel" aria-labelledby="pharmacy-first-heading">
-          <h3 id="pharmacy-first-heading">Pharmacy First: common conditions</h3>
-          <p>
-            NHS Pharmacy First may allow pharmacists to support some common conditions where clinically appropriate.
-            Suitability can depend on age, symptoms and clinical judgement. A pharmacist can advise, treat where appropriate,
-            or refer to a GP or another healthcare professional.
-          </p>
-          <ul class="pharmacy-first-list">
-            <li>impetigo</li>
-            <li>infected insect bites</li>
-            <li>earache</li>
-            <li>sore throat</li>
-            <li>sinusitis</li>
-            <li>urinary tract infections</li>
-            <li>shingles</li>
-          </ul>
-          <p class="pharmacy-first-note" role="note">
-            This list is for signposting only. It does not mean a pharmacy is always the right option.
-            If you are unsure, use NHS 111 or contact a healthcare professional.
-          </p>
-          <a
-            class="care-option-card__link pharmacy-first-link"
-            href="https://www.nhs.uk/nhs-services/pharmacies/how-pharmacies-can-help/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Read NHS pharmacy guidance (NHS: How pharmacies can help), opens in a new tab"
-          >
-            <span>Read NHS pharmacy guidance</span>
-            <span class="care-option-card__link-icon" aria-hidden="true">↗</span>
-            <span class="care-option-card__link-note">Opens official page in new tab</span>
-          </a>
-        </aside>
-      </div>
-    </section>
-
-    <section id="wellbeing-guides" class="section section--alt wellbeing-guides" aria-labelledby="wellbeing-guides-heading">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-eyebrow">Everyday student life</p>
-          <h2 id="wellbeing-guides-heading">Wellbeing Guides</h2>
-          <p class="section-intro">
-            Short practical guides for everyday student life in the UK. These guides summarise official and expert advice and link to the original sources.
-          </p>
-        </header>
-
-        <ul class="tips-list">
-          <li class="tip-card">
-            <img class="tip-card__image" src="./assets/tips/tip-patterns.svg" alt="" width="64" height="64">
-            <span class="tip-card__number" aria-hidden="true">01</span>
-            <h3>Looking after yourself during the UK winter</h3>
-            <p>Shorter days and colder weather can affect energy and routine. Official guidance can help you plan rest, warmth and everyday self-care during winter term.</p>
-            <a class="tip-card__link" href="https://www.nhs.uk/live-well/seasonal-health/" target="_blank" rel="noopener noreferrer">Read NHS seasonal wellbeing guidance</a>
-          </li>
-          <li class="tip-card">
-            <img class="tip-card__image" src="./assets/tips/tip-help.svg" alt="" width="64" height="64">
-            <span class="tip-card__number" aria-hidden="true">02</span>
-            <h3>Understanding vitamin D guidance</h3>
-            <p>UK guidance explains when vitamin D may be relevant in winter and where to find reliable information — without replacing advice from a healthcare professional.</p>
-            <a class="tip-card__link" href="https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-d/" target="_blank" rel="noopener noreferrer">Read NHS vitamin D guidance</a>
-          </li>
-          <li class="tip-card">
-            <img class="tip-card__image" src="./assets/tips/tip-steps.svg" alt="" width="64" height="64">
-            <span class="tip-card__number" aria-hidden="true">03</span>
-            <h3>Managing stress and sleep</h3>
-            <p>Study pressure and life admin can affect sleep and stress levels. Official self-help resources may support everyday planning and rest — not emergency care.</p>
-            <a class="tip-card__link" href="https://www.nhs.uk/mental-health/advice-for-life-situations/student-stress-self-help-tips/" target="_blank" rel="noopener noreferrer">Read NHS student stress tips</a>
-          </li>
-          <li class="tip-card">
-            <img class="tip-card__image" src="./assets/tips/tip-trusted.svg" alt="" width="64" height="64">
-            <span class="tip-card__number" aria-hidden="true">04</span>
-            <h3>Building community and belonging</h3>
-            <p>Connecting with societies, volunteering and student networks can support everyday wellbeing and a sense of belonging at university.</p>
-            <a class="tip-card__link" href="https://www.bristolsu.org.uk/groups" target="_blank" rel="noopener noreferrer">Browse Bristol SU groups</a>
-          </li>
-          <li class="tip-card">
-            <img class="tip-card__image" src="./assets/tips/tip-help.svg" alt="" width="64" height="64">
-            <span class="tip-card__number" aria-hidden="true">05</span>
-            <h3>Knowing when to seek urgent support</h3>
-            <p>It helps to know the difference between everyday concerns, urgent support and emergencies. Official NHS guidance explains when to use 111 or 999.</p>
-            <a class="tip-card__link" href="https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/" target="_blank" rel="noopener noreferrer">Read NHS urgent and emergency care guidance</a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="source-policy" class="section source-policy" aria-labelledby="source-policy-heading">
+    <section class="section section--alt" aria-labelledby="policy-preview-heading">
       <div class="container container--narrow">
-        <header class="section-header">
+        <div class="source-policy-preview">
           <p class="section-eyebrow">How we choose sources</p>
-          <h2 id="source-policy-heading">Source policy</h2>
-          <p class="section-intro">
-            HealthLens prioritises official and expert sources. Official sources include NHS, GOV.UK, universities and students' unions.
-            Expert sources include organisations that specialise in student, housing, money, wellbeing or international student advice.
-            Each resource is summarised in plain English to help students understand what it is useful for.
-          </p>
-        </header>
-
-        <ul class="source-policy-list">
-          <li><strong>Official sources:</strong> rules, services and urgent support</li>
-          <li><strong>Expert sources:</strong> practical explanations and specialist guidance</li>
-          <li><strong>Student-facing resources:</strong> context for university life</li>
-          <li><strong>User responsibility:</strong> always check the original source for the latest information</li>
-        </ul>
-
-        <p class="source-policy-disclaimer" role="note">
-          HealthLens is a student project. It does not replace professional medical, legal, financial, immigration or emergency advice.
-        </p>
-      </div>
-    </section>
-
-    <section id="faq" class="section section--alt faq" aria-labelledby="faq-heading">
-      <div class="container container--narrow">
-        <header class="section-header section-header--center">
-          <p class="section-eyebrow">Common questions</p>
-          <h2 id="faq-heading">Frequently Asked Questions</h2>
-          <p class="section-intro">Quick answers about how to use HealthLens and what it can — and cannot — offer.</p>
-        </header>
-
-        <div class="accordion">
-          <div class="accordion-item">
-            <h3>
-              <button type="button" class="accordion-trigger" id="faq-trigger-1" aria-expanded="false" aria-controls="faq-panel-1">
-                Is HealthLens a medical advice website?
-              </button>
-            </h3>
-            <div id="faq-panel-1" class="accordion-panel" role="region" aria-labelledby="faq-trigger-1" hidden>
-              <p>
-                No. HealthLens is a student project that signposts to official and expert resources.
-                It does not provide diagnosis, treatment recommendations, symptom assessment or emergency response.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3>
-              <button type="button" class="accordion-trigger" id="faq-trigger-2" aria-expanded="false" aria-controls="faq-panel-2">
-                Who is HealthLens for?
-              </button>
-            </h3>
-            <div id="faq-panel-2" class="accordion-panel" role="region" aria-labelledby="faq-trigger-2" hidden>
-              <p>
-                It is designed for international students in the UK who want a clearer way to find support across study, wellbeing, housing, money, community and everyday life.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3>
-              <button type="button" class="accordion-trigger" id="faq-trigger-3" aria-expanded="false" aria-controls="faq-panel-3">
-                Why not just use Google?
-              </button>
-            </h3>
-            <div id="faq-panel-3" class="accordion-panel" role="region" aria-labelledby="faq-trigger-3" hidden>
-              <p>
-                Search engines return many results but do not always explain which sources are official, expert, student-facing or relevant to a specific situation.
-                HealthLens organises resources by topic, audience and next step.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3>
-              <button type="button" class="accordion-trigger" id="faq-trigger-4" aria-expanded="false" aria-controls="faq-panel-4">
-                How should I use the links?
-              </button>
-            </h3>
-            <div id="faq-panel-4" class="accordion-panel" role="region" aria-labelledby="faq-trigger-4" hidden>
-              <p>
-                Use HealthLens as a starting point. Always check the original source for the latest information, eligibility rules, opening hours and contact details.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3>
-              <button type="button" class="accordion-trigger" id="faq-trigger-5" aria-expanded="false" aria-controls="faq-panel-5">
-                What should I do in an emergency?
-              </button>
-            </h3>
-            <div id="faq-panel-5" class="accordion-panel" role="region" aria-labelledby="faq-trigger-5" hidden>
-              <p>
-                If you or someone else is in immediate danger, call 999. For urgent support that is not life-threatening, contact NHS 111 or visit your nearest A&amp;E.
-                Your university may also offer an out-of-hours wellbeing helpline — check their official website for current contact details.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="contact-layout">
-          <header class="section-header">
-            <p class="section-eyebrow">Feedback</p>
-            <h2 id="contact-heading">Share your feedback</h2>
-            <p class="section-intro">
-              Tell us what you think of this demo project. No data is stored or transmitted.
-            </p>
-          </header>
-
-          <form id="contact-form" class="contact-form" novalidate>
-            <div class="form-field">
-              <label for="contact-name">Name</label>
-              <input type="text" id="contact-name" name="name" required autocomplete="name">
-              <span class="field-error" id="contact-name-error" role="alert"></span>
-            </div>
-
-            <div class="form-field">
-              <label for="contact-email">Email</label>
-              <input type="email" id="contact-email" name="email" required autocomplete="email">
-              <span class="field-error" id="contact-email-error" role="alert"></span>
-            </div>
-
-            <div class="form-field">
-              <label for="contact-topic">Topic</label>
-              <select id="contact-topic" name="topic" required>
-                <option value="">Select a topic</option>
-                <option value="general">General enquiry</option>
-                <option value="support-finder">Support Finder feedback</option>
-                <option value="accessibility">Accessibility feedback</option>
-                <option value="content">Content suggestion</option>
-              </select>
-              <span class="field-error" id="contact-topic-error" role="alert"></span>
-            </div>
-
-            <div class="form-field">
-              <label for="contact-message">Message</label>
-              <textarea id="contact-message" name="message" rows="5" required minlength="10"></textarea>
-              <span class="field-error" id="contact-message-error" role="alert"></span>
-            </div>
-
-            <div class="form-field form-field--checkbox">
-              <input type="checkbox" id="contact-consent" name="consent" required>
-              <label for="contact-consent">I understand this demo provides signposting only and does not provide professional advice.</label>
-              <span class="field-error" id="contact-consent-error" role="alert"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Send feedback</button>
-
-            <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
-              Thank you. This is a demo form, so no data has been sent.
-            </div>
-          </form>
+          <h2 id="policy-preview-heading">Source policy</h2>
+          <p>HealthLens prioritises official and expert sources. Official sources include NHS, GOV.UK, universities and students' unions. Expert sources include organisations that specialise in student, housing, money, wellbeing or international student advice.</p>
+          <ul class="source-policy-list">
+            <li><strong>Official sources:</strong> rules, services and urgent support</li>
+            <li><strong>Expert sources:</strong> practical explanations and specialist guidance</li>
+            <li><strong>Student-facing resources:</strong> context for university life</li>
+          </ul>
+          <a class="btn btn-secondary" href="./about.html#source-policy">Read full source policy</a>
         </div>
       </div>
     </section>
@@ -473,30 +205,27 @@
         <p class="footer-logo">HealthLens</p>
         <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
       </div>
-
       <nav class="footer-nav" aria-label="Footer navigation">
-        <p class="footer-nav__title">On this page</p>
+        <p class="footer-nav__title">Site</p>
         <ul>
-          <li><a href="#support-finder">Support Finder</a></li>
-          <li><a href="#care-options">Care Options</a></li>
-          <li><a href="#wellbeing-guides">Wellbeing Guides</a></li>
-          <li><a href="#source-policy">Source Policy</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
         </ul>
       </nav>
-
       <div class="footer-meta">
         <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
         <p class="footer-copy">&copy; 2026 HealthLens</p>
       </div>
     </div>
-
     <div class="container">
-      <p class="site-footnote" role="note">
-        HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans.
-        It signposts to official and expert support resources only.
-      </p>
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
     </div>
   </footer>
 

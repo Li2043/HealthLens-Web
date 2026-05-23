@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Money and everyday spending resources for international students — budgeting, bank accounts, discounts and scam awareness.">
+  <title>Money &amp; Spending — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html" aria-current="page">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./index.html">Home</a></li>
+          <li><span aria-current="page">Money &amp; Spending</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="topic-hero">
+      <div class="container">
+        <h1>Money &amp; Everyday Spending</h1>
+        <p class="topic-summary">Resources for budgeting, bank accounts, student discounts, food costs, travel savings and everyday spending decisions.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>What you can find here</h2>
+        <ul class="topic-summary">
+          <li>Budgeting basics and planning for student living costs</li>
+          <li>Signposting on bank accounts and recurring bills</li>
+          <li>Student discounts and sensible spending — not a deals page</li>
+          <li>Scam awareness and emergency financial support routes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Quick links</h2>
+        <ul class="quick-links-grid">
+          <li class="quick-link-card">
+            <h3>MoneyHelper Student and Graduate Money</h3>
+            <p>Free, impartial guidance on managing money as a student or recent graduate.</p>
+            <a href="https://www.moneyhelper.org.uk/en/family-and-care/student-and-graduate-money" target="_blank" rel="noopener noreferrer">Visit MoneyHelper student money guidance (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>MoneyHelper Budgeting</h3>
+            <p>Practical advice on creating and maintaining a student budget.</p>
+            <a href="https://www.moneyhelper.org.uk/en/family-and-care/student-and-graduate-money/budgeting-for-college-or-university" target="_blank" rel="noopener noreferrer">Read MoneyHelper budgeting guidance (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>UCAS Budgeting</h3>
+            <p>Student-facing guidance on planning costs before and during university.</p>
+            <a href="https://www.ucas.com/money-and-student-life/money/budgeting" target="_blank" rel="noopener noreferrer">Read UCAS budgeting guidance (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>UKCISA Finances</h3>
+            <p>Expert information on fees, funding and managing money as an international student.</p>
+            <a href="https://www.ukcisa.org.uk/student-advice/finances/" target="_blank" rel="noopener noreferrer">Read UKCISA finance guidance (opens in new tab)</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Common situations</h2>
+        <ul>
+          <li>You are setting up your first UK bank account</li>
+          <li>You want to create a realistic monthly budget</li>
+          <li>You are worried about rent, food or travel costs</li>
+          <li>You received a suspicious message about money or fees</li>
+          <li>You need to understand student discount options without overspending</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Budgeting basics</h2>
+        <p>Planning your income and essential costs — rent, food, travel and bills — can help you avoid financial stress. MoneyHelper and UCAS offer free, impartial budgeting guidance.</p>
+        <p><a href="https://www.moneyhelper.org.uk/en/family-and-care/student-and-graduate-money/budgeting-for-college-or-university" target="_blank" rel="noopener noreferrer">Read MoneyHelper budgeting guidance (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Student bank accounts</h2>
+        <p>Most students open a UK bank account for rent, wages and everyday spending. Compare official guidance and check eligibility requirements before applying.</p>
+        <p>International students should also read UKCISA finance guidance for context on fees and funding.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Bills and recurring costs</h2>
+        <p>Recurring costs may include rent, energy, phone, transport and subscriptions. Tracking these separately from one-off purchases makes budgeting clearer.</p>
+        <p>See the Housing &amp; Bills page for shared housing and utility signposting.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Student discounts and shopping</h2>
+        <p>Student discounts, second-hand shopping and budgeting before buying can help manage everyday spending. This is not a deals page — HealthLens does not recommend specific products or include affiliate links.</p>
+        <p>Check source reliability and avoid impulse purchases when money is tight.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Scams and safe spending</h2>
+        <p>Students can be targeted by scams about visas, fees, accommodation or part-time work. Be cautious with unexpected messages, upfront payments and offers that seem too good to be true.</p>
+        <p>Report suspicious activity to your bank and seek advice from official sources.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Emergency financial support</h2>
+        <p>If you are struggling with money, contact your university money advice service early. They can signpost you to support options and explain what help may be available.</p>
+        <p><a href="https://www.bristol.ac.uk/students/support/finances/advice/" target="_blank" rel="noopener noreferrer">View University of Bristol money advice (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Featured resources</h2>
+        <div class="featured-resources-grid">
+          <article class="quick-link-card">
+            <h3>Money and Cost of Living</h3>
+            <p>University guidance for students worried about money, budgeting and financial difficulty.</p>
+            <a href="https://www.bristol.ac.uk/students/support/finances/advice/" target="_blank" rel="noopener noreferrer">View money advice (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>MoneyHelper student hub</h3>
+            <p>Free, impartial guidance on student and graduate money matters.</p>
+            <a href="https://www.moneyhelper.org.uk/en/family-and-care/student-and-graduate-money" target="_blank" rel="noopener noreferrer">Visit MoneyHelper (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>UKCISA finances</h3>
+            <p>Expert guidance on managing money as an international student in the UK.</p>
+            <a href="https://www.ukcisa.org.uk/student-advice/finances/" target="_blank" rel="noopener noreferrer">Read UKCISA finance guidance (opens in new tab)</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Related topics</h2>
+        <ul class="related-topics">
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./resources.html?category=money">Money resources</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="source-note" role="note"><strong>Signposting only.</strong> HealthLens links to official and expert money guidance. It does not provide financial advice. Always check the original source for eligibility and the latest information.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

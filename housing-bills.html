@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Housing and bills resources for student renters in the UK — deposits, repairs, tenancy advice and signposting.">
+  <title>Housing &amp; Bills — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html" aria-current="page">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./index.html">Home</a></li>
+          <li><span aria-current="page">Housing &amp; Bills</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="topic-hero">
+      <div class="container">
+        <h1>Housing &amp; Bills</h1>
+        <p class="topic-summary">Resources for understanding renting, deposits, repairs, bills and where to get housing advice as a student.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>What you can find here</h2>
+        <ul class="topic-summary">
+          <li>Basics of renting and tenancy responsibilities in the UK</li>
+          <li>Information on deposits, repairs, damp and mould concerns</li>
+          <li>Guidance on bills and shared housing costs</li>
+          <li>Links to housing advice services — not legal advice</li>
+        </ul>
+        <p>This page signposts to housing advice resources and does not replace legal advice.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Quick links</h2>
+        <ul class="quick-links-grid">
+          <li class="quick-link-card">
+            <h3>Bristol SU Housing Advice</h3>
+            <p>Independent housing advice for University of Bristol students on renting and tenancy issues.</p>
+            <a href="https://www.bristolsu.org.uk/housing-advice" target="_blank" rel="noopener noreferrer">View Bristol SU housing advice (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>Citizens Advice Housing</h3>
+            <p>Expert guidance on renting, tenancy rights, repairs and housing problems in England.</p>
+            <a href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener noreferrer">Visit Citizens Advice housing guidance (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>Shelter Student Housing</h3>
+            <p>Specialist housing charity guidance for students renting in the private sector.</p>
+            <a href="https://england.shelter.org.uk/housing_advice/private_renting/student_housing" target="_blank" rel="noopener noreferrer">Read Shelter student housing advice (opens in new tab)</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Common situations</h2>
+        <ul>
+          <li>You are looking for your first private rental as a student</li>
+          <li>You have questions about your deposit or tenancy agreement</li>
+          <li>Your landlord has not responded to a repair request</li>
+          <li>You are worried about damp, mould or heating in your home</li>
+          <li>You need to understand how bills work in shared student housing</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Renting basics</h2>
+        <p>Private renting in the UK usually involves a tenancy agreement, rent payments and shared responsibilities between tenants and landlords. Reading your contract carefully and keeping records of communications can help if problems arise.</p>
+        <p>Official and expert sources explain common terms, notice periods and tenant rights in plain English.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Deposits</h2>
+        <p>Deposits must usually be protected in an approved scheme. Understanding how deposits work — and what deductions are allowed — can help you avoid disputes when you move out.</p>
+        <p><a href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener noreferrer">Read Citizens Advice housing guidance (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Repairs, damp and mould</h2>
+        <p>Landlords are generally responsible for keeping the property safe and in repair. Report problems in writing and keep a record. Damp and mould can affect health — seek advice if your landlord does not act.</p>
+        <p><a href="https://england.shelter.org.uk/housing_advice/private_renting/student_housing" target="_blank" rel="noopener noreferrer">Read Shelter student housing advice (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Bills and shared housing</h2>
+        <p>Shared houses often split costs for energy, water, internet and council tax (where applicable). Agree how bills are divided before signing, and check whether utilities are included in your rent.</p>
+        <p>See the Money &amp; Spending page for budgeting guidance.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Where to get advice</h2>
+        <p>Bristol SU Housing Advice offers independent support for University of Bristol students. Citizens Advice and Shelter provide expert housing guidance for wider questions.</p>
+        <p><a href="https://www.bristolsu.org.uk/housing-advice" target="_blank" rel="noopener noreferrer">Contact Bristol SU housing advice (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Featured resources</h2>
+        <div class="featured-resources-grid">
+          <article class="quick-link-card">
+            <h3>Housing Concerns</h3>
+            <p>Bristol SU independent advice on renting, tenancy questions and housing problems.</p>
+            <a href="https://www.bristolsu.org.uk/housing-advice" target="_blank" rel="noopener noreferrer">View housing advice (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Citizens Advice housing hub</h3>
+            <p>Expert guidance on renting, repairs, deposits and tenant rights.</p>
+            <a href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener noreferrer">Visit Citizens Advice housing (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Shelter student housing</h3>
+            <p>Specialist advice for students in private rented accommodation.</p>
+            <a href="https://england.shelter.org.uk/housing_advice/private_renting/student_housing" target="_blank" rel="noopener noreferrer">Read Shelter student housing advice (opens in new tab)</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Related topics</h2>
+        <ul class="related-topics">
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./resources.html?category=housing">Housing resources</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="source-note" role="note"><strong>Signposting only.</strong> This page links to housing advice resources and does not replace legal advice. Always check the original source for the latest rules and your specific situation.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

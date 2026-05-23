@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Health and healthcare routes for international students in the UK — GP registration, NHS services and everyday health signposting.">
+  <title>Health &amp; Healthcare — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html" aria-current="page">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="./index.html">Home</a></li>
+          <li><span aria-current="page">Health &amp; Healthcare</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="topic-hero">
+      <div class="container">
+        <h1>Health &amp; Healthcare</h1>
+        <p class="topic-summary">A practical guide to understanding common UK healthcare routes as an international student. This page signposts to official information and does not provide medical advice.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>What you can find here</h2>
+        <ul class="topic-summary">
+          <li>How to register with a GP or student health service</li>
+          <li>Overview of pharmacy, NHS 111 and emergency routes</li>
+          <li>Everyday health information and official NHS links</li>
+          <li>Vitamin D guidance for UK autumn and winter — linked, not personalised advice</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Quick links</h2>
+        <ul class="quick-links-grid">
+          <li class="quick-link-card">
+            <h3>NHS Getting Medical Care as a Student</h3>
+            <p>Official guidance on registering with a GP and accessing NHS services while studying.</p>
+            <a href="https://www.nhs.uk/nhs-services/getting-medical-care-as-a-student/" target="_blank" rel="noopener noreferrer">Read NHS student healthcare guidance (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>NHS Pharmacies</h3>
+            <p>How pharmacists can help with common illnesses, medicines questions and signposting.</p>
+            <a href="https://www.nhs.uk/nhs-services/pharmacies/how-pharmacies-can-help/" target="_blank" rel="noopener noreferrer">Learn how pharmacies can help (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>NHS 111</h3>
+            <p>When to use NHS 111 for urgent but non-life-threatening medical help.</p>
+            <a href="https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-use-111/" target="_blank" rel="noopener noreferrer">Use NHS 111 guidance (opens in new tab)</a>
+          </li>
+          <li class="quick-link-card">
+            <h3>UKCISA Healthcare</h3>
+            <p>Expert information on NHS access and healthcare for international students in the UK.</p>
+            <a href="https://www.ukcisa.org.uk/student-advice/life-in-the-uk/healthcare/" target="_blank" rel="noopener noreferrer">Read UKCISA healthcare guidance (opens in new tab)</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Common situations</h2>
+        <ul>
+          <li>You need to register with a GP after arriving in the UK</li>
+          <li>You have a minor illness and wonder whether a pharmacy can help</li>
+          <li>You need medical help now but it is not a life-threatening emergency</li>
+          <li>You are unsure which NHS service to contact</li>
+          <li>You want official information about staying healthy during UK winter</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Registering with a GP</h2>
+        <p>Most students should register with a GP near where they live. University of Bristol students may be able to register with the Students' Health Service if they are in the practice area.</p>
+        <p>Registering early makes it easier to book appointments and access non-urgent care. Official guidance explains eligibility, what to bring and how registration works.</p>
+        <p><a href="https://www.nhs.uk/nhs-services/getting-medical-care-as-a-student/" target="_blank" rel="noopener noreferrer">Read NHS guidance on getting medical care as a student (opens in new tab)</a></p>
+        <p><a href="https://www.bristol.ac.uk/students-health/" target="_blank" rel="noopener noreferrer">View University of Bristol Students' Health Service (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Pharmacy, NHS 111 and emergency routes</h2>
+        <p>Pharmacists can advise on common minor illnesses and medicines questions. NHS 111 can help when you need medical guidance now but it is not life-threatening. Call 999 or go to A&amp;E for emergencies.</p>
+        <p>HealthLens does not assess symptoms or tell you where to go. If you are unsure, use NHS 111. If someone is in immediate danger, call 999.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Everyday health in the UK</h2>
+        <p>Understanding how the NHS works can help you know where to look for official information. This includes GP appointments, prescriptions, referrals and follow-up care.</p>
+        <p>UKCISA and the NHS provide practical explanations for international students. Always check the original source for the latest details.</p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Vitamin D and UK winter</h2>
+        <p>NHS guidance says people in the UK should consider taking a daily vitamin D supplement during autumn and winter. This page links to official guidance rather than giving personal medical advice.</p>
+        <p><a href="https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-d/" target="_blank" rel="noopener noreferrer">Read NHS vitamin D guidance (opens in new tab)</a></p>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Featured resources</h2>
+        <div class="featured-resources-grid">
+          <article class="quick-link-card">
+            <h3>Students' Health Service</h3>
+            <p>University of Bristol GP service for eligible students in the practice area.</p>
+            <a href="https://www.bristol.ac.uk/students-health/" target="_blank" rel="noopener noreferrer">View Student Health Service (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Physical Wellbeing and Welfare</h3>
+            <p>Bristol SU signposting for physical wellbeing, welfare and student support routes.</p>
+            <a href="https://www.bristolsu.org.uk/support-centre/health-and-welfare" target="_blank" rel="noopener noreferrer">View welfare support (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>NHS urgent mental health help</h3>
+            <p>Official NHS guidance on where to get urgent help for mental health concerns.</p>
+            <a href="https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/" target="_blank" rel="noopener noreferrer">Get urgent NHS help (opens in new tab)</a>
+          </article>
+          <article class="quick-link-card">
+            <h3>Disability and Study Support</h3>
+            <p>University support for disabilities, learning differences and study support plans.</p>
+            <a href="https://www.bristol.ac.uk/students/support/disability-support/" target="_blank" rel="noopener noreferrer">View disability support (opens in new tab)</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-section">
+      <div class="container">
+        <h2>Related topics</h2>
+        <ul class="related-topics">
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./resources.html?category=urgent-help">Urgent Help resources</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="care-options" class="topic-section care-options-section care-options-section--secondary" aria-labelledby="care-options-heading">
+      <div class="container">
+        <h2 id="care-options-heading">Care options guide</h2>
+        <p class="topic-summary">This guide explains common UK healthcare support routes and links to official information. It does not assess symptoms or decide where you should go. If you are unsure, use NHS 111. If you or someone else is in immediate danger, call 999 or go to A&amp;E.</p>
+
+        <p class="care-options-disclaimer" role="note">
+          <strong>Please note:</strong> This student project signposts to official services. It does not provide medical advice, diagnosis, treatment recommendations, emergency response, or symptom assessment.
+        </p>
+
+        <p id="care-options-error" class="error-message" role="alert" hidden></p>
+
+        <div id="care-options-list" class="care-options-grid" aria-live="polite" aria-atomic="true">
+          <!-- Care option cards rendered by script.js -->
+        </div>
+
+        <aside class="pharmacy-first-panel" aria-labelledby="pharmacy-first-heading">
+          <h3 id="pharmacy-first-heading">Pharmacy First: common conditions</h3>
+          <p>
+            NHS Pharmacy First may allow pharmacists to support some common conditions where clinically appropriate.
+            Suitability can depend on age, symptoms and clinical judgement. A pharmacist can advise, treat where appropriate,
+            or refer to a GP or another healthcare professional.
+          </p>
+          <ul class="pharmacy-first-list">
+            <li>impetigo</li>
+            <li>infected insect bites</li>
+            <li>earache</li>
+            <li>sore throat</li>
+            <li>sinusitis</li>
+            <li>urinary tract infections</li>
+            <li>shingles</li>
+          </ul>
+          <p class="pharmacy-first-note" role="note">
+            This list is for signposting only. It does not mean a pharmacy is always the right option.
+            If you are unsure, use NHS 111 or contact a healthcare professional.
+          </p>
+          <a
+            class="care-option-card__link pharmacy-first-link"
+            href="https://www.nhs.uk/nhs-services/pharmacies/how-pharmacies-can-help/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Read NHS pharmacy guidance (NHS: How pharmacies can help), opens in a new tab"
+          >
+            <span>Read NHS pharmacy guidance</span>
+            <span class="care-option-card__link-icon" aria-hidden="true">↗</span>
+            <span class="care-option-card__link-note">Opens official page in new tab</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="source-note" role="note"><strong>Signposting only.</strong> HealthLens links to official NHS and expert sources. It does not diagnose, recommend treatment or assess symptoms. For emergencies, call 999.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About HealthLens — an international student wellbeing navigator, source policy, limitations, accessibility approach and technical overview.">
+  <title>About — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html" aria-current="page">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="topic-hero" aria-labelledby="about-heading">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="./index.html">Home</a></li>
+            <li aria-current="page">About</li>
+          </ol>
+        </nav>
+        <h1 id="about-heading">About HealthLens</h1>
+        <p class="topic-summary">A student project that helps international students in the UK navigate trusted support resources through clear topic hubs and a searchable resource library.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <article class="about-section" aria-labelledby="what-is-heading">
+          <h2 id="what-is-heading">What HealthLens is</h2>
+          <p>HealthLens is an <strong>International Student Wellbeing Navigator</strong>. It organises official and expert resources across study, wellbeing, healthcare, housing, money, community and everyday life — with plain-English summaries, source labels and suggested next steps.</p>
+          <p>It is designed to reduce confusion for students who are new to UK university systems, not to replace professional services or official websites.</p>
+        </article>
+
+        <article class="about-section" aria-labelledby="who-for-heading">
+          <h2 id="who-for-heading">Who it is for</h2>
+          <p>HealthLens is primarily for <strong>international students studying in the UK</strong>, especially those who want a clearer way to find trusted resources across multiple areas of student life at once.</p>
+          <p>Many resources signposted on this demo use University of Bristol and Bristol SU examples, but the topic structure applies to broader UK student life themes.</p>
+        </article>
+
+        <article class="about-section" aria-labelledby="what-not-heading">
+          <h2 id="what-not-heading">What it does not do</h2>
+          <ul>
+            <li>It does not provide medical advice.</li>
+            <li>It does not provide legal, financial or immigration advice.</li>
+            <li>It does not assess symptoms or recommend treatment.</li>
+            <li>It does not replace official sources or emergency services.</li>
+            <li>It is not a deals, shopping or affiliate website.</li>
+          </ul>
+        </article>
+
+        <article id="source-policy" class="about-section source-policy" aria-labelledby="source-policy-heading">
+          <h2 id="source-policy-heading">Source policy</h2>
+          <p>HealthLens prioritises official and expert sources. Official sources include NHS, GOV.UK, universities and students' unions. Expert sources include organisations that specialise in international student, housing, money, wellbeing or practical advice. Student-facing resources may be included when they add useful context, but they should not replace official or expert sources.</p>
+          <ul class="source-policy-list">
+            <li><strong>Official sources:</strong> rules, services and urgent support</li>
+            <li><strong>Expert sources:</strong> practical explanations and specialist guidance</li>
+            <li><strong>Student-facing resources:</strong> context for university life</li>
+            <li><strong>User responsibility:</strong> always check the original source for the latest information</li>
+          </ul>
+          <p><strong>Source type labels used on resource cards:</strong></p>
+          <ul>
+            <li>Official source</li>
+            <li>Expert source</li>
+            <li>Student-facing resource</li>
+          </ul>
+          <p class="source-policy-disclaimer" role="note">HealthLens is a student project. It does not replace professional medical, legal, financial, immigration or emergency advice. Users should always check the original source for the latest information, eligibility rules, opening hours and contact details.</p>
+        </article>
+
+        <article class="about-section" aria-labelledby="a11y-heading">
+          <h2 id="a11y-heading">Accessibility approach</h2>
+          <p>HealthLens follows WCAG-informed practices: semantic HTML, logical heading hierarchy, keyboard-accessible navigation, visible focus states, descriptive link text, form labels, live regions for search results, and reduced-motion support.</p>
+          <p>Testing is documented in <a href="./accessibility-checklist.md">accessibility-checklist.md</a> and <a href="./accessibility-test-report.md">accessibility-test-report.md</a>.</p>
+        </article>
+
+        <article class="about-section" aria-labelledby="tech-heading">
+          <h2 id="tech-heading">Technical overview</h2>
+          <ul>
+            <li><strong>HTML, CSS and JavaScript</strong> — static multi-page site, no frameworks</li>
+            <li><strong>JSON content</strong> — `data/resources.json` and `data/care-options.json`</li>
+            <li><strong>GitHub Pages</strong> — relative paths for deployment</li>
+            <li><strong>Responsive layout</strong> — mobile, tablet and desktop breakpoints</li>
+            <li><strong>Dark mode</strong> — manual toggle with `localStorage` preference</li>
+            <li><strong>Print CSS</strong> — offline reference for key content</li>
+          </ul>
+        </article>
+
+        <article class="about-section" aria-labelledby="version-heading">
+          <h2 id="version-heading">Version history</h2>
+          <p>See <a href="./CHANGELOG.md">CHANGELOG.md</a> for full release notes. Current version: <strong>0.8</strong> — multi-page information architecture with topic hub pages and a central Resource Library.</p>
+        </article>
+
+        <article class="about-section" aria-labelledby="credits-heading">
+          <h2 id="credits-heading">Credits</h2>
+          <p>HealthLens is a portfolio demo project created for a Web &amp; Digital Content Coordinator application context. Content signposts to official and expert organisations including NHS, GOV.UK, UKCISA, universities, students' unions, Citizens Advice, Shelter, MoneyHelper and others.</p>
+          <p>HealthLens is not affiliated with any signposted organisation.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

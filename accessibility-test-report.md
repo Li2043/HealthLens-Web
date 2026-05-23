@@ -1,7 +1,7 @@
 # HealthLens Accessibility Test Report
 
 **Project:** HealthLens — International Student Wellbeing Navigator  
-**Version tested:** 0.7  
+**Version tested:** 0.8  
 **Report date:** May 2026  
 **Tester:** Project author (manual review)
 
@@ -125,6 +125,28 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 
 ---
 
+---
+
+## Multi-page Testing Checklist (V0.8)
+
+| Test | Pass? | Notes |
+|------|-------|-------|
+| Header nav works on every page | ✅ | 9 pages with shared global navigation |
+| `aria-current="page"` on active nav link | ✅ | One current link per page |
+| Skip link works on every page | ✅ | `#main-content` target on all pages |
+| Page titles are unique | ✅ | Descriptive `<title>` per page |
+| Heading hierarchy is valid | ✅ | One `h1` per page; nested sections use `h2`/`h3` |
+| External links are descriptive | ✅ | Official/expert link text; `rel="noopener noreferrer"` |
+| Footer appears on every page | ✅ | Shared footer with site links |
+| Mobile nav/layout on every page | ✅ | Collapsible nav below 1100px |
+| Print CSS on topic pages | ✅ | Topic content and source notes print |
+| Dark mode on topic pages | ✅ | Shared `data-theme` toggle |
+| No console errors without Support Finder | ✅ | `script.js` guards optional containers |
+| Resource Library search/filter | ✅ | `resources.html` loads JSON and filters |
+| Homepage featured resources preview | ✅ | `#featured-resources` loads subset from JSON |
+
+---
+
 ## Content Clarity Review (V0.7)
 
 | Check | Pass? | Notes |
@@ -155,6 +177,17 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 | Print output includes Care Options | ✅ | Cards, disclaimer, Pharmacy First panel, URLs |
 | No “triage” or “symptom checker” in UI | ✅ | Service navigation wording only |
 | Console free of load errors | ✅ | When served via HTTP |
+
+---
+
+## Fixes Made (V0.8)
+
+| Fix | Description |
+|-----|-------------|
+| **Multi-page IA** | Split single-page site into Home, Resource Library, 6 topic hubs and About |
+| **Shared navigation** | Global nav with `aria-current="page"` and relative GitHub Pages links |
+| **Defensive JS** | Optional features initialised only when DOM containers exist |
+| **Care Options placement** | Healthcare route guide on `health-healthcare.html` |
 
 ---
 

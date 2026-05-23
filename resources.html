@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search and filter trusted resources for international student life in the UK. Official and expert links with source labels and suggested next steps.">
+  <title>Resource Library — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html" aria-current="page">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="topic-hero" aria-labelledby="resources-heading">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="./index.html">Home</a></li>
+            <li aria-current="page">Resources</li>
+          </ol>
+        </nav>
+        <h1 id="resources-heading">Resource Library</h1>
+        <p class="topic-summary">Search and filter trusted resources for international student life in the UK. Resources are grouped by topic and include official or expert links where possible.</p>
+      </div>
+    </section>
+
+    <section id="support-finder" class="section section--alt support-finder" aria-labelledby="support-finder-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Support Finder</p>
+          <h2 id="support-finder-heading">Browse all resources</h2>
+          <p class="content-meta">Content last reviewed: May 2026.</p>
+        </header>
+
+        <div class="finder-controls">
+          <div class="search-wrapper">
+            <label for="resource-search">Search support resources</label>
+            <input type="search" id="resource-search" name="resource-search" autocomplete="off" placeholder="e.g. academic, housing, money, international, urgent">
+          </div>
+          <fieldset class="filter-fieldset">
+            <legend>Filter by category</legend>
+            <div class="filter-buttons" role="group" aria-label="Category filters">
+              <button type="button" class="filter-btn is-active" data-category="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn" data-category="academic" aria-pressed="false">Academic</button>
+              <button type="button" class="filter-btn" data-category="physical-wellbeing" aria-pressed="false">Physical Wellbeing</button>
+              <button type="button" class="filter-btn" data-category="mental-wellbeing" aria-pressed="false">Mental Wellbeing</button>
+              <button type="button" class="filter-btn" data-category="housing" aria-pressed="false">Housing</button>
+              <button type="button" class="filter-btn" data-category="money" aria-pressed="false">Money</button>
+              <button type="button" class="filter-btn" data-category="international-life" aria-pressed="false">International Life</button>
+              <button type="button" class="filter-btn" data-category="community" aria-pressed="false">Community</button>
+              <button type="button" class="filter-btn" data-category="urgent-help" aria-pressed="false">Urgent Help</button>
+            </div>
+          </fieldset>
+        </div>
+
+        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true">Loading support resources…</p>
+        <p id="results-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+
+        <div id="resource-grid" class="resource-grid"></div>
+
+        <p class="support-note support-note--urgent" role="note">
+          <strong>Please note:</strong> This student project signposts to official and expert services.
+          It does not provide medical, legal, financial, immigration or emergency advice.
+          If you or someone else is in immediate danger, call 999 or go to A&amp;E.
+        </p>
+
+        <p id="no-results" class="no-results" hidden>No matching resources found. Try a different search term or category.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

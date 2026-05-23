@@ -4,6 +4,25 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [0.8] — May 2026
+
+### Added
+- **Multi-page structure** — 9 static HTML pages with shared header, footer and navigation
+- **Topic hub pages** — International Essentials, Health & Healthcare, Mental Wellbeing, Housing & Bills, Money & Spending, Community & Sport
+- **`resources.html`** — central searchable Resource Library (Support Finder)
+- **`about.html`** — project explanation, source policy (`#source-policy`), limitations, accessibility and technical overview
+- Homepage topic cards, featured resources preview and source policy preview
+- Breadcrumbs, topic page templates and `aria-current="page"` on active nav links
+- URL category filter support on Resource Library (`?category=urgent-help`)
+
+### Changed
+- `script.js` — defensive initialisation (Support Finder, Care Options, FAQ, form only run when containers exist)
+- Care Options Guide moved to `health-healthcare.html`
+- Navigation expanded to global multi-page menu
+- README and accessibility documentation updated for V0.8
+
+---
+
 ## [0.7] — May 2026
 
 ### Changed — Positioning cleanup
@@ -105,6 +124,7 @@ All notable changes to HealthLens are documented in this file.
 | **0.5** | Print CSS, system dark mode, accessibility testing record |
 | **0.6** | Care Options Guide — safe service navigation with `data/care-options.json` |
 | **0.7** | Positioning cleanup — International Student Wellbeing Navigator |
+| **0.8** | Multi-page structure — topic hubs and Resource Library |
 
 ---
 
