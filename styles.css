@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HealthLens — Student Wellbeing & Support Hub
-   Version 0.6 styles
+   HealthLens — International Student Wellbeing Navigator
+   Version 0.7 styles
    ========================================================================== */
 
 :root {
@@ -487,8 +487,25 @@ ol {
   border-radius: 999px;
 }
 
-.hero-step p {
-  margin-top: var(--space-xs);
+.help-cards {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.help-card {
+  padding: var(--space-md);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+
+.help-card__title {
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-base);
+}
+
+.help-card p {
+  margin: 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
@@ -672,12 +689,64 @@ ol {
 }
 
 .category-pill--academic { color: #1e40af; background: #eff6ff; border-color: #bfdbfe; }
-.category-pill--wellbeing { color: #0f766e; background: #ecfdf5; border-color: #99f6e4; }
+.category-pill--physical-wellbeing { color: #0f766e; background: #ecfdf5; border-color: #99f6e4; }
+.category-pill--mental-wellbeing { color: #5b21b6; background: #f5f3ff; border-color: #c4b5fd; }
 .category-pill--housing { color: #9a3412; background: #fff7ed; border-color: #fdba74; }
-.category-pill--finance { color: #854d0e; background: #fefce8; border-color: #fde047; }
-.category-pill--international { color: #6b21a8; background: #faf5ff; border-color: #d8b4fe; }
+.category-pill--money { color: #854d0e; background: #fefce8; border-color: #fde047; }
+.category-pill--international-life { color: #6b21a8; background: #faf5ff; border-color: #d8b4fe; }
 .category-pill--community { color: #166534; background: #f0fdf4; border-color: #86efac; }
-.category-pill--urgent { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
+.category-pill--urgent-help { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
+
+.resource-card__labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.source-type-label,
+.audience-label,
+.resource-card__checked {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.source-type-label--official-source {
+  color: #1e40af;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.source-type-label--expert-source {
+  color: #0f766e;
+  background: #ecfdf5;
+  border-color: #99f6e4;
+}
+
+.source-type-label--student-facing-resource {
+  color: #6b21a8;
+  background: #faf5ff;
+  border-color: #d8b4fe;
+}
+
+.audience-label {
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  border-color: var(--color-border-light);
+  font-weight: 600;
+}
+
+.resource-card__checked {
+  color: var(--color-text-muted);
+  background: transparent;
+  border-color: var(--color-border-light);
+  font-weight: 500;
+}
 
 .resource-card__title {
   margin-bottom: var(--space-sm);
@@ -859,6 +928,16 @@ ol {
 /* Care Options Guide */
 .care-options-section {
   scroll-margin-top: var(--header-height);
+}
+
+.care-options-section--secondary .section-eyebrow {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.care-options-section--secondary .section-header h2 {
+  font-size: var(--font-size-2xl);
 }
 
 .care-options-disclaimer {
@@ -1098,6 +1177,35 @@ ol {
 
 .pharmacy-first-link {
   margin-top: var(--space-md);
+}
+
+/* Source policy */
+.source-policy {
+  scroll-margin-top: var(--header-height);
+}
+
+.source-policy-list {
+  margin: var(--space-lg) 0;
+  padding-left: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+.source-policy-list li + li {
+  margin-top: var(--space-sm);
+}
+
+.source-policy-list strong {
+  color: var(--color-text);
+}
+
+.source-policy-disclaimer {
+  margin: var(--space-xl) 0 0;
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
 }
 
 /* Wellbeing tips */
@@ -1807,7 +1915,8 @@ html[data-theme="dark"] .care-option-card--emergency .care-option-card__link:hov
   .crisis-banner,
   .support-finder,
   .care-options-section,
-  .wellbeing-tips,
+  .wellbeing-guides,
+  .source-policy,
   .faq {
     break-before: auto;
   }
@@ -1835,6 +1944,8 @@ html[data-theme="dark"] .care-option-card--emergency .care-option-card__link:hov
   .accordion-panel p,
   .support-note,
   .care-options-disclaimer,
+  .source-policy-list,
+  .source-policy-disclaimer,
   .disclaimer {
     color: #000 !important;
   }
@@ -1842,6 +1953,7 @@ html[data-theme="dark"] .care-option-card--emergency .care-option-card__link:hov
   .disclaimer,
   .support-note,
   .care-options-disclaimer,
+  .source-policy-disclaimer,
   .crisis-banner,
   .resource-card,
   .care-option-card,

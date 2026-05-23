@@ -1,6 +1,6 @@
 # HealthLens Accessibility Checklist
 
-A practical review checklist for Version 0.5 of the HealthLens student support site.
+A practical review checklist for Version 0.7 of the HealthLens International Student Wellbeing Navigator.
 
 ---
 
@@ -69,8 +69,10 @@ A practical review checklist for Version 0.5 of the HealthLens student support s
 ## Urgent Support Disclaimer
 
 - [ ] Crisis banner includes 999 and NHS 111 guidance
-- [ ] Support Finder includes signposting disclaimer near urgent resources:
-  - “This student project signposts to official support services. It does not provide medical advice. If you or someone else is in immediate danger, call 999 or go to A&E.”
+- [ ] Hero clearly states International Student Wellbeing Navigator positioning
+- [ ] Source Policy section is reachable from hero CTA and navigation
+- [ ] Support Finder includes signposting disclaimer near resources:
+  - “This student project signposts to official and expert services. It does not provide medical, legal, financial, immigration or emergency advice.”
 - [ ] Urgent cards are visually distinct but not alarmist
 - [ ] Urgency is shown with text labels, not colour alone
 
@@ -79,11 +81,15 @@ A practical review checklist for Version 0.5 of the HealthLens student support s
 ## Non-Medical Wording
 
 - [ ] Site does not offer diagnosis, prediction, or treatment advice
+- [ ] Site does not present itself as medical advice, triage or a symptom checker
+- [ ] Care Options Guide (if present) uses service navigation wording only
 - [ ] Content uses “signposts to” rather than “provides support” where appropriate
-- [ ] Hero includes disclaimer: “does not provide medical advice”
-- [ ] FAQ explicitly states content is not medical advice
-- [ ] Content does not imply affiliation with Bristol SU, UoB, NHS or Samaritans
-- [ ] Footer reiterates “Not medical advice”
+- [ ] Hero includes disclaimer about signposting limits (not medical, legal, financial, immigration or emergency advice)
+- [ ] FAQ explicitly states what HealthLens is and is not
+- [ ] Content does not imply affiliation with Bristol SU, UoB, NHS, GOV.UK or Samaritans
+- [ ] Footer reiterates signposting-only disclaimer
+- [ ] Resource cards show source type and audience labels where available
+- [ ] Categories use plain-English topic labels
 - [ ] No promises of outcomes or AI health claims
 
 ---
@@ -111,14 +117,15 @@ A practical review checklist for Version 0.5 of the HealthLens student support s
 
 ## Content Clarity
 
-- [ ] Hero section explains the site purpose in plain English
-- [ ] Support cards include title, category, description, urgency, next step, and official link
+- [ ] Hero states International Student Wellbeing Navigator purpose and target audience
+- [ ] Source Policy section is reachable and explains official vs expert sources
+- [ ] Support cards include title, category, description, source labels, urgency, next step, and official link
 - [ ] Visible results count updates when filters change
 - [ ] "No matching resources found" message appears when filters return nothing
 - [ ] Search/filter results are announced via live region (`aria-live`)
-- [ ] Print preview shows resource cards, official URLs, disclaimers, and accessibility statement
+- [ ] Print preview shows resource cards, Source Policy, official URLs and disclaimers
 - [ ] Print view hides navigation, search, filters, and demo contact form
-- [ ] System dark mode (if enabled) keeps text, links, and focus states readable
+- [ ] Dark mode keeps text, links, and focus states readable
 
 ---
 

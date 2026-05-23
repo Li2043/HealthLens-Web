@@ -8,7 +8,10 @@
     "nextStep": "Read the academic advice options on Bristol SU and contact the relevant support team early.",
     "sourceLabel": "Bristol SU Academic Advice",
     "sourceUrl": "https://www.bristolsu.org.uk/support-centre/academic-advice",
-    "linkText": "View academic advice"
+    "linkText": "View academic advice",
+    "sourceType": "Official source",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "university-academic-support",
@@ -19,29 +22,38 @@
     "nextStep": "Check the University academic advice page for the right process.",
     "sourceLabel": "University of Bristol Academic Advice",
     "sourceUrl": "https://www.bristol.ac.uk/students/support/academic-advice/",
-    "linkText": "View University academic support"
+    "linkText": "View University academic support",
+    "sourceType": "Official source",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "mental-wellbeing",
-    "title": "Mental Wellbeing",
-    "category": "wellbeing",
+    "title": "Mental Wellbeing Appointments",
+    "category": "mental-wellbeing",
     "urgency": "Medium",
     "description": "Support for students who are finding things difficult and want guidance or a wellbeing appointment.",
     "nextStep": "Book a wellbeing appointment or read about the University's wellbeing services.",
     "sourceLabel": "University of Bristol Wellbeing Appointment",
     "sourceUrl": "https://www.bristol.ac.uk/students/support/managing-student-life/book-an-appointment/",
-    "linkText": "Book a wellbeing appointment"
+    "linkText": "Book a wellbeing appointment",
+    "sourceType": "Official source",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "health-welfare",
-    "title": "Health and Welfare",
-    "category": "wellbeing",
+    "title": "Physical Wellbeing and Welfare",
+    "category": "physical-wellbeing",
     "urgency": "Medium",
-    "description": "Bristol SU guidance on health, welfare and student support, including routes to wellbeing advice.",
+    "description": "Bristol SU guidance on physical wellbeing, welfare and student support, including routes to advice and signposting.",
     "nextStep": "Check the SU Health & Welfare support page.",
     "sourceLabel": "Bristol SU Health & Welfare",
     "sourceUrl": "https://www.bristolsu.org.uk/support-centre/health-and-welfare",
-    "linkText": "View health and welfare support"
+    "linkText": "View welfare support",
+    "sourceType": "Student-facing resource",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "housing-concerns",
@@ -52,40 +64,52 @@
     "nextStep": "Contact Bristol SU Housing Advice for independent student housing support.",
     "sourceLabel": "Bristol SU Housing Advice",
     "sourceUrl": "https://www.bristolsu.org.uk/housing-advice",
-    "linkText": "View housing advice"
+    "linkText": "View housing advice",
+    "sourceType": "Expert source",
+    "audience": "Students in the UK",
+    "lastChecked": "2026-05"
   },
   {
     "id": "financial-worries",
-    "title": "Financial Worries",
-    "category": "finance",
+    "title": "Money and Cost of Living",
+    "category": "money",
     "urgency": "Medium",
     "description": "Guidance for students worried about money, budgeting, cost of living, fees, or financial difficulty.",
     "nextStep": "Read the University's money advice and support options.",
     "sourceLabel": "University of Bristol Money Advice",
     "sourceUrl": "https://www.bristol.ac.uk/students/support/finances/advice/",
-    "linkText": "View money advice"
+    "linkText": "View money advice",
+    "sourceType": "Official source",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "international-support",
     "title": "International Student Support",
-    "category": "international",
+    "category": "international-life",
     "urgency": "Low",
     "description": "Academic, personal and practical support for international students at the University of Bristol.",
     "nextStep": "Explore international student support and relevant services.",
     "sourceLabel": "University of Bristol International Student Support",
     "sourceUrl": "https://www.bristol.ac.uk/international/why/support/",
-    "linkText": "View international support"
+    "linkText": "View international support",
+    "sourceType": "Official source",
+    "audience": "International students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "disability-support",
-    "title": "Disability Support",
-    "category": "wellbeing",
+    "title": "Disability and Study Support",
+    "category": "physical-wellbeing",
     "urgency": "Medium",
     "description": "Support for students with disabilities, learning differences, mental health conditions, or physical and sensory impairments.",
     "nextStep": "Read about disability support and study support plans.",
     "sourceLabel": "University of Bristol Disability Support",
     "sourceUrl": "https://www.bristol.ac.uk/students/support/disability-support/",
-    "linkText": "View disability support"
+    "linkText": "View disability support",
+    "sourceType": "Official source",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "societies-belonging",
@@ -96,7 +120,10 @@
     "nextStep": "Browse Bristol SU groups and societies.",
     "sourceLabel": "Bristol SU Groups",
     "sourceUrl": "https://www.bristolsu.org.uk/groups",
-    "linkText": "Browse student groups"
+    "linkText": "Browse student groups",
+    "sourceType": "Student-facing resource",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "volunteering-community",
@@ -107,28 +134,37 @@
     "nextStep": "Explore volunteering opportunities and student community activities.",
     "sourceLabel": "Bristol SU Volunteering",
     "sourceUrl": "https://www.bristolsu.org.uk/community-impact",
-    "linkText": "Explore volunteering"
+    "linkText": "Explore volunteering",
+    "sourceType": "Student-facing resource",
+    "audience": "University of Bristol students",
+    "lastChecked": "2026-05"
   },
   {
     "id": "urgent-mental-health",
-    "title": "Urgent Mental Health Support",
-    "category": "urgent",
+    "title": "Urgent Mental Wellbeing Support",
+    "category": "urgent-help",
     "urgency": "High",
-    "description": "If you need urgent mental health help but it is not an immediate emergency, NHS 111 can direct you to the right support.",
+    "description": "If you need urgent mental wellbeing support but it is not an immediate emergency, NHS 111 can direct you to the right service.",
     "nextStep": "Use NHS 111 online or call 111. If you or someone else is in immediate danger, call 999 or go to A&E.",
     "sourceLabel": "NHS urgent mental health help",
     "sourceUrl": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/",
-    "linkText": "Get urgent NHS help"
+    "linkText": "Get urgent NHS help",
+    "sourceType": "Official source",
+    "audience": "Students in the UK",
+    "lastChecked": "2026-05"
   },
   {
     "id": "someone-to-talk-to",
     "title": "Someone to Talk To",
-    "category": "urgent",
+    "category": "urgent-help",
     "urgency": "High",
     "description": "Samaritans offers confidential listening support for anyone who needs to talk.",
     "nextStep": "Call Samaritans free on 116 123 if you need someone to talk to.",
     "sourceLabel": "Samaritans",
     "sourceUrl": "https://www.samaritans.org/how-we-can-help/contact-samaritan/",
-    "linkText": "Contact Samaritans"
+    "linkText": "Contact Samaritans",
+    "sourceType": "Expert source",
+    "audience": "All students",
+    "lastChecked": "2026-05"
   }
 ]

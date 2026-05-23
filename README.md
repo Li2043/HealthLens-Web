@@ -1,66 +1,75 @@
-# HealthLens — Student Wellbeing & Support Hub
+# HealthLens — International Student Wellbeing Navigator
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 0.6** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+**Version 0.7** · A responsive student-facing information website built for a Web & Digital Content Coordinator application.
 
 ---
 
-## V0.6 Update Summary
+## V0.7 Update Summary
 
-HealthLens V0.6 adds a **Care Options Guide** to practise responsible health-related content design. The guide does not assess symptoms or provide medical advice. It explains common UK healthcare support routes and links to official NHS and University information.
+V0.7 focused on **positioning cleanup**. The project was reframed from a broad health-support concept into an **International Student Wellbeing Navigator**, with clearer audience definition, source policy, category labels, disclaimers and README wording.
 
-| Addition | Purpose |
-|----------|---------|
-| **Care Options Guide** | Service navigation for Pharmacy, GP/Student Health, NHS 111, and 999/A&E |
-| **`data/care-options.json`** | Separates care route content from rendering logic |
-| **Pharmacy First panel** | Signposts NHS Pharmacy First common conditions with official link |
-| **Safe wording** | Non-diagnostic language; no symptom input or service recommendations |
-
-**Content safety:** This is service navigation, not medical triage. The guide signposts to official sources only. It is not a medical device, not diagnostic, and not emergency support.
-
-**Known limitation:** HealthLens cannot assess individual situations. Users who are unsure should use NHS 111; emergencies require 999 or A&E.
+| Change | Purpose |
+|--------|---------|
+| **Product positioning** | International students in the UK — wellbeing and practical support, not medical advice |
+| **Hero & metadata** | Clear tagline, audience and value proposition |
+| **Category labels** | Academic, Physical/Mental Wellbeing, Housing, Money, International Life, Community, Urgent Help |
+| **Source quality labels** | `sourceType`, `audience`, `lastChecked` on support resources |
+| **Source Policy section** | Explains official vs expert vs student-facing sources |
+| **Wellbeing Guides** | Reframed tips as practical guide topics with official links |
 
 See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 
-## V0.5 Update Summary
+## Project overview
 
-Version 0.5 focuses on **accessibility evidence**, **offline usability**, and **system-aware presentation** — without adding new product features or frameworks.
+HealthLens is a responsive student-facing information website that helps **international students in the UK** navigate trusted support resources across study, wellbeing, housing, money, community and urgent help.
 
-| Addition | Purpose |
-|----------|---------|
-| **Print CSS** | Lets students print support signposting cards with official URLs for offline reference |
-| **System dark mode** | Respects `prefers-color-scheme: dark` with contrast-safe CSS variables |
-| **Accessibility test report** | Documents manual testing, link safety review, and placeholders for Lighthouse/axe |
-| **CHANGELOG** | Records project evolution from V0.1 to V0.5 |
+It is **not** a medical advice website, symptom checker, triage tool, legal advice service, financial advice service, immigration advice service, or emergency response service.
 
-See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
+Its value is **more than a link directory**:
 
----
-
-## Project Overview
-
-HealthLens is a frontend-only portfolio project that helps university students find wellbeing and support signposting quickly. It demonstrates practical skills in HTML, CSS, JavaScript, responsive layout, digital content organisation, and WCAG-informed accessibility.
-
-The site includes a searchable Support Finder, wellbeing tips, an FAQ accordion, a validated feedback form, and an accessibility statement. Support card content is stored separately in `data/resources.json` and loaded at runtime. The project is designed to be deployed via GitHub Pages with no backend or build step required.
-
-> **Important:** This is a student project. It does not provide medical advice, diagnosis, or treatment recommendations.
+- Clear categorisation by student life topic
+- Plain-English summaries
+- Source quality labels (official, expert, student-facing)
+- Suggested next-step guidance
+- Responsible signposting to trusted resources
+- Accessible, responsive interface
+- International-student context
 
 ---
 
-## Why I Built This
+## Why I built this
 
-I built HealthLens to show how thoughtful web content and UX can help students navigate support options during stressful periods. For a Web & Digital Content Coordinator role — particularly at a students' union — I wanted a live example that combines:
+International students often need to understand multiple UK systems at once: university support, healthcare routes, housing, money, student life and urgent services. HealthLens explores how accessible digital content, clear categorisation and responsible signposting can reduce confusion.
 
-- Clear, student-friendly content structure
-- Practical front-end development without unnecessary frameworks
-- Accessibility as a core design requirement, not an afterthought
-- Safe, responsible wording around wellbeing topics
-- Separation of content from presentation, similar to a lightweight content workflow
+For a Web & Digital Content Coordinator role — particularly at a students' union — I wanted a live example that combines student-friendly content structure, practical front-end development, accessibility as a core requirement, and safe wording around wellbeing topics.
 
-I used official support links to practise responsible digital content design, safe signposting, accessibility-aware link text and user-centred information architecture.
+---
+
+## What this project demonstrates
+
+- HTML, CSS and JavaScript
+- Responsive layout
+- JSON-based content structure (`data/resources.json`, `data/care-options.json`)
+- Search and filtering
+- Accessible forms and navigation
+- Plain-English digital content
+- Source quality labelling
+- Responsible non-diagnostic wording
+- GitHub Pages deployment
+
+---
+
+## What this project does not do
+
+- It does not provide medical advice.
+- It does not provide legal, financial or immigration advice.
+- It does not assess symptoms.
+- It does not replace official sources.
+- It does not provide emergency support.
 
 ---
 
@@ -68,42 +77,25 @@ I used official support links to practise responsible digital content design, sa
 
 | Feature | Description |
 |---------|-------------|
-| **Support Finder** | 12 signposting cards with official links, urgency levels, and suggested next steps |
-| **Care Options Guide** | 4 UK healthcare route cards loaded from `data/care-options.json` — service navigation only |
-| **External JSON content** | Support resources in `data/resources.json`; care routes in `data/care-options.json` |
-| **Search & filter** | Keyword search plus category filter buttons (All, Academic, Wellbeing, etc.) |
-| **Print-friendly layout** | `@media print` stylesheet for offline support reference |
-| **Dark mode toggle** | Manual light/dark switch in header; preference saved in `localStorage` |
-| **Wellbeing Tips** | 4 short, non-medical self-reflection tips |
-| **FAQ accordion** | Expand/collapse with keyboard support and `aria-expanded` |
-| **Feedback form** | Frontend validation with accessible error messages (demo only) |
-| **Crisis banner** | Prominent urgent help signposting with 999 / NHS 111 guidance |
-| **Accessibility testing record** | [`accessibility-test-report.md`](accessibility-test-report.md) |
-| **Skip link** | "Skip to main content" for keyboard and screen reader users |
-
----
-
-## Screenshots (Placeholder)
-
-_Add portfolio screenshots here before submission:_
-
-| Screenshot | Description |
-|------------|-------------|
-| _[Add image]_ | Desktop — Support Finder with resource cards |
-| _[Add image]_ | Mobile — responsive layout and crisis banner |
-| _[Add image]_ | Print preview — offline support reference |
-| _[Add image]_ | Lighthouse accessibility score (optional) |
-
-Suggested path: `assets/screenshots/` (create when ready)
+| **Support Finder** | 12 resources with category filters, source labels, urgency levels and next steps |
+| **Care Options Guide** | Secondary UK healthcare route guide — service navigation only |
+| **Wellbeing Guides** | Practical guide topics linking to official sources |
+| **Source Policy** | How official, expert and student-facing sources are prioritised |
+| **Search & filter** | Keyword search plus topic filters |
+| **Print-friendly layout** | `@media print` stylesheet for offline reference |
+| **Dark mode toggle** | Manual light/dark switch; preference saved in `localStorage` |
+| **FAQ accordion** | Keyboard-accessible with `aria-expanded` |
+| **Feedback form** | Frontend validation (demo only) |
+| **Crisis banner** | 999 / NHS 111 guidance for urgent help |
 
 ---
 
 ## Tech Stack
 
-- **HTML5** — semantic elements (`header`, `nav`, `main`, `section`, `article`, `footer`)
-- **CSS3** — custom properties, flexbox, grid, print and dark-mode media queries
-- **Vanilla JavaScript** — `fetch`, async/await, no frameworks, no build tools
-- **JSON** — structured support content in `data/resources.json`
+- **HTML5** — semantic landmarks and logical heading hierarchy
+- **CSS3** — custom properties, flexbox, grid, print and dark-mode styles
+- **Vanilla JavaScript** — `fetch`, async/await, no frameworks
+- **JSON** — content separated from rendering logic
 - **GitHub Pages** — static hosting
 
 No React, TypeScript, backend, database, authentication, AI, or external APIs.
@@ -112,74 +104,17 @@ No React, TypeScript, backend, database, authentication, AI, or external APIs.
 
 ## Data & Content Structure
 
-The support resources are stored in `data/resources.json` to separate digital content from rendering logic. Care route content lives in `data/care-options.json`. This makes the project easier to maintain and closer to a real content-managed website workflow.
+Support resources live in `data/resources.json`. Care route content lives in `data/care-options.json`.
 
-Each resource object includes: `id`, `title`, `category`, `urgency`, `description`, `nextStep`, `sourceLabel`, `sourceUrl`, and `linkText`.
+Each resource includes: `id`, `title`, `category`, `urgency`, `description`, `nextStep`, `sourceLabel`, `sourceUrl`, `linkText`, `sourceType`, `audience`, and `lastChecked`.
 
-Each care option object includes: `id`, `title`, `category`, `summary`, `suitableFor`, `notSuitableFor`, `safetyNote`, `sourceLabel`, `sourceUrl`, and `linkText`.
-
-`script.js` fetches both JSON files using relative paths, normalises the data, and renders cards dynamically. If loading fails, a clear error message is shown in the relevant section.
-
----
-
-## Content Governance
-
-- **Official links only** — Bristol SU, University of Bristol, NHS, and Samaritans
-- **Review date** — Content last reviewed: May 2026 (noted in Support Finder)
-- **Non-affiliation** — HealthLens is a student portfolio project, not an official service
-- **Update workflow** — Edit `data/resources.json` for content changes; verify links periodically
-- **Safe wording** — Signposting language only; Care Options Guide uses non-diagnostic service navigation wording
-
----
-
-## Accessibility Considerations
-
-HealthLens follows WCAG-informed practices throughout:
-
-- Semantic HTML with logical heading hierarchy
-- Visible labels on all form fields (not placeholder-only)
-- Keyboard-accessible navigation, filters, accordion, and form
-- Strong `:focus-visible` styles on links, buttons, and form controls
-- Readable colour contrast in light mode, dark mode, and print
-- `aria-expanded` on FAQ buttons; live regions for filter results
-- Descriptive external link text with clear new-tab labelling
-- Reduced-motion support via `prefers-reduced-motion`
-- Clear non-medical wording and disclaimers
-
-**Testing documentation:**
-- [`accessibility-checklist.md`](accessibility-checklist.md) — pre-release checklist
-- [`accessibility-test-report.md`](accessibility-test-report.md) — V0.5 test record with Lighthouse/axe placeholders
-
-### Accessibility Testing Method (V0.5)
-
-1. Run site locally via `python -m http.server 8000`
-2. Complete manual keyboard-only checklist (Tab, Shift+Tab, Enter, Space)
-3. Run Chrome Lighthouse → Accessibility category
-4. Run axe DevTools full-page scan
-5. Test print preview (Ctrl+P) — confirm cards, links, and disclaimers print correctly
-6. Test at 320px, 768px, and 1280px viewport widths
-7. Test light/dark mode using the header toggle
-8. Check browser console for errors on load and interaction
-9. Record Lighthouse and axe results in `accessibility-test-report.md`
-
----
-
-## Responsible Signposting & Non-Medical Wording
-
-HealthLens **signposts to** official support resources. It does not provide counselling, diagnosis, emergency response, or medical advice, and it is **not affiliated** with Bristol SU, the University of Bristol, the NHS or Samaritans.
-
-| Organisation | Resources signposted on this site |
-|--------------|-----------------------------------|
-| **Bristol SU** | Academic advice, health & welfare, housing advice, groups, volunteering |
-| **University of Bristol** | Academic advice, wellbeing appointments, money advice, international support, disability support |
-| **NHS** | Urgent mental health help |
-| **Samaritans** | Confidential listening support |
+Categories: Academic, Physical Wellbeing, Mental Wellbeing, Housing, Money, International Life, Community, Urgent Help.
 
 ---
 
 ## How to Run Locally
 
-A local server is required so `fetch()` can load `data/resources.json`. **Do not** rely on double-clicking `index.html`.
+A local server is required so `fetch()` can load JSON files.
 
 ```bash
 git clone https://github.com/Li2043/HealthLens-Web.git
@@ -190,15 +125,13 @@ python -m http.server 8000
 Visit `http://localhost:8000`
 
 **Verify:**
-- 12 support cards load from JSON
-- 4 care option cards load from `data/care-options.json`
-- Care Options nav link scrolls to `#care-options`
-- Search: `housing`, `money`, `urgent`
-- All category filters work
-- FAQ keyboard interaction
-- Form validation
-- Print preview (Ctrl+P)
-- Browser console has no errors
+- Hero shows International Student Wellbeing Navigator positioning
+- 12 support cards load with source labels
+- Category filters use updated labels
+- Source Policy section reachable from hero CTA
+- Care Options Guide loads (secondary section)
+- Print preview, dark mode, FAQ and form validation still work
+- No console errors
 
 ---
 
@@ -207,9 +140,7 @@ Visit `http://localhost:8000`
 1. Push to GitHub repository `main` branch
 2. **Settings → Pages** → Deploy from branch `main` → `/ (root)`
 3. Live URL: `https://li2043.github.io/HealthLens-Web/`
-4. Confirm `data/resources.json` and `data/care-options.json` are included in the repository
-
-All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`, `./data/care-options.json`).
+4. Confirm `data/resources.json` and `data/care-options.json` are in the repository
 
 ---
 
@@ -217,21 +148,10 @@ All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`, 
 
 - **Demo form** — no data is sent or stored
 - **Local server required** for JSON loading during development
-- **Manual a11y testing** — Lighthouse/axe scores should be added to test report before submission
-- **Theme preference** — saved in browser `localStorage`; first visit follows system setting if none saved
+- **Portfolio project** — not affiliated with Bristol SU, UoB, NHS, GOV.UK or Samaritans
+- **Care Options Guide** — service navigation only; not diagnostic or emergency support
 - **English only** — no localisation
-- **Link maintenance** — official URLs should be reviewed periodically in both JSON files
-- **Care Options Guide** — service navigation only; not a medical device, not diagnostic, not emergency support
-- **Not affiliated** — portfolio project only; not an official university or SU website
-
----
-
-## Future Improvements
-
-- Add Lighthouse and axe scores to CI or pre-deploy checklist
-- Screen reader testing with NVDA / VoiceOver
-- Scheduled content review workflow for `data/resources.json` and `data/care-options.json`
-- Portfolio screenshots in `assets/screenshots/`
+- **Link maintenance** — review official URLs in JSON files periodically
 
 ---
 
@@ -250,15 +170,23 @@ healthlens/
 │   ├── resources.json
 │   └── care-options.json
 └── assets/
-    └── favicon.svg
+    ├── favicon.svg
+    └── tips/
 ```
+
+---
+
+## Testing documentation
+
+- [`accessibility-checklist.md`](accessibility-checklist.md) — pre-release checklist
+- [`accessibility-test-report.md`](accessibility-test-report.md) — manual test record with content clarity review
 
 ---
 
 ## Licence & Disclaimer
 
-This is a portfolio demo project. Content is for illustration only and does not constitute medical or professional advice. Always use official university and NHS services for health and wellbeing concerns.
+This is a portfolio demo project. Content is for illustration only and does not constitute professional advice. Always use official university, NHS and expert services for wellbeing, housing, money and urgent concerns.
 
 ---
 
-*Built as Version 0.6 for a Web & Digital Content Coordinator application.*
+*Built as Version 0.7 for a Web & Digital Content Coordinator application.*

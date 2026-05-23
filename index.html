@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HealthLens helps university students find wellbeing and support resources quickly. Search, filter, and explore student support options — not medical advice.">
-  <title>HealthLens — Student Wellbeing &amp; Support Hub</title>
+  <meta name="description" content="HealthLens is a student project that helps international students in the UK navigate official and expert resources for studying, wellbeing, housing, money, community and urgent help.">
+  <title>HealthLens — International Student Wellbeing Navigator</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <script>
@@ -38,7 +38,8 @@
         <ul class="nav-list">
           <li><a href="#support-finder">Support Finder</a></li>
           <li><a href="#care-options">Care Options</a></li>
-          <li><a href="#wellbeing-tips">Wellbeing Tips</a></li>
+          <li><a href="#wellbeing-guides">Wellbeing Guides</a></li>
+          <li><a href="#source-policy">Source Policy</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -84,46 +85,37 @@
     <section id="hero" class="hero" aria-labelledby="hero-heading">
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="hero-eyebrow">Student Wellbeing &amp; Support Hub</p>
-          <h1 id="hero-heading">Find the right wellbeing support, faster</h1>
+          <p class="hero-eyebrow">International Student Wellbeing Navigator</p>
+          <h1 id="hero-heading">Find trusted support for student life in the UK</h1>
           <p class="hero-lead">
-            HealthLens helps university students search and filter wellbeing and support resources in one place.
-            Each card links to an official Bristol SU, University of Bristol, NHS or Samaritans page.
+            HealthLens helps international students navigate official and expert resources for studying, wellbeing, housing, money, community and urgent help.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#support-finder">Explore Support Finder</a>
-            <a class="btn btn-secondary" href="#urgent-help">Urgent help information</a>
+            <a class="btn btn-primary" href="#support-finder">Explore support resources</a>
+            <a class="btn btn-secondary" href="#source-policy">Read source policy</a>
           </div>
           <p class="disclaimer" role="note">
-            <strong>Please note:</strong> This site is a student project and does not provide medical advice.
+            <strong>Please note:</strong> This is a student project designed to practise accessible digital content and responsible signposting.
+            It does not provide medical, legal, financial, immigration or emergency advice.
           </p>
         </div>
 
-        <aside class="hero-panel" aria-labelledby="how-it-works-heading">
-          <h2 id="how-it-works-heading" class="hero-panel__title">How it works</h2>
-          <ol class="hero-steps">
-            <li class="hero-step">
-              <span class="hero-step__number" aria-hidden="true">1</span>
-              <div>
-                <strong>Search or browse</strong>
-                <p>Use keywords or category filters to narrow down support resources.</p>
-              </div>
-            </li>
-            <li class="hero-step">
-              <span class="hero-step__number" aria-hidden="true">2</span>
-              <div>
-                <strong>Check urgency</strong>
-                <p>Each card shows Low, Medium, or High urgency so you can prioritise your next move.</p>
-              </div>
-            </li>
-            <li class="hero-step">
-              <span class="hero-step__number" aria-hidden="true">3</span>
-              <div>
-                <strong>Take a suggested step</strong>
-                <p>Follow the suggested next step and use trusted university or NHS services when needed.</p>
-              </div>
-            </li>
-          </ol>
+        <aside class="hero-panel" aria-labelledby="what-helps-heading">
+          <h2 id="what-helps-heading" class="hero-panel__title">What this site helps with</h2>
+          <div class="help-cards">
+            <div class="help-card">
+              <h3 class="help-card__title">Find the right topic</h3>
+              <p>Browse support areas such as academic pressure, physical wellbeing, mental wellbeing, housing, money, international life, community and urgent help.</p>
+            </div>
+            <div class="help-card">
+              <h3 class="help-card__title">Understand the next step</h3>
+              <p>Each resource includes a plain-English summary, a suggested next step and a link to an official or expert source.</p>
+            </div>
+            <div class="help-card">
+              <h3 class="help-card__title">Use trusted sources</h3>
+              <p>HealthLens prioritises official and expert sources, such as universities, student unions, NHS, GOV.UK, UKCISA, Citizens Advice, Shelter and MoneyHelper.</p>
+            </div>
+          </div>
         </aside>
       </div>
     </section>
@@ -142,7 +134,7 @@
             For urgent mental health support in the UK, contact <strong>NHS 111</strong> or visit your nearest A&amp;E.
           </p>
         </div>
-        <a class="btn btn-crisis" href="#resource-grid" data-category-jump="urgent">View urgent resources</a>
+        <a class="btn btn-crisis" href="#resource-grid" data-category-jump="urgent-help">View urgent resources</a>
       </div>
     </aside>
 
@@ -150,9 +142,9 @@
       <div class="container">
         <header class="section-header">
           <p class="section-eyebrow">Support Finder</p>
-          <h2 id="support-finder-heading">Browse student support resources</h2>
+          <h2 id="support-finder-heading">Find trusted support resources</h2>
           <p class="section-intro">
-            Use search and category filters to find resources that fit your situation.
+            Search and filter by topic to find official and expert resources with plain-English summaries, source labels and suggested next steps.
           </p>
           <p class="content-meta">Content last reviewed: May 2026.</p>
         </header>
@@ -165,7 +157,7 @@
               id="resource-search"
               name="resource-search"
               autocomplete="off"
-              placeholder="e.g. stress, housing, money, urgent"
+              placeholder="e.g. academic, housing, money, international, urgent"
             >
           </div>
 
@@ -174,12 +166,13 @@
             <div class="filter-buttons" role="group" aria-label="Category filters">
               <button type="button" class="filter-btn is-active" data-category="all" aria-pressed="true">All</button>
               <button type="button" class="filter-btn" data-category="academic" aria-pressed="false">Academic</button>
-              <button type="button" class="filter-btn" data-category="wellbeing" aria-pressed="false">Wellbeing</button>
+              <button type="button" class="filter-btn" data-category="physical-wellbeing" aria-pressed="false">Physical Wellbeing</button>
+              <button type="button" class="filter-btn" data-category="mental-wellbeing" aria-pressed="false">Mental Wellbeing</button>
               <button type="button" class="filter-btn" data-category="housing" aria-pressed="false">Housing</button>
-              <button type="button" class="filter-btn" data-category="finance" aria-pressed="false">Finance</button>
-              <button type="button" class="filter-btn" data-category="international" aria-pressed="false">International</button>
+              <button type="button" class="filter-btn" data-category="money" aria-pressed="false">Money</button>
+              <button type="button" class="filter-btn" data-category="international-life" aria-pressed="false">International Life</button>
               <button type="button" class="filter-btn" data-category="community" aria-pressed="false">Community</button>
-              <button type="button" class="filter-btn" data-category="urgent" aria-pressed="false">Urgent</button>
+              <button type="button" class="filter-btn" data-category="urgent-help" aria-pressed="false">Urgent Help</button>
             </div>
           </fieldset>
         </div>
@@ -192,7 +185,9 @@
         </div>
 
         <p class="support-note support-note--urgent" role="note">
-          <strong>Please note:</strong> This student project links to official support services. It does not provide medical advice. If you or someone else is in immediate danger, call 999 or go to A&amp;E.
+          <strong>Please note:</strong> This student project signposts to official and expert services.
+          It does not provide medical, legal, financial, immigration or emergency advice.
+          If you or someone else is in immediate danger, call 999 or go to A&amp;E.
         </p>
 
         <p id="no-results" class="no-results" hidden>
@@ -201,21 +196,20 @@
       </div>
     </section>
 
-    <section id="care-options" class="section care-options-section" aria-labelledby="care-options-heading">
+    <section id="care-options" class="section care-options-section care-options-section--secondary" aria-labelledby="care-options-heading">
       <div class="container">
         <header class="section-header">
-          <p class="section-eyebrow">Care options</p>
-          <h2 id="care-options-heading">Not sure which service might be appropriate?</h2>
+          <p class="section-eyebrow">Secondary guide</p>
+          <h2 id="care-options-heading">Care Options Guide</h2>
           <p class="section-intro">
-            This guide explains common UK healthcare support routes and links to official information.
-            It does not assess symptoms or decide where you should go. If you are unsure, use NHS 111.
-            If you or someone else is in immediate danger, call 999 or go to A&amp;E.
+            The Care Options Guide explains common UK healthcare support routes. It does not assess symptoms or decide where you should go.
+            If you are unsure and need medical help now, use NHS 111. If you or someone else is in immediate danger, call 999 or go to A&amp;E.
           </p>
         </header>
 
         <p class="care-options-disclaimer" role="note">
           <strong>Please note:</strong> This student project signposts to official services.
-          It does not provide medical advice, diagnosis, treatment recommendations, emergency response, or symptom assessment.
+          It does not provide medical advice, emergency response, or symptom assessment.
         </p>
 
         <p id="care-options-error" class="error-message" role="alert" hidden></p>
@@ -259,13 +253,13 @@
       </div>
     </section>
 
-    <section id="wellbeing-tips" class="section section--alt wellbeing-tips" aria-labelledby="wellbeing-tips-heading">
+    <section id="wellbeing-guides" class="section section--alt wellbeing-guides" aria-labelledby="wellbeing-guides-heading">
       <div class="container">
         <header class="section-header">
-          <p class="section-eyebrow">Everyday wellbeing</p>
-          <h2 id="wellbeing-tips-heading">Wellbeing Tips</h2>
+          <p class="section-eyebrow">Everyday student life</p>
+          <h2 id="wellbeing-guides-heading">Wellbeing Guides</h2>
           <p class="section-intro">
-            Simple, non-medical ideas for self-reflection and everyday student wellbeing.
+            Short practical guides for everyday student life in the UK. These guides summarise official and expert advice and link to the original sources.
           </p>
         </header>
 
@@ -273,36 +267,68 @@
           <li class="tip-card">
             <img class="tip-card__image" src="./assets/tips/tip-patterns.svg" alt="" width="64" height="64">
             <span class="tip-card__number" aria-hidden="true">01</span>
-            <h3>Track patterns, not perfection</h3>
-            <p>Notice what affects your mood or energy over time. Small patterns can help you plan rest, study, and social time more realistically.</p>
-            <a class="tip-card__link" href="https://www.nhs.uk/mental-health/self-help/" target="_blank" rel="noopener noreferrer">Read NHS self-help guidance</a>
+            <h3>Looking after yourself during the UK winter</h3>
+            <p>Shorter days and colder weather can affect energy and routine. Official guidance can help you plan rest, warmth and everyday self-care during winter term.</p>
+            <a class="tip-card__link" href="https://www.nhs.uk/live-well/seasonal-health/" target="_blank" rel="noopener noreferrer">Read NHS seasonal wellbeing guidance</a>
           </li>
           <li class="tip-card">
             <img class="tip-card__image" src="./assets/tips/tip-help.svg" alt="" width="64" height="64">
             <span class="tip-card__number" aria-hidden="true">02</span>
-            <h3>Ask for help early</h3>
-            <p>You do not need to wait until things feel overwhelming. Student support services exist for everyday concerns as well as urgent situations.</p>
-            <a class="tip-card__link" href="https://www.bristol.ac.uk/students/support/managing-student-life/wellbeing-services/" target="_blank" rel="noopener noreferrer">View University wellbeing services</a>
+            <h3>Understanding vitamin D guidance</h3>
+            <p>UK guidance explains when vitamin D may be relevant in winter and where to find reliable information — without replacing advice from a healthcare professional.</p>
+            <a class="tip-card__link" href="https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-d/" target="_blank" rel="noopener noreferrer">Read NHS vitamin D guidance</a>
           </li>
           <li class="tip-card">
             <img class="tip-card__image" src="./assets/tips/tip-steps.svg" alt="" width="64" height="64">
             <span class="tip-card__number" aria-hidden="true">03</span>
-            <h3>Break tasks into smaller steps</h3>
-            <p>Large deadlines and life admin feel more manageable when you split them into clear, achievable actions with short breaks in between.</p>
+            <h3>Managing stress and sleep</h3>
+            <p>Study pressure and life admin can affect sleep and stress levels. Official self-help resources may support everyday planning and rest — not emergency care.</p>
             <a class="tip-card__link" href="https://www.nhs.uk/mental-health/advice-for-life-situations/student-stress-self-help-tips/" target="_blank" rel="noopener noreferrer">Read NHS student stress tips</a>
           </li>
           <li class="tip-card">
             <img class="tip-card__image" src="./assets/tips/tip-trusted.svg" alt="" width="64" height="64">
             <span class="tip-card__number" aria-hidden="true">04</span>
-            <h3>Use trusted resources for serious concerns</h3>
-            <p>For ongoing or serious wellbeing concerns, speak to your university support team or trusted NHS resources rather than relying on general online content.</p>
-            <a class="tip-card__link" href="https://www.nhs.uk/mental-health/" target="_blank" rel="noopener noreferrer">Browse NHS mental health resources</a>
+            <h3>Building community and belonging</h3>
+            <p>Connecting with societies, volunteering and student networks can support everyday wellbeing and a sense of belonging at university.</p>
+            <a class="tip-card__link" href="https://www.bristolsu.org.uk/groups" target="_blank" rel="noopener noreferrer">Browse Bristol SU groups</a>
+          </li>
+          <li class="tip-card">
+            <img class="tip-card__image" src="./assets/tips/tip-help.svg" alt="" width="64" height="64">
+            <span class="tip-card__number" aria-hidden="true">05</span>
+            <h3>Knowing when to seek urgent support</h3>
+            <p>It helps to know the difference between everyday concerns, urgent support and emergencies. Official NHS guidance explains when to use 111 or 999.</p>
+            <a class="tip-card__link" href="https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/" target="_blank" rel="noopener noreferrer">Read NHS urgent and emergency care guidance</a>
           </li>
         </ul>
       </div>
     </section>
 
-    <section id="faq" class="section faq" aria-labelledby="faq-heading">
+    <section id="source-policy" class="section source-policy" aria-labelledby="source-policy-heading">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <p class="section-eyebrow">How we choose sources</p>
+          <h2 id="source-policy-heading">Source policy</h2>
+          <p class="section-intro">
+            HealthLens prioritises official and expert sources. Official sources include NHS, GOV.UK, universities and students' unions.
+            Expert sources include organisations that specialise in student, housing, money, wellbeing or international student advice.
+            Each resource is summarised in plain English to help students understand what it is useful for.
+          </p>
+        </header>
+
+        <ul class="source-policy-list">
+          <li><strong>Official sources:</strong> rules, services and urgent support</li>
+          <li><strong>Expert sources:</strong> practical explanations and specialist guidance</li>
+          <li><strong>Student-facing resources:</strong> context for university life</li>
+          <li><strong>User responsibility:</strong> always check the original source for the latest information</li>
+        </ul>
+
+        <p class="source-policy-disclaimer" role="note">
+          HealthLens is a student project. It does not replace professional medical, legal, financial, immigration or emergency advice.
+        </p>
+      </div>
+    </section>
+
+    <section id="faq" class="section section--alt faq" aria-labelledby="faq-heading">
       <div class="container container--narrow">
         <header class="section-header section-header--center">
           <p class="section-eyebrow">Common questions</p>
@@ -314,14 +340,13 @@
           <div class="accordion-item">
             <h3>
               <button type="button" class="accordion-trigger" id="faq-trigger-1" aria-expanded="false" aria-controls="faq-panel-1">
-                Is this medical advice?
+                Is HealthLens a medical advice website?
               </button>
             </h3>
             <div id="faq-panel-1" class="accordion-panel" role="region" aria-labelledby="faq-trigger-1" hidden>
               <p>
-                No. HealthLens is a student project designed to help you discover wellbeing and support resources.
-                It does not diagnose conditions, predict health outcomes, or recommend treatments.
-                Always seek professional support for medical or mental health concerns.
+                No. HealthLens is a student project that signposts to official and expert resources.
+                It does not provide diagnosis, treatment recommendations, symptom assessment or emergency response.
               </p>
             </div>
           </div>
@@ -329,14 +354,12 @@
           <div class="accordion-item">
             <h3>
               <button type="button" class="accordion-trigger" id="faq-trigger-2" aria-expanded="false" aria-controls="faq-panel-2">
-                What should I do in an emergency?
+                Who is HealthLens for?
               </button>
             </h3>
             <div id="faq-panel-2" class="accordion-panel" role="region" aria-labelledby="faq-trigger-2" hidden>
               <p>
-                If you or someone else is in immediate danger, call 999. For urgent mental health support in the UK,
-                you can contact NHS 111 or visit your nearest A&amp;E. Your university may also offer an out-of-hours
-                wellbeing helpline — check their official website for current contact details.
+                It is designed for international students in the UK who want a clearer way to find support across study, wellbeing, housing, money, community and everyday life.
               </p>
             </div>
           </div>
@@ -344,14 +367,13 @@
           <div class="accordion-item">
             <h3>
               <button type="button" class="accordion-trigger" id="faq-trigger-3" aria-expanded="false" aria-controls="faq-panel-3">
-                How should I choose the right support?
+                Why not just use Google?
               </button>
             </h3>
             <div id="faq-panel-3" class="accordion-panel" role="region" aria-labelledby="faq-trigger-3" hidden>
               <p>
-                Start with the urgency level on each card. Low urgency items may suit self-guided resources or peer groups.
-                Medium urgency may benefit from speaking to a tutor, adviser, or wellbeing team. High urgency cards point
-                toward immediate or specialist support. When unsure, contact your student services hub for guidance.
+                Search engines return many results but do not always explain which sources are official, expert, student-facing or relevant to a specific situation.
+                HealthLens organises resources by topic, audience and next step.
               </p>
             </div>
           </div>
@@ -359,14 +381,26 @@
           <div class="accordion-item">
             <h3>
               <button type="button" class="accordion-trigger" id="faq-trigger-4" aria-expanded="false" aria-controls="faq-panel-4">
-                Why is accessibility important for student support pages?
+                How should I use the links?
               </button>
             </h3>
             <div id="faq-panel-4" class="accordion-panel" role="region" aria-labelledby="faq-trigger-4" hidden>
               <p>
-                Students access support in many contexts — on phones between lectures, with screen readers, or under stress
-                when clarity matters most. Accessible design ensures everyone can find help quickly, understand content,
-                and use forms and navigation without unnecessary barriers.
+                Use HealthLens as a starting point. Always check the original source for the latest information, eligibility rules, opening hours and contact details.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button type="button" class="accordion-trigger" id="faq-trigger-5" aria-expanded="false" aria-controls="faq-panel-5">
+                What should I do in an emergency?
+              </button>
+            </h3>
+            <div id="faq-panel-5" class="accordion-panel" role="region" aria-labelledby="faq-trigger-5" hidden>
+              <p>
+                If you or someone else is in immediate danger, call 999. For urgent support that is not life-threatening, contact NHS 111 or visit your nearest A&amp;E.
+                Your university may also offer an out-of-hours wellbeing helpline — check their official website for current contact details.
               </p>
             </div>
           </div>
@@ -418,7 +452,7 @@
 
             <div class="form-field form-field--checkbox">
               <input type="checkbox" id="contact-consent" name="consent" required>
-              <label for="contact-consent">I understand this demo does not provide medical advice.</label>
+              <label for="contact-consent">I understand this demo provides signposting only and does not provide professional advice.</label>
               <span class="field-error" id="contact-consent-error" role="alert"></span>
             </div>
 
@@ -437,7 +471,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <p class="footer-logo">HealthLens</p>
-        <p class="footer-tagline">Student Wellbeing &amp; Support Hub — a portfolio demo project.</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
       </div>
 
       <nav class="footer-nav" aria-label="Footer navigation">
@@ -445,21 +479,23 @@
         <ul>
           <li><a href="#support-finder">Support Finder</a></li>
           <li><a href="#care-options">Care Options</a></li>
-          <li><a href="#wellbeing-tips">Wellbeing Tips</a></li>
+          <li><a href="#wellbeing-guides">Wellbeing Guides</a></li>
+          <li><a href="#source-policy">Source Policy</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
       <div class="footer-meta">
-        <p class="footer-disclaimer"><strong>Not medical advice.</strong> For emergencies, call 999.</p>
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
         <p class="footer-copy">&copy; 2026 HealthLens</p>
       </div>
     </div>
 
     <div class="container">
       <p class="site-footnote" role="note">
-        HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS or Samaritans. It links to official support resources only.
+        HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans.
+        It signposts to official and expert support resources only.
       </p>
     </div>
   </footer>

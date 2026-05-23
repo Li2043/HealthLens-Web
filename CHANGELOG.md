@@ -4,6 +4,26 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [0.7] — May 2026
+
+### Changed — Positioning cleanup
+- Reframed the project as an **International Student Wellbeing Navigator**
+- Updated hero copy, site tagline, meta title and meta description
+- Rewrote “How it works” as **What this site helps with** (three help cards)
+- Updated Support Finder categories: Academic, Physical/Mental Wellbeing, Housing, Money, International Life, Community, Urgent Help
+- Added **source quality labels** to `data/resources.json` (`sourceType`, `audience`, `lastChecked`) and rendered on resource cards
+- Added **Source Policy** section (`#source-policy`) with hero CTA link
+- Renamed Wellbeing Tips → **Wellbeing Guides** with reframed guide topics
+- Updated Care Options Guide as secondary section with safer introductory wording
+- Rewrote FAQ for international student audience and signposting clarity
+- Updated README, accessibility documentation, footer and disclaimers
+
+### Clarified
+- HealthLens provides responsible signposting — not medical, legal, financial or immigration advice
+- Not a symptom checker, triage tool or emergency response service
+
+---
+
 ## [0.6] — May 2026
 
 ### Added
@@ -84,6 +104,7 @@ All notable changes to HealthLens are documented in this file.
 | **0.2** | Visual upgrade, official support links, responsible signposting |
 | **0.5** | Print CSS, system dark mode, accessibility testing record |
 | **0.6** | Care Options Guide — safe service navigation with `data/care-options.json` |
+| **0.7** | Positioning cleanup — International Student Wellbeing Navigator |
 
 ---
 

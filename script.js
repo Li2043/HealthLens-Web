@@ -1,6 +1,6 @@
 /**
- * HealthLens — Student Wellbeing & Support Hub
- * Version 0.6 — static HTML, CSS and JavaScript
+ * HealthLens — International Student Wellbeing Navigator
+ * Version 0.7 — static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
@@ -8,22 +8,24 @@ const CARE_OPTIONS_URL = "./data/care-options.json";
 
 const categoryLabels = {
   academic: "Academic",
-  wellbeing: "Wellbeing",
+  "physical-wellbeing": "Physical Wellbeing",
+  "mental-wellbeing": "Mental Wellbeing",
   housing: "Housing",
-  finance: "Finance",
-  international: "International",
+  money: "Money",
+  "international-life": "International Life",
   community: "Community",
-  urgent: "Urgent"
+  "urgent-help": "Urgent Help"
 };
 
 const categoryIcons = {
   academic: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" stroke="currentColor" stroke-width="2"/></svg>`,
-  wellbeing: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" stroke="currentColor" stroke-width="2"/></svg>`,
+  "physical-wellbeing": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  "mental-wellbeing": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" stroke="currentColor" stroke-width="2"/></svg>`,
   housing: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="2"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2"/></svg>`,
-  finance: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg>`,
-  international: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" stroke="currentColor" stroke-width="2"/></svg>`,
+  money: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg>`,
+  "international-life": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" stroke="currentColor" stroke-width="2"/></svg>`,
   community: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/></svg>`,
-  urgent: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`
+  "urgent-help": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`
 };
 
 const resourceGrid = document.getElementById("resource-grid");
@@ -249,6 +251,12 @@ function createResourceCard(resource) {
   const article = document.createElement("article");
   const isUrgent = resource.urgency.toLowerCase() === "high";
   const linkAriaLabel = `${resource.linkText} (${resource.sourceLabel}, opens official page in new tab)`;
+  const sourceType = resource.sourceType || "Official source";
+  const audience = resource.audience || "All students";
+  const sourceTypeClass = sourceType.toLowerCase().replace(/\s+/g, "-");
+  const lastChecked = resource.lastChecked
+    ? `<span class="resource-card__checked">Last checked: ${escapeHtml(resource.lastChecked)}</span>`
+    : "";
 
   article.className = isUrgent
     ? "resource-card resource-card--urgent"
@@ -263,6 +271,11 @@ function createResourceCard(resource) {
     </div>
     <h3 class="resource-card__title">${escapeHtml(resource.title)}</h3>
     <p class="resource-card__description">${escapeHtml(resource.description)}</p>
+    <div class="resource-card__labels">
+      <span class="source-type-label source-type-label--${sourceTypeClass}">${escapeHtml(sourceType)}</span>
+      <span class="audience-label">${escapeHtml(audience)}</span>
+      ${lastChecked}
+    </div>
     <span class="urgency-badge ${getUrgencyClass(resource.urgency)}" aria-label="Urgency level: ${resource.urgency}">
       ${escapeHtml(resource.urgency)} urgency
     </span>
@@ -271,7 +284,7 @@ function createResourceCard(resource) {
       ${escapeHtml(resource.nextStep)}
     </div>
     <div class="resource-card__source">
-      <strong>Official source</strong>
+      <strong>${escapeHtml(sourceType)}</strong>
       <p>${escapeHtml(resource.sourceLabel)}</p>
     </div>
     <a
@@ -326,7 +339,9 @@ function resourceMatchesFilter(resource) {
     resource.urgency,
     resource.nextStep,
     resource.sourceLabel,
-    resource.linkText
+    resource.linkText,
+    resource.sourceType,
+    resource.audience
   ]
     .join(" ")
     .toLowerCase();
@@ -542,7 +557,7 @@ const formFields = {
     error: document.getElementById("contact-consent-error"),
     validate: (checked) => {
       if (!checked) {
-        return "You must confirm that you understand this demo does not provide medical advice.";
+        return "You must confirm that you understand this demo provides signposting only and does not provide professional advice.";
       }
       return "";
     }

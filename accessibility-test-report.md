@@ -1,7 +1,7 @@
 # HealthLens Accessibility Test Report
 
-**Project:** HealthLens — Student Wellbeing & Support Hub  
-**Version tested:** 0.6  
+**Project:** HealthLens — International Student Wellbeing Navigator  
+**Version tested:** 0.7  
 **Report date:** May 2026  
 **Tester:** Project author (manual review)
 
@@ -71,7 +71,7 @@ Test using **Tab**, **Shift+Tab**, **Enter**, and **Space** only (no mouse).
 | Test | Pass? | Notes |
 |------|-------|-------|
 | Skip link appears on focus and jumps to main content | ✅ | `#main-content` target |
-| Header navigation links reachable | ✅ | Support Finder, Care Options, Wellbeing Tips, FAQ, Contact |
+| Header navigation links reachable | ✅ | Support Finder, Care Options, Wellbeing Guides, Source Policy, FAQ, Contact |
 | Care Options nav link scrolls to section | ✅ | `#care-options` target; header offset applied |
 | Theme toggle reachable and usable | ✅ | `aria-pressed` updates; preference saved in `localStorage` |
 | Mobile nav toggle reachable (at mobile width) | ✅ | `aria-expanded` updates |
@@ -123,6 +123,23 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 
 ---
 
+---
+
+## Content Clarity Review (V0.7)
+
+| Check | Pass? | Notes |
+|-------|-------|-------|
+| Site purpose is clear from the hero section | ✅ | International Student Wellbeing Navigator tagline and subheading |
+| Target audience is clear | ✅ | International students in the UK |
+| Source policy is easy to find | ✅ | Hero CTA links to `#source-policy`; also in header nav |
+| Disclaimers are visible but not overwhelming | ✅ | Hero note, Support Finder note, Source Policy, footer |
+| Link text remains descriptive | ✅ | Specific link labels on cards and guides |
+| Categories are understandable | ✅ | Updated topic labels in filters and resource cards |
+| No wording implies diagnosis, treatment or professional advice | ✅ | Signposting language; FAQ clarifies limits |
+| Site not positioned as medical advice or triage | ✅ | Care Options secondary; no symptom input |
+
+---
+
 ## Care Options Guide Tests (V0.6)
 
 | Test | Pass? | Notes |
@@ -138,6 +155,17 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 | Print output includes Care Options | ✅ | Cards, disclaimer, Pharmacy First panel, URLs |
 | No “triage” or “symptom checker” in UI | ✅ | Service navigation wording only |
 | Console free of load errors | ✅ | When served via HTTP |
+
+---
+
+## Fixes Made (V0.7)
+
+| Fix | Description |
+|-----|-------------|
+| **Positioning cleanup** | Reframed site as International Student Wellbeing Navigator across hero, metadata, README and FAQ |
+| **Source Policy** | Added accessible section explaining official, expert and student-facing sources |
+| **Category labels** | Updated filters and JSON categories for international student topics |
+| **Source quality labels** | Added `sourceType`, `audience`, `lastChecked` to resource cards |
 
 ---
 
