@@ -37,6 +37,7 @@
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="#support-finder">Support Finder</a></li>
+          <li><a href="#care-options">Care Options</a></li>
           <li><a href="#wellbeing-tips">Wellbeing Tips</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -200,7 +201,65 @@
       </div>
     </section>
 
-    <section id="wellbeing-tips" class="section wellbeing-tips" aria-labelledby="wellbeing-tips-heading">
+    <section id="care-options" class="section care-options-section" aria-labelledby="care-options-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Care options</p>
+          <h2 id="care-options-heading">Not sure which service might be appropriate?</h2>
+          <p class="section-intro">
+            This guide explains common UK healthcare support routes and links to official information.
+            It does not assess symptoms or decide where you should go. If you are unsure, use NHS 111.
+            If you or someone else is in immediate danger, call 999 or go to A&amp;E.
+          </p>
+        </header>
+
+        <p class="care-options-disclaimer" role="note">
+          <strong>Please note:</strong> This student project signposts to official services.
+          It does not provide medical advice, diagnosis, treatment recommendations, emergency response, or symptom assessment.
+        </p>
+
+        <p id="care-options-error" class="error-message" role="alert" hidden></p>
+
+        <div id="care-options-list" class="care-options-grid" aria-live="polite" aria-atomic="true">
+          <!-- Care option cards rendered by script.js -->
+        </div>
+
+        <aside class="pharmacy-first-panel" aria-labelledby="pharmacy-first-heading">
+          <h3 id="pharmacy-first-heading">Pharmacy First: common conditions</h3>
+          <p>
+            NHS Pharmacy First may allow pharmacists to support some common conditions where clinically appropriate.
+            Suitability can depend on age, symptoms and clinical judgement. A pharmacist can advise, treat where appropriate,
+            or refer to a GP or another healthcare professional.
+          </p>
+          <ul class="pharmacy-first-list">
+            <li>impetigo</li>
+            <li>infected insect bites</li>
+            <li>earache</li>
+            <li>sore throat</li>
+            <li>sinusitis</li>
+            <li>urinary tract infections</li>
+            <li>shingles</li>
+          </ul>
+          <p class="pharmacy-first-note" role="note">
+            This list is for signposting only. It does not mean a pharmacy is always the right option.
+            If you are unsure, use NHS 111 or contact a healthcare professional.
+          </p>
+          <a
+            class="care-option-card__link pharmacy-first-link"
+            href="https://www.nhs.uk/nhs-services/pharmacies/how-pharmacies-can-help/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Read NHS pharmacy guidance (NHS: How pharmacies can help), opens in a new tab"
+          >
+            <span>Read NHS pharmacy guidance</span>
+            <span class="care-option-card__link-icon" aria-hidden="true">↗</span>
+            <span class="care-option-card__link-note">Opens official page in new tab</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="wellbeing-tips" class="section section--alt wellbeing-tips" aria-labelledby="wellbeing-tips-heading">
       <div class="container">
         <header class="section-header">
           <p class="section-eyebrow">Everyday wellbeing</p>
@@ -243,7 +302,7 @@
       </div>
     </section>
 
-    <section id="faq" class="section section--alt faq" aria-labelledby="faq-heading">
+    <section id="faq" class="section faq" aria-labelledby="faq-heading">
       <div class="container container--narrow">
         <header class="section-header section-header--center">
           <p class="section-eyebrow">Common questions</p>
@@ -385,6 +444,7 @@
         <p class="footer-nav__title">On this page</p>
         <ul>
           <li><a href="#support-finder">Support Finder</a></li>
+          <li><a href="#care-options">Care Options</a></li>
           <li><a href="#wellbeing-tips">Wellbeing Tips</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>

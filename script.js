@@ -1,9 +1,10 @@
 /**
  * HealthLens — Student Wellbeing & Support Hub
- * Version 0.5 — static HTML, CSS and JavaScript
+ * Version 0.6 — static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
+const CARE_OPTIONS_URL = "./data/care-options.json";
 
 const categoryLabels = {
   academic: "Academic",
@@ -38,6 +39,8 @@ const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.getElementById("site-nav");
 const crisisJumpLink = document.querySelector("[data-category-jump]");
 const themeToggle = document.getElementById("theme-toggle");
+const careOptionsList = document.getElementById("care-options-list");
+const careOptionsError = document.getElementById("care-options-error");
 
 const THEME_STORAGE_KEY = "healthlens-theme";
 
@@ -89,6 +92,10 @@ let loadFailed = false;
 let activeCategory = "all";
 let searchQuery = "";
 
+let careOptions = [];
+let careOptionsLoaded = false;
+let careOptionsLoadFailed = false;
+
 function getCategoryLabel(category) {
   return categoryLabels[category] || category;
 }
@@ -106,6 +113,128 @@ function getUrgencyClass(urgency) {
 
 function getCategoryIcon(category) {
   return categoryIcons[category] || categoryIcons.community;
+}
+
+function renderListItems(items) {
+  return items
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("");
+}
+
+function createCareOptionCard(option) {
+  const article = document.createElement("article");
+  const isEmergency = option.id === "emergency";
+  const linkAriaLabel = `${option.linkText} (${option.sourceLabel}, opens official page in new tab)`;
+
+  article.className = isEmergency
+    ? "care-option-card care-option-card--emergency"
+    : "care-option-card";
+  article.dataset.id = option.id;
+
+  article.innerHTML = `
+    <span class="care-option-card__category">${escapeHtml(option.category)}</span>
+    <h3 class="care-option-card__title">${escapeHtml(option.title)}</h3>
+    <p class="care-option-card__summary">${escapeHtml(option.summary)}</p>
+    <div class="care-option-card__lists">
+      <div class="care-option-card__list-block">
+        <strong>Suitable for</strong>
+        <ul>${renderListItems(option.suitableFor)}</ul>
+      </div>
+      <div class="care-option-card__list-block care-option-card__list-block--not">
+        <strong>Not suitable for</strong>
+        <ul>${renderListItems(option.notSuitableFor)}</ul>
+      </div>
+    </div>
+    <p class="care-option-card__safety" role="note">
+      <strong>Safety note:</strong> ${escapeHtml(option.safetyNote)}
+    </p>
+    <a
+      class="care-option-card__link"
+      href="${escapeHtml(option.sourceUrl)}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="${escapeHtml(linkAriaLabel)}"
+    >
+      <span>${escapeHtml(option.linkText)}</span>
+      <span class="care-option-card__link-icon" aria-hidden="true">↗</span>
+      <span class="care-option-card__link-note">Opens official page in new tab</span>
+    </a>
+  `;
+
+  return article;
+}
+
+function showCareOptionsError(message) {
+  if (!careOptionsList || !careOptionsError) {
+    return;
+  }
+
+  careOptionsList.innerHTML = "";
+  careOptionsError.textContent = message;
+  careOptionsError.hidden = false;
+}
+
+function renderCareOptions() {
+  if (!careOptionsList) {
+    return;
+  }
+
+  if (careOptionsLoadFailed) {
+    return;
+  }
+
+  if (!careOptionsLoaded) {
+    careOptionsList.innerHTML = "";
+    const loadingMessage = document.createElement("p");
+    loadingMessage.className = "care-options-loading";
+    loadingMessage.textContent = "Loading care options…";
+    careOptionsList.appendChild(loadingMessage);
+
+    if (careOptionsError) {
+      careOptionsError.hidden = true;
+    }
+
+    return;
+  }
+
+  careOptionsList.innerHTML = "";
+
+  if (careOptionsError) {
+    careOptionsError.hidden = true;
+  }
+
+  careOptions.forEach((option) => {
+    careOptionsList.appendChild(createCareOptionCard(option));
+  });
+}
+
+async function loadCareOptions() {
+  renderCareOptions();
+
+  try {
+    const response = await fetch(CARE_OPTIONS_URL);
+
+    if (!response.ok) {
+      throw new Error(`Failed to load care options: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const options = Array.isArray(data) ? data : data.options;
+
+    if (!Array.isArray(options) || options.length === 0) {
+      throw new Error("Care options data is empty or invalid");
+    }
+
+    careOptions = options;
+    careOptionsLoaded = true;
+    careOptionsLoadFailed = false;
+    renderCareOptions();
+  } catch (error) {
+    console.error("HealthLens: unable to load care options.", error);
+    careOptionsLoadFailed = true;
+    careOptionsLoaded = false;
+    showCareOptionsError("Care options could not be loaded. Please try again later.");
+  }
 }
 
 function escapeHtml(text) {
@@ -205,7 +334,7 @@ function resourceMatchesFilter(resource) {
   return matchesCategory && searchableText.includes(query);
 }
 
-function renderResources() {
+function renderSupportResources() {
   if (loadFailed) {
     return;
   }
@@ -251,8 +380,8 @@ function renderResources() {
   resultsStatus.textContent = statusMessage;
 }
 
-async function loadResources() {
-  renderResources();
+async function loadSupportResources() {
+  renderSupportResources();
 
   try {
     const response = await fetch(RESOURCES_URL);
@@ -271,7 +400,7 @@ async function loadResources() {
     supportResources = resources.map(normalizeResource);
     resourcesLoaded = true;
     loadFailed = false;
-    renderResources();
+    renderSupportResources();
   } catch (error) {
     console.error("HealthLens: unable to load support resources.", error);
     showLoadError();
@@ -286,7 +415,7 @@ function setActiveFilter(button) {
   });
 
   activeCategory = button.dataset.category;
-  renderResources();
+  renderSupportResources();
 }
 
 function activateCategoryFilter(category) {
@@ -301,7 +430,7 @@ function activateCategoryFilter(category) {
 
 searchInput.addEventListener("input", (event) => {
   searchQuery = event.target.value;
-  renderResources();
+  renderSupportResources();
 });
 
 filterButtons.forEach((button) => {
@@ -591,4 +720,5 @@ function initThemeToggle() {
 
 initThemeToggle();
 initInPageLinks();
-loadResources();
+loadSupportResources();
+loadCareOptions();

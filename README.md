@@ -2,7 +2,26 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 0.5** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+**Version 0.6** · A static, accessible student support website built for a Web & Digital Content Coordinator application.
+
+---
+
+## V0.6 Update Summary
+
+HealthLens V0.6 adds a **Care Options Guide** to practise responsible health-related content design. The guide does not assess symptoms or provide medical advice. It explains common UK healthcare support routes and links to official NHS and University information.
+
+| Addition | Purpose |
+|----------|---------|
+| **Care Options Guide** | Service navigation for Pharmacy, GP/Student Health, NHS 111, and 999/A&E |
+| **`data/care-options.json`** | Separates care route content from rendering logic |
+| **Pharmacy First panel** | Signposts NHS Pharmacy First common conditions with official link |
+| **Safe wording** | Non-diagnostic language; no symptom input or service recommendations |
+
+**Content safety:** This is service navigation, not medical triage. The guide signposts to official sources only. It is not a medical device, not diagnostic, and not emergency support.
+
+**Known limitation:** HealthLens cannot assess individual situations. Users who are unsure should use NHS 111; emergencies require 999 or A&E.
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 
@@ -50,7 +69,8 @@ I used official support links to practise responsible digital content design, sa
 | Feature | Description |
 |---------|-------------|
 | **Support Finder** | 12 signposting cards with official links, urgency levels, and suggested next steps |
-| **External JSON content** | Support resources loaded from `data/resources.json` |
+| **Care Options Guide** | 4 UK healthcare route cards loaded from `data/care-options.json` — service navigation only |
+| **External JSON content** | Support resources in `data/resources.json`; care routes in `data/care-options.json` |
 | **Search & filter** | Keyword search plus category filter buttons (All, Academic, Wellbeing, etc.) |
 | **Print-friendly layout** | `@media print` stylesheet for offline support reference |
 | **Dark mode toggle** | Manual light/dark switch in header; preference saved in `localStorage` |
@@ -92,11 +112,13 @@ No React, TypeScript, backend, database, authentication, AI, or external APIs.
 
 ## Data & Content Structure
 
-The support resources are stored in `data/resources.json` to separate digital content from rendering logic. This makes the project easier to maintain and closer to a real content-managed website workflow.
+The support resources are stored in `data/resources.json` to separate digital content from rendering logic. Care route content lives in `data/care-options.json`. This makes the project easier to maintain and closer to a real content-managed website workflow.
 
 Each resource object includes: `id`, `title`, `category`, `urgency`, `description`, `nextStep`, `sourceLabel`, `sourceUrl`, and `linkText`.
 
-`script.js` fetches `./data/resources.json` using a relative path, normalises the data, and renders cards dynamically. If loading fails, a clear error message is shown in the Support Finder area.
+Each care option object includes: `id`, `title`, `category`, `summary`, `suitableFor`, `notSuitableFor`, `safetyNote`, `sourceLabel`, `sourceUrl`, and `linkText`.
+
+`script.js` fetches both JSON files using relative paths, normalises the data, and renders cards dynamically. If loading fails, a clear error message is shown in the relevant section.
 
 ---
 
@@ -106,7 +128,7 @@ Each resource object includes: `id`, `title`, `category`, `urgency`, `descriptio
 - **Review date** — Content last reviewed: May 2026 (noted in Support Finder)
 - **Non-affiliation** — HealthLens is a student portfolio project, not an official service
 - **Update workflow** — Edit `data/resources.json` for content changes; verify links periodically
-- **Safe wording** — Signposting language only; no diagnosis, treatment advice, or outcome promises
+- **Safe wording** — Signposting language only; Care Options Guide uses non-diagnostic service navigation wording
 
 ---
 
@@ -169,6 +191,8 @@ Visit `http://localhost:8000`
 
 **Verify:**
 - 12 support cards load from JSON
+- 4 care option cards load from `data/care-options.json`
+- Care Options nav link scrolls to `#care-options`
 - Search: `housing`, `money`, `urgent`
 - All category filters work
 - FAQ keyboard interaction
@@ -183,9 +207,9 @@ Visit `http://localhost:8000`
 1. Push to GitHub repository `main` branch
 2. **Settings → Pages** → Deploy from branch `main` → `/ (root)`
 3. Live URL: `https://li2043.github.io/HealthLens-Web/`
-4. Confirm `data/resources.json` is included in the repository
+4. Confirm `data/resources.json` and `data/care-options.json` are included in the repository
 
-All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`).
+All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`, `./data/care-options.json`).
 
 ---
 
@@ -196,7 +220,8 @@ All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`).
 - **Manual a11y testing** — Lighthouse/axe scores should be added to test report before submission
 - **Theme preference** — saved in browser `localStorage`; first visit follows system setting if none saved
 - **English only** — no localisation
-- **Link maintenance** — official URLs should be reviewed periodically
+- **Link maintenance** — official URLs should be reviewed periodically in both JSON files
+- **Care Options Guide** — service navigation only; not a medical device, not diagnostic, not emergency support
 - **Not affiliated** — portfolio project only; not an official university or SU website
 
 ---
@@ -205,7 +230,7 @@ All paths are relative (`./styles.css`, `./script.js`, `./data/resources.json`).
 
 - Add Lighthouse and axe scores to CI or pre-deploy checklist
 - Screen reader testing with NVDA / VoiceOver
-- Scheduled content review workflow for `data/resources.json`
+- Scheduled content review workflow for `data/resources.json` and `data/care-options.json`
 - Portfolio screenshots in `assets/screenshots/`
 
 ---
@@ -222,7 +247,8 @@ healthlens/
 ├── accessibility-checklist.md
 ├── accessibility-test-report.md
 ├── data/
-│   └── resources.json
+│   ├── resources.json
+│   └── care-options.json
 └── assets/
     └── favicon.svg
 ```
@@ -235,4 +261,4 @@ This is a portfolio demo project. Content is for illustration only and does not 
 
 ---
 
-*Built as Version 0.5 for a Web & Digital Content Coordinator application.*
+*Built as Version 0.6 for a Web & Digital Content Coordinator application.*

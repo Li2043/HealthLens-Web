@@ -1,7 +1,7 @@
 # HealthLens Accessibility Test Report
 
 **Project:** HealthLens — Student Wellbeing & Support Hub  
-**Version tested:** 0.5  
+**Version tested:** 0.6  
 **Report date:** May 2026  
 **Tester:** Project author (manual review)
 
@@ -57,6 +57,7 @@ Run in browser with [axe DevTools extension](https://www.deque.com/axe/devtools/
 **Recommended scan areas:**
 - Hero and crisis banner
 - Support Finder (loaded cards + external links)
+- Care Options Guide (loaded cards, Pharmacy First panel, external links)
 - FAQ accordion
 - Contact form (validation states)
 - Print preview (visual check only)
@@ -70,12 +71,16 @@ Test using **Tab**, **Shift+Tab**, **Enter**, and **Space** only (no mouse).
 | Test | Pass? | Notes |
 |------|-------|-------|
 | Skip link appears on focus and jumps to main content | ✅ | `#main-content` target |
-| Header navigation links reachable | ✅ | Support Finder, Wellbeing Tips, FAQ, Contact |
+| Header navigation links reachable | ✅ | Support Finder, Care Options, Wellbeing Tips, FAQ, Contact |
+| Care Options nav link scrolls to section | ✅ | `#care-options` target; header offset applied |
 | Theme toggle reachable and usable | ✅ | `aria-pressed` updates; preference saved in `localStorage` |
 | Mobile nav toggle reachable (at mobile width) | ✅ | `aria-expanded` updates |
 | Search input reachable | ✅ | Label associated with input |
 | Category filter buttons reachable and usable | ✅ | `aria-pressed` updates on selection |
 | Resource card external links reachable | ✅ | Focus visible; opens in new tab |
+| Care option card external links reachable | ✅ | Focus visible; descriptive `aria-label`; opens in new tab |
+| Keyboard navigation through care option cards | ✅ | Tab order: category → title → lists → safety note → link |
+| Pharmacy First panel link reachable | ✅ | Official NHS pharmacy guidance link |
 | FAQ buttons reachable | ✅ | Enter/Space toggles panel |
 | FAQ `aria-expanded` updates correctly | ✅ | One panel open at a time |
 | Form fields reachable in logical order | ✅ | Name → Email → Topic → Message → Consent → Submit |
@@ -90,13 +95,17 @@ Test using **Tab**, **Shift+Tab**, **Enter**, and **Space** only (no mouse).
 | Check | Pass? | Notes |
 |-------|-------|-------|
 | All support links point to official Bristol SU, UoB, NHS, or Samaritans URLs | ✅ | Defined in `data/resources.json` |
+| Care option links point to official NHS or UoB URLs | ✅ | Defined in `data/care-options.json` |
 | No unofficial blogs, social media, or commercial health sites | ✅ | |
-| Link text is specific (not “click here”) | ✅ | e.g. “View housing advice”, “Contact Samaritans” |
-| External links use `rel="noopener noreferrer"` | ✅ | |
+| Link text is specific (not “click here”) | ✅ | e.g. “View housing advice”, “Use NHS 111 guidance” |
+| External links use `rel="noopener noreferrer"` | ✅ | Support Finder and Care Options |
 | New-tab behaviour communicated in link label / note | ✅ | `aria-label` + visible note |
-| Site does not imply affiliation with listed organisations | ✅ | Disclaimer in Support Finder |
-| Non-medical wording throughout | ✅ | Signposting language; no diagnosis or treatment advice |
-| Urgent disclaimer present | ✅ | Crisis banner + Support Finder signposting note |
+| Site does not imply affiliation with listed organisations | ✅ | Footer footnote |
+| Non-medical wording throughout | ✅ | Signposting language; no diagnostic or treatment advice |
+| Care Options uses service navigation wording only | ✅ | No “triage”, symptom checker, or “you should go to…” language |
+| Care Options disclaimer visible near section top | ✅ | States no medical advice, symptom assessment, or emergency response |
+| No symptom input or personal health data collection | ✅ | Read-only guide; no forms in Care Options section |
+| Urgent disclaimer present | ✅ | Crisis banner + Support Finder note + Care Options intro |
 | Phone numbers in plain text (not misleading `tel:` links) | ✅ | Samaritans number in next-step text only |
 
 ---
@@ -111,6 +120,34 @@ Test using **Tab**, **Shift+Tab**, **Enter**, and **Space** only (no mouse).
 | 4 | Lighthouse / axe scores not yet recorded in this document | Low | Placeholders provided — run before submission |
 
 No critical accessibility blockers identified during V0.5 manual keyboard review.
+
+---
+
+## Care Options Guide Tests (V0.6)
+
+| Test | Pass? | Notes |
+|------|-------|-------|
+| Care Options nav link in header | ✅ | Between Support Finder and Wellbeing Tips |
+| Section placement after Support Finder | ✅ | Before Wellbeing Tips |
+| Data loads from `care-options.json` | ✅ | Requires local server |
+| Four care option cards render | ✅ | Pharmacy, GP/Student Health, NHS 111, 999/A&E |
+| Pharmacy First panel renders | ✅ | Conditions list + NHS link |
+| External links open in new tab | ✅ | `target="_blank"` + `rel="noopener noreferrer"` |
+| Keyboard navigation through cards | ✅ | Tab through links and lists |
+| Dark mode contrast readable | ✅ | Cards, disclaimer, and links checked in `data-theme="dark"` |
+| Print output includes Care Options | ✅ | Cards, disclaimer, Pharmacy First panel, URLs |
+| No “triage” or “symptom checker” in UI | ✅ | Service navigation wording only |
+| Console free of load errors | ✅ | When served via HTTP |
+
+---
+
+## Fixes Made (V0.6)
+
+| Fix | Description |
+|-----|-------------|
+| **Care Options Guide** | Added accessible service navigation section with JSON-driven cards and Pharmacy First panel |
+| **Print stylesheet** | Extended to include care option cards, disclaimer, and official URLs |
+| **Documentation** | Updated README, CHANGELOG, and this test report for V0.6 content safety checks |
 
 ---
 
@@ -133,7 +170,8 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 - **Theme preference** — manual header toggle; saved in browser `localStorage`
 - **Print FAQ** — all answers print expanded; accordion controls hidden in print view
 - **English only** — no translation or localisation
-- **Link maintenance** — official URLs in `data/resources.json` should be reviewed periodically
+- **Link maintenance** — official URLs in `data/resources.json` and `data/care-options.json` should be reviewed periodically
+- **Care Options Guide** — service navigation only; not a medical device, not diagnostic, not emergency support
 - **Not affiliated** — HealthLens is a student portfolio project, not an official university or SU service
 
 ---
@@ -144,7 +182,8 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 2. Run axe DevTools full-page scan and record results above
 3. Test with NVDA (Windows) or VoiceOver (macOS/iOS)
 4. Ask a peer to complete a task using keyboard only: “Find housing support and open the official link”
-5. Re-test after any content changes to `data/resources.json`
+5. Re-test after any content changes to `data/resources.json` or `data/care-options.json`
+6. Print preview: confirm Care Options Guide cards and Pharmacy First panel appear with URLs
 
 ---
 

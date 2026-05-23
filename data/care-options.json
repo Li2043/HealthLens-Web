@@ -1,0 +1,83 @@
+[
+  {
+    "id": "pharmacy",
+    "title": "Pharmacy",
+    "category": "Common illnesses and medicines",
+    "summary": "Pharmacists can give advice on common illnesses, minor health concerns and medicines questions. If they cannot help, they can refer you to a GP or another healthcare professional.",
+    "suitableFor": [
+      "Common minor illnesses",
+      "Medicine questions",
+      "Pharmacy First common conditions where clinically appropriate",
+      "Advice on whether another service may be needed"
+    ],
+    "notSuitableFor": [
+      "Life-threatening emergencies",
+      "Severe or rapidly worsening symptoms",
+      "Situations where you are unsure and need urgent medical guidance"
+    ],
+    "safetyNote": "If you are unsure where to get help, use NHS 111.",
+    "sourceLabel": "NHS: How pharmacies can help",
+    "sourceUrl": "https://www.nhs.uk/nhs-services/pharmacies/how-pharmacies-can-help/",
+    "linkText": "Learn how pharmacies can help"
+  },
+  {
+    "id": "gp-student-health",
+    "title": "GP or Student Health Service",
+    "category": "Non-urgent medical support",
+    "summary": "A GP can help with non-urgent health concerns, ongoing symptoms, prescriptions, referrals and follow-up care. University of Bristol students may be able to register with the Students' Health Service if they are in the practice area.",
+    "suitableFor": [
+      "Ongoing or non-urgent health concerns",
+      "Health problems that need follow-up",
+      "Prescription or referral questions",
+      "Registering with a GP as a student"
+    ],
+    "notSuitableFor": [
+      "Immediate life-threatening emergencies",
+      "Situations where you need urgent advice now and cannot wait for an appointment"
+    ],
+    "safetyNote": "If you need medical help now but it is not life-threatening, use NHS 111.",
+    "sourceLabel": "University of Bristol Students' Health Service",
+    "sourceUrl": "https://www.bristol.ac.uk/students-health/",
+    "linkText": "View Student Health Service"
+  },
+  {
+    "id": "nhs-111",
+    "title": "NHS 111",
+    "category": "Urgent but not life-threatening",
+    "summary": "NHS 111 can help when you think you need medical help now but it is not a life-threatening emergency. It can direct you to the right service.",
+    "suitableFor": [
+      "You need medical help now but it is not an emergency",
+      "You are not sure which NHS service to use",
+      "You need urgent advice when your GP is closed"
+    ],
+    "notSuitableFor": [
+      "Immediate life-threatening emergencies",
+      "Severe injury or danger requiring 999"
+    ],
+    "safetyNote": "If you or someone else is in immediate danger, call 999.",
+    "sourceLabel": "NHS: When to use 111",
+    "sourceUrl": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-use-111/",
+    "linkText": "Use NHS 111 guidance"
+  },
+  {
+    "id": "emergency",
+    "title": "999 or A&E",
+    "category": "Emergency help",
+    "summary": "999 and A&E are for life-threatening emergencies, serious injuries, or situations where someone may be in immediate danger.",
+    "suitableFor": [
+      "Life-threatening emergencies",
+      "Serious injury",
+      "Someone is in immediate danger",
+      "You think urgent emergency care is needed"
+    ],
+    "notSuitableFor": [
+      "Routine health questions",
+      "Minor illnesses",
+      "Non-urgent support needs"
+    ],
+    "safetyNote": "Call 999 immediately if there is a life-threatening emergency.",
+    "sourceLabel": "NHS: When to call 999",
+    "sourceUrl": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-call-999/",
+    "linkText": "Read NHS emergency guidance"
+  }
+]

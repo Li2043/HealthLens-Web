@@ -4,6 +4,25 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [0.6] — May 2026
+
+### Added
+- **Care Options Guide** — service navigation section between Support Finder and Wellbeing Tips
+- `data/care-options.json` — four UK healthcare route cards (Pharmacy, GP/Student Health, NHS 111, 999/A&E)
+- Pharmacy First information panel with common conditions list and official NHS link
+- `loadCareOptions()` and `renderCareOptions()` in `script.js` (alongside refactored `loadSupportResources()` / `renderSupportResources()`)
+- Care Options nav link (`#care-options`) in header and footer
+- Responsive 2-column care option card grid with distinct emergency card styling
+- Print CSS support for Care Options Guide content and official URLs
+- Dark mode styles for care option cards and Pharmacy First panel
+
+### Content safety
+- Non-diagnostic wording throughout; no symptom input or service recommendations
+- Visible disclaimer: signposts to official services only; not medical advice or symptom assessment
+- Official NHS and University of Bristol links with accessible external link labelling
+
+---
+
 ## [0.5] — May 2026
 
 ### Added
@@ -64,6 +83,7 @@ All notable changes to HealthLens are documented in this file.
 | **0.1** | Static site, Support Finder, accessibility foundations, JSON content separation |
 | **0.2** | Visual upgrade, official support links, responsible signposting |
 | **0.5** | Print CSS, system dark mode, accessibility testing record |
+| **0.6** | Care Options Guide — safe service navigation with `data/care-options.json` |
 
 ---
 
