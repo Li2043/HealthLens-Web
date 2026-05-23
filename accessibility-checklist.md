@@ -75,6 +75,9 @@ A practical review checklist for Version 0.2 of the HealthLens student support s
 
 - [ ] Hero section explains the site purpose in plain English
 - [ ] Support cards include title, category, description, urgency, and next step
+- [ ] External support links use descriptive text (not “click here”)
+- [ ] External links open in a new tab with `rel="noopener noreferrer"` where used
+- [ ] External link labels or notes indicate an official page opens in a new tab
 - [ ] Urgent help banner is readable and not conveyed by colour alone (includes text for 999 / NHS 111)
 - [ ] Visible results count updates when filters change
 - [ ] Resource card icons are decorative (`aria-hidden`) and urgency includes text labels
@@ -94,6 +97,8 @@ A practical review checklist for Version 0.2 of the HealthLens student support s
 - [ ] Consent checkbox references non-medical demo nature
 - [ ] Urgent help card directs to 999 / NHS 111 / official helplines
 - [ ] Wellbeing tips use self-reflection language, not clinical claims
+- [ ] Signposting disclaimer appears near Support Finder and urgent resources
+- [ ] Content does not imply affiliation with Bristol SU, UoB, NHS or Samaritans
 - [ ] Footer reiterates "Not medical advice"
 
 ---

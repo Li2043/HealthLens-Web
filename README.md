@@ -50,7 +50,7 @@ This project was designed to practise:
 
 | Feature | Description |
 |---------|-------------|
-| **Support Finder** | 8 resource cards with category, urgency, and suggested next steps |
+| **Support Finder** | 12 signposting cards with official links, urgency levels, and suggested next steps |
 | **Search & filter** | Keyword search plus category filter buttons (All, Academic, Wellbeing, etc.) |
 | **Wellbeing Tips** | 4 short, non-medical self-reflection tips |
 | **FAQ accordion** | Expand/collapse with keyboard support and `aria-expanded` |
@@ -89,6 +89,23 @@ This release refines layout and visual hierarchy while keeping the same accessib
 | **Favicon** | Simple SVG brand mark in `assets/favicon.svg` |
 
 Design references: [GOV.UK Design System](https://design-system.service.gov.uk/), [W3C WAI](https://www.w3.org/WAI/design-develop/), and [Inclusive Components](https://inclusive-components.design/) — prioritising clarity and contrast over decorative effects.
+
+---
+
+## Official Support Links
+
+HealthLens **signposts to** official support resources. It does not provide counselling, diagnosis, emergency response, or medical advice, and it is **not affiliated** with Bristol SU, the University of Bristol, the NHS or Samaritans.
+
+I used official support links to practise responsible digital content design, safe signposting, accessibility-aware link text and user-centred information architecture.
+
+| Organisation | Resources signposted on this site |
+|--------------|-----------------------------------|
+| **Bristol SU** | Academic advice, health & welfare, housing advice, groups, volunteering |
+| **University of Bristol** | Academic advice, wellbeing appointments, money advice, international support, disability support |
+| **NHS** | Urgent mental health help |
+| **Samaritans** | Confidential listening support |
+
+All external links open in a new tab with `rel="noopener noreferrer"`, descriptive link text, and accessible labels that state the link opens an official page in a new tab.
 
 ---
 
@@ -159,11 +176,13 @@ See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed re
 - Urgency is shown with colour **and** text labels, not colour alone
 - Visual hierarchy can improve without sacrificing WCAG-informed practices
 - A dedicated crisis banner helps signpost urgent support responsibly
+- Official links need clear labels, visible external cues, and safe non-affiliated wording
 
 ---
 
 ## Changelog
 
+- **v0.2 (content update)** — 12 official signposting links (Bristol SU, UoB, NHS, Samaritans), external link accessibility, support disclaimers
 - **v0.2** — Visual refresh: hero panel, crisis banner, card icons, footer, favicon
 - **v0.1** — Initial static release with Support Finder, FAQ, form validation, and accessibility docs
 
@@ -173,7 +192,7 @@ See [`accessibility-checklist.md`](accessibility-checklist.md) for a detailed re
 
 - Integrate a lightweight CMS or JSON file for easier content updates
 - Add automated accessibility testing in CI (e.g. axe-core, pa11y)
-- Add real Bristol SU and university signposting links (with permission)
+- Schedule regular review of official link URLs and page content
 
 ---
 

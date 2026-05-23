@@ -46,8 +46,8 @@
           <p class="hero-eyebrow">Student Wellbeing &amp; Support Hub</p>
           <h1 id="hero-heading">Find the right wellbeing support, faster</h1>
           <p class="hero-lead">
-            HealthLens helps university students search and filter wellbeing and support resources in one place.
-            Explore options by topic, urgency level, and suggested next steps.
+            HealthLens helps university students search and filter wellbeing and support signposting in one place.
+            Each card links to an official Bristol SU, University of Bristol, NHS or Samaritans page.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#support-finder">Explore Support Finder</a>
@@ -111,10 +111,14 @@
           <p class="section-eyebrow">Support Finder</p>
           <h2 id="support-finder-heading">Browse student support resources</h2>
           <p class="section-intro">
-            Use search and category filters to find resources that fit your situation.
+            Search and filter signposting cards that link to official Bristol SU, University of Bristol, NHS and Samaritans support pages.
             Content last reviewed: May 2026.
           </p>
         </header>
+
+        <p class="support-signposting-note support-signposting-note--finder" role="note">
+          HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS or Samaritans. It signposts to official support resources only.
+        </p>
 
         <div class="finder-controls">
           <div class="search-wrapper">
@@ -124,7 +128,7 @@
               id="resource-search"
               name="resource-search"
               autocomplete="off"
-              placeholder="e.g. stress, housing, urgent"
+              placeholder="e.g. stress, housing, money, urgent"
             >
           </div>
 
@@ -143,12 +147,16 @@
           </fieldset>
         </div>
 
-        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true">Showing 8 of 8 resources</p>
+        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true">Showing 12 of 12 resources</p>
         <p id="results-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
 
         <div id="resource-grid" class="resource-grid">
           <!-- Support cards rendered by script.js -->
         </div>
+
+        <p class="support-signposting-note support-signposting-note--urgent" role="note">
+          <strong>Signposting only:</strong> This student project signposts to official support services. It does not provide medical advice. If you or someone else is in immediate danger, call 999 or go to A&amp;E.
+        </p>
 
         <p id="no-results" class="no-results" hidden>
           No matching resources found. Try a different search term or category.
