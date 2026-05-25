@@ -127,6 +127,37 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 
 ---
 
+---
+
+## V1.2 Audit Summary
+
+V1.2 adds structured audit and portfolio documentation without new product features. The case study explains design and technical decisions; the audit docs record WCAG-informed checks, content boundaries and manual test plans. **The project is WCAG-informed, but not formally certified.**
+
+| Resource | Link |
+|----------|------|
+| Case study (web) | [case-study.html](./case-study.html) |
+| Audit report (web) | [audit-report.html](./audit-report.html) |
+| Accessibility audit (markdown) | [docs/accessibility-audit.md](./docs/accessibility-audit.md) |
+| Content audit (markdown) | [docs/content-audit.md](./docs/content-audit.md) |
+| Manual test plan (markdown) | [docs/manual-test-plan.md](./docs/manual-test-plan.md) |
+
+### V1.2 audit status (placeholders)
+
+| Test area | Method | Result / status |
+|-----------|--------|-----------------|
+| Keyboard navigation | Manual Tab / Shift+Tab / Enter / Space | To be completed |
+| Lighthouse | Chrome DevTools | To be completed |
+| axe DevTools | Browser extension | To be completed |
+| Content audit | Manual review | To be completed |
+| Mobile layout | Browser responsive mode | To be completed |
+| Print CSS | Print preview | To be completed |
+| Dark mode | Manual visual check | To be completed |
+| Link check | Manual external link review | To be completed |
+
+Record completed results in [audit-report.html](./audit-report.html) and [docs/accessibility-audit.md](./docs/accessibility-audit.md).
+
+---
+
 ## Source Quality Labels Tests (V1.1)
 
 | Test | Pass? | Notes |

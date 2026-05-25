@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HealthLens accessibility and content audit report — page checks, issues, fixes and limitations.">
+  <title>HealthLens Audit Report — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html" title="Resources">Resources</a></li>
+          <li><a href="./international-essentials.html" title="International Essentials">International</a></li>
+          <li><a href="./health-healthcare.html" title="Health and Healthcare">Health</a></li>
+          <li><a href="./mental-wellbeing.html" title="Mental Wellbeing">Mental</a></li>
+          <li><a href="./housing-bills.html" title="Housing and Bills">Housing</a></li>
+          <li><a href="./money-spending.html" title="Money and Spending">Money</a></li>
+          <li><a href="./community-activities-sport.html" title="Community, Activities and Sport">Community</a></li>
+          <li><a href="./search.html" title="Search HealthLens">Search</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="case-study-page">
+    <section class="topic-hero" aria-labelledby="audit-heading">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="./index.html">Home</a></li>
+            <li aria-current="page">Audit Report</li>
+          </ol>
+        </nav>
+        <h1 id="audit-heading">HealthLens Audit Report</h1>
+        <p class="topic-summary">Accessibility and content audit documentation for HealthLens V1.2. This report records manual checks, content boundary reviews and known limitations. The project is WCAG-informed, but not formally certified.</p>
+        <p class="content-meta">Markdown versions: <a href="./docs/accessibility-audit.md">accessibility audit</a> · <a href="./docs/content-audit.md">content audit</a> · <a href="./docs/manual-test-plan.md">manual test plan</a></p>
+      </div>
+    </section>
+
+    <div class="container">
+      <article class="case-study-section" aria-labelledby="overview-heading">
+        <h2 id="overview-heading">Audit overview</h2>
+        <p>HealthLens V1.2 adds structured audit documentation to support portfolio review, job applications and interview discussion. Automated scores (Lighthouse, axe) and full manual keyboard testing are recorded as placeholders until completed.</p>
+        <p><strong>Audit version:</strong> V1.2 · <strong>Next suggested audit date:</strong> Before next portfolio demo or application submission</p>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="pages-heading">
+        <h2 id="pages-heading">Pages tested</h2>
+        <div class="audit-table-wrap">
+          <table class="audit-table">
+            <caption class="visually-hidden">Page-level audit status</caption>
+            <thead>
+              <tr>
+                <th scope="col">Page</th>
+                <th scope="col">Purpose clear?</th>
+                <th scope="col">Keyboard checked?</th>
+                <th scope="col">Lighthouse checked?</th>
+                <th scope="col">Content boundary checked?</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>index.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Home search and topic hubs</td>
+              </tr>
+              <tr>
+                <td>resources.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Support Finder filters</td>
+              </tr>
+              <tr>
+                <td>search.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Global search and filters</td>
+              </tr>
+              <tr>
+                <td>guides.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Health tips library</td>
+              </tr>
+              <tr>
+                <td>international-essentials.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Immigration signposting only</td>
+              </tr>
+              <tr>
+                <td>health-healthcare.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Care options signposting</td>
+              </tr>
+              <tr>
+                <td>mental-wellbeing.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Urgent routes signposted</td>
+              </tr>
+              <tr>
+                <td>housing-bills.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>No legal advice wording</td>
+              </tr>
+              <tr>
+                <td>money-spending.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Commercial labels where relevant</td>
+              </tr>
+              <tr>
+                <td>community-activities-sport.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td>Community signposting</td>
+              </tr>
+              <tr>
+                <td>about.html</td>
+                <td><span class="status-badge status-review">Needs review</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-pass">Pass</span></td>
+                <td>Source policy expanded V1.1</td>
+              </tr>
+              <tr>
+                <td>case-study.html</td>
+                <td><span class="status-badge status-pass">Pass</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+                <td><span class="status-badge status-pass">Pass</span></td>
+                <td>Portfolio documentation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="a11y-checklist-heading">
+        <h2 id="a11y-checklist-heading">Accessibility checklist</h2>
+        <ul>
+          <li>Skip link to main content</li>
+          <li>One h1 per page; logical heading hierarchy</li>
+          <li>Visible form labels on search and filters</li>
+          <li>Keyboard-accessible navigation, buttons and links</li>
+          <li>Visible focus states</li>
+          <li>Descriptive link text on cards and external links</li>
+          <li><code>aria-live</code> search status region</li>
+          <li>Dark mode readable contrast (manual check pending)</li>
+          <li>Print CSS for key content (manual check pending)</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="content-checklist-heading">
+        <h2 id="content-checklist-heading">Content checklist</h2>
+        <ul>
+          <li>Page purpose and audience stated on topic pages</li>
+          <li>Source labels visible on resource and guide cards</li>
+          <li>“Last checked” used consistently — not “last updated” for external sources</li>
+          <li>Limitation notes on high-risk topics</li>
+          <li>No medical, legal, financial or immigration advice claims</li>
+          <li>Commercial platforms labelled separately from official/expert sources</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="issues-heading">
+        <h2 id="issues-heading">Issues found</h2>
+        <div class="audit-table-wrap">
+          <table class="audit-table">
+            <thead>
+              <tr>
+                <th scope="col">Issue</th>
+                <th scope="col">Page / area</th>
+                <th scope="col">Severity</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Full manual keyboard audit not yet completed</td>
+                <td>All pages</td>
+                <td>Medium</td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+              </tr>
+              <tr>
+                <td>Lighthouse and axe scores not yet recorded</td>
+                <td>All pages</td>
+                <td>Low</td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+              </tr>
+              <tr>
+                <td>Screen reader testing not yet completed</td>
+                <td>Search, Resources</td>
+                <td>Medium</td>
+                <td><span class="status-badge status-not-tested">Not tested yet</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="fixes-heading">
+        <h2 id="fixes-heading">Fixes made (prior versions)</h2>
+        <ul>
+          <li>V0.5 — Print stylesheet and offline reference support</li>
+          <li>V0.6 — Care Options signposting-only wording</li>
+          <li>V0.7 — International Student Wellbeing Navigator positioning</li>
+          <li>V0.8 — Multi-page IA and defensive JavaScript initialisation</li>
+          <li>V1.0 — Global search with accessible status messages</li>
+          <li>V1.1 — Source quality labels and last checked dates</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="remaining-heading">
+        <h2 id="remaining-heading">Remaining limitations</h2>
+        <ul>
+          <li>Not a formal WCAG audit or certification</li>
+          <li>Not tested with real international student users</li>
+          <li>External links require periodic manual review</li>
+          <li>Automated tools cannot verify content safety boundaries alone</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="next-audit-heading">
+        <h2 id="next-audit-heading">Next audit date</h2>
+        <p>Suggested: before the next portfolio demo, job application or major content update. Update <a href="./docs/accessibility-audit.md">docs/accessibility-audit.md</a> and this page when checks are completed.</p>
+      </article>
+
+      <p class="content-meta case-study-links">
+        <a href="./case-study.html">View case study</a> ·
+        <a href="./about.html#source-policy">Source policy</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./guides.html">Health Tips</a></li>
+          <li><a href="./search.html">Search</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./about.html#source-policy">Source Policy</a></li>
+          <li><a href="./case-study.html">Case Study</a></li>
+          <li><a href="./audit-report.html" aria-current="page">Audit Report</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -2,7 +2,23 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 1.1** · A multi-page static website for international student wellbeing and practical support signposting.
+**Version 1.2** · A multi-page static website for international student wellbeing and practical support signposting.
+
+---
+
+## V1.2 — Accessibility / content audit and case study
+
+V1.2 adds a formal project case study and audit documentation. The case study explains the problem, target users, information architecture, content model, search design, accessibility approach, source governance and limitations. The audit documentation records accessibility checks, content boundary checks, source labelling checks and manual test plans.
+
+| Resource | Purpose |
+|----------|---------|
+| [`case-study.html`](case-study.html) | Portfolio-ready case study for CV, cover letter and interviews |
+| [`audit-report.html`](audit-report.html) | Web-readable accessibility and content audit summary |
+| [`docs/accessibility-audit.md`](docs/accessibility-audit.md) | Accessibility audit scope, checklists and known limitations |
+| [`docs/content-audit.md`](docs/content-audit.md) | Content boundary, source governance and page-level checks |
+| [`docs/manual-test-plan.md`](docs/manual-test-plan.md) | Manual keyboard, search and content safety test plan |
+
+**Testing approach:** WCAG-informed review (not formal certification), Lighthouse, axe DevTools, manual keyboard testing, content audit, source governance review and documented project limitations.
 
 ---
 

@@ -1,6 +1,6 @@
 /**
  * HealthLens — International Student Wellbeing Navigator
- * Version 1.1 — multi-page static HTML, CSS and JavaScript
+ * Version 1.2 — multi-page static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";

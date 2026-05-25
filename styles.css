@@ -2830,6 +2830,210 @@ html[data-theme="dark"] .care-option-card--emergency .care-option-card__link:hov
 }
 
 /* --------------------------------------------------------------------------
+   Case study and audit report (V1.2)
+   -------------------------------------------------------------------------- */
+.case-study-page {
+  padding-bottom: var(--space-xl, 3rem);
+}
+
+.case-study-meta {
+  margin: 0 0 var(--space-lg, 2rem);
+  padding: var(--space-md, 1.25rem) var(--space-lg, 1.5rem);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 0.5rem);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.case-study-meta p:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-section {
+  margin-bottom: var(--space-xl, 2.5rem);
+  max-width: 72ch;
+}
+
+.case-study-section h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-md, 1rem);
+}
+
+.case-study-section h3 {
+  margin-top: var(--space-md, 1.25rem);
+  margin-bottom: var(--space-sm, 0.75rem);
+}
+
+.case-study-section ul,
+.case-study-section ol {
+  padding-left: 1.35rem;
+}
+
+.case-study-section li + li {
+  margin-top: 0.35rem;
+}
+
+.case-study-links {
+  margin-top: var(--space-lg, 2rem);
+  padding-top: var(--space-md, 1rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.case-study-meta__title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.schema-example,
+.case-study-code {
+  margin: var(--space-md, 1rem) 0;
+  padding: var(--space-md, 1rem) var(--space-lg, 1.25rem);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm, 0.375rem);
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.decision-grid,
+.decision-cards {
+  display: grid;
+  gap: var(--space-md, 1rem);
+  margin: var(--space-md, 1rem) 0 0;
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .decision-grid,
+  .decision-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.decision-card {
+  padding: var(--space-md, 1rem) var(--space-lg, 1.25rem);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 0.5rem);
+}
+
+.decision-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.decision-card p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.audit-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--space-md, 1rem) 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 0.5rem);
+}
+
+.audit-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.audit-table th,
+.audit-table td {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.audit-table th {
+  background: var(--color-bg-alt);
+  font-weight: 600;
+}
+
+.audit-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm, 0.25rem);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.status-pass {
+  border-color: var(--color-primary, #0d6efd);
+  color: var(--color-text);
+}
+
+.status-pass::before {
+  content: "✓ ";
+}
+
+.status-review {
+  border-color: #b8860b;
+  color: var(--color-text);
+}
+
+.status-review::before {
+  content: "! ";
+}
+
+.status-fixed {
+  border-color: #2e7d32;
+  color: var(--color-text);
+}
+
+.status-fixed::before {
+  content: "✓ ";
+}
+
+.status-not-tested {
+  border-style: dashed;
+  color: var(--color-text-muted, #555);
+}
+
+.status-not-tested::before {
+  content: "○ ";
+}
+
+html[data-theme="dark"] .case-study-meta,
+html[data-theme="dark"] .schema-example,
+html[data-theme="dark"] .decision-card,
+html[data-theme="dark"] .audit-table th {
+  background: var(--color-bg-alt);
+}
+
+.home-case-study-cta {
+  margin-top: var(--space-lg, 2rem);
+  padding: var(--space-md, 1rem) var(--space-lg, 1.5rem);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 0.5rem);
+  text-align: center;
+}
+
+.home-case-study-cta p {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
    Print stylesheet — offline reference for support signposting
    -------------------------------------------------------------------------- */
 @page {
@@ -3064,5 +3268,30 @@ html[data-theme="dark"] .care-option-card--emergency .care-option-card__link:hov
 
   h3 {
     font-size: 12pt;
+  }
+
+  .case-study-meta,
+  .decision-card,
+  .audit-table-wrap {
+    border: 1pt solid #000 !important;
+    break-inside: avoid;
+  }
+
+  .audit-table-wrap {
+    overflow: visible !important;
+  }
+
+  .audit-table {
+    min-width: 0 !important;
+    font-size: 9pt;
+  }
+
+  .status-badge {
+    border: 1pt solid #000 !important;
+    color: #000 !important;
+  }
+
+  .home-case-study-cta {
+    border: 1pt solid #000 !important;
   }
 }

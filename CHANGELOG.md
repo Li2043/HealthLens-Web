@@ -4,6 +4,24 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [1.2] — May 2026
+
+### Added
+- **`case-study.html`** — portfolio-ready case study covering problem, IA, content model, search, accessibility, source governance, testing and limitations
+- **`audit-report.html`** — web-readable accessibility and content audit with page-level status table
+- **`docs/accessibility-audit.md`** — accessibility audit scope, automated and manual checklists
+- **`docs/content-audit.md`** — content boundary, source governance and risk checks
+- **`docs/manual-test-plan.md`** — keyboard path, search queries and content safety tests
+- **Case study and audit CSS** — `.case-study-page`, `.audit-table`, `.decision-card`, `.status-badge` and print styles
+- **Footer and About links** — Case Study, Audit Report and Source Policy in footer; case study and audit links on About page
+- **Homepage CTA** — link to case study from home page
+
+### Changed
+- README, CHANGELOG and accessibility test report updated for V1.2 audit layer
+- About page version note updated to 1.2
+
+---
+
 ## [1.1] — May 2026
 
 ### Added

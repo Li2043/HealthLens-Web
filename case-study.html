@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A case study explaining the design, content, accessibility and technical decisions behind HealthLens, an International Student Wellbeing Navigator.">
+  <title>HealthLens Case Study — HealthLens</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("healthlens-theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="./index.html">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">HealthLens</span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list nav-list--global">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html" title="Resources">Resources</a></li>
+          <li><a href="./international-essentials.html" title="International Essentials">International</a></li>
+          <li><a href="./health-healthcare.html" title="Health and Healthcare">Health</a></li>
+          <li><a href="./mental-wellbeing.html" title="Mental Wellbeing">Mental</a></li>
+          <li><a href="./housing-bills.html" title="Housing and Bills">Housing</a></li>
+          <li><a href="./money-spending.html" title="Money and Spending">Money</a></li>
+          <li><a href="./community-activities-sport.html" title="Community, Activities and Sport">Community</a></li>
+          <li><a href="./search.html" title="Search HealthLens">Search</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="case-study-page">
+    <section class="topic-hero" aria-labelledby="case-study-heading">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="./index.html">Home</a></li>
+            <li aria-current="page">Case Study</li>
+          </ol>
+        </nav>
+        <h1 id="case-study-heading">Case Study: Building HealthLens</h1>
+        <p class="topic-summary">HealthLens is a student project exploring how accessible digital content, structured resources and responsible signposting can help international students navigate wellbeing and practical support in the UK.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <aside class="case-study-meta" aria-label="Portfolio summary">
+        <h2 class="case-study-meta__title">Portfolio summary</h2>
+        <p>HealthLens is a multi-page static information platform for international students in the UK. I designed and built the site using HTML, CSS and JavaScript, with JSON-based resources, curated guide cards, global search, source quality labels, accessibility-informed templates, dark mode, print CSS and audit documentation.</p>
+      </aside>
+
+      <article class="case-study-section" aria-labelledby="problem-heading">
+        <h2 id="problem-heading">The problem</h2>
+        <p>International students often need to understand several unfamiliar UK systems at once: university support, healthcare, housing, money, community and urgent help. Search engines can return many results, but they do not always explain which sources are official, expert, student-facing or relevant to a specific situation.</p>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="users-heading">
+        <h2 id="users-heading">Target users</h2>
+        <ul>
+          <li>International students in the UK</li>
+          <li>Students new to UK university systems</li>
+          <li>Students looking for official or expert support resources</li>
+          <li>Students who need plain-English summaries and next steps</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="positioning-heading">
+        <h2 id="positioning-heading">Product positioning</h2>
+        <p>HealthLens is an International Student Wellbeing Navigator. It is not a medical, legal, financial, immigration or emergency advice service. It organises official and expert resources into clearer pathways and adds plain-English context.</p>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="ia-heading">
+        <h2 id="ia-heading">Information architecture</h2>
+        <p>The site is organised into topic hubs, a resource library, health tips, global search, source policy and project documentation:</p>
+        <ul>
+          <li>Home</li>
+          <li>Resources</li>
+          <li>International Essentials</li>
+          <li>Health &amp; Healthcare</li>
+          <li>Mental Wellbeing</li>
+          <li>Housing &amp; Bills</li>
+          <li>Money &amp; Everyday Spending</li>
+          <li>Community, Activities &amp; Sport</li>
+          <li>About / Source Policy</li>
+          <li>Search</li>
+          <li>Case Study</li>
+        </ul>
+        <p>Topics are separated because healthcare and mental wellbeing are different user needs; housing and money are practical life topics; resources and guides serve different browsing behaviours; and the source policy page builds trust through transparent labelling.</p>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="content-model-heading">
+        <h2 id="content-model-heading">Content model</h2>
+        <ul>
+          <li><strong>resources.json</strong> stores official and expert links rendered as resource cards</li>
+          <li><strong>articles.json</strong> stores curated health tip summaries</li>
+          <li><strong>topics.json</strong> stores searchable topic page metadata</li>
+          <li><strong>Source metadata</strong> records source type, authority, audience, region, risk level and last checked date</li>
+        </ul>
+        <h3>Resource item (schema example)</h3>
+        <pre class="case-study-code"><code>title
+category
+summary / description
+sourceType
+sourceAuthority
+audience
+riskLevel
+lastChecked
+sourceUrl</code></pre>
+        <h3>Article item (schema example)</h3>
+        <pre class="case-study-code"><code>title
+topic
+summary
+keyPoints
+sources
+readTime
+riskLevel
+lastChecked</code></pre>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="search-design-heading">
+        <h2 id="search-design-heading">Search design</h2>
+        <p>The global search builds a client-side index from topic pages, resources and health tips. Users can search by keyword, filter by content type and filter by topic.</p>
+        <ul>
+          <li>No backend required — works on GitHub Pages</li>
+          <li>URL query parameters support direct links (e.g. <code>search.html?q=GP</code>)</li>
+          <li>Accessible result status message with <code>role="status"</code> and <code>aria-live="polite"</code></li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="a11y-heading">
+        <h2 id="a11y-heading">Accessibility approach</h2>
+        <ul>
+          <li>Semantic HTML and logical heading hierarchy</li>
+          <li>Visible labels on search inputs and filters</li>
+          <li>Keyboard navigation and visible focus states</li>
+          <li>Skip link to main content</li>
+          <li>Descriptive link text (no “click here”)</li>
+          <li><code>aria-live</code> status for search results</li>
+          <li>Dark mode contrast checks</li>
+          <li>Print-friendly CSS</li>
+          <li>Mobile responsive layout</li>
+        </ul>
+        <p>The project is WCAG-informed, but not formally certified.</p>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="governance-heading">
+        <h2 id="governance-heading">Content safety and source governance</h2>
+        <ul>
+          <li>Official sources are prioritised for healthcare, urgent help, university services and rules</li>
+          <li>Expert sources are used for housing, money and international student guidance</li>
+          <li>Commercial platforms are labelled clearly and are not presented as financial advice</li>
+          <li>“Last checked” means HealthLens checked the link and summary — not that the original source was updated</li>
+          <li>High-risk topic pages include limitation notes and signposting-only wording</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="testing-heading">
+        <h2 id="testing-heading">Testing and audit</h2>
+        <div class="audit-table-wrap">
+          <table class="audit-table">
+            <caption class="visually-hidden">Testing and audit summary</caption>
+            <thead>
+              <tr>
+                <th scope="col">Test area</th>
+                <th scope="col">Method</th>
+                <th scope="col">Result / status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Keyboard navigation</td>
+                <td>Manual Tab / Shift+Tab / Enter / Space</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>Lighthouse</td>
+                <td>Chrome DevTools</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>axe DevTools</td>
+                <td>Browser extension</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>Content audit</td>
+                <td>Manual review</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>Mobile layout</td>
+                <td>Browser responsive mode</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>Print CSS</td>
+                <td>Print preview</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>Dark mode</td>
+                <td>Manual visual check</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+              <tr>
+                <td>Link check</td>
+                <td>Manual external link review</td>
+                <td><span class="status-badge status-not-tested">To be completed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="content-meta">See <a href="./audit-report.html">audit report</a> and <a href="./docs/accessibility-audit.md">accessibility audit documentation</a> for detailed checklists.</p>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="decisions-heading">
+        <h2 id="decisions-heading">Key design decisions</h2>
+        <ul class="decision-cards">
+          <li class="decision-card">
+            <h3>Wellbeing navigation, not health advice</h3>
+            <p>Reframed from a broad health support concept to an International Student Wellbeing Navigator with clear boundaries.</p>
+          </li>
+          <li class="decision-card">
+            <h3>Resources and guides separated</h3>
+            <p>Official links live in the resource library; plain-English summaries live in health tips.</p>
+          </li>
+          <li class="decision-card">
+            <h3>Source quality labels</h3>
+            <p>Every card shows source type, authority and last checked date for transparency.</p>
+          </li>
+          <li class="decision-card">
+            <h3>Last checked dates</h3>
+            <p>Review dates show when this project checked a link — not when the original source changed.</p>
+          </li>
+          <li class="decision-card">
+            <h3>Signposting-only health content</h3>
+            <p>Healthcare routes are explained without diagnosis, treatment or triage wording.</p>
+          </li>
+          <li class="decision-card">
+            <h3>Static-first for GitHub Pages</h3>
+            <p>JSON data, vanilla JavaScript and relative paths keep deployment simple and maintainable.</p>
+          </li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="limitations-heading">
+        <h2 id="limitations-heading">Limitations</h2>
+        <ul>
+          <li>This is a student project — not a live university service</li>
+          <li>It is not professional advice of any kind</li>
+          <li>Links and summaries require periodic review</li>
+          <li>Automated accessibility checks cannot catch everything</li>
+          <li>No user testing with real international students has been completed yet</li>
+        </ul>
+      </article>
+
+      <article class="case-study-section" aria-labelledby="future-heading">
+        <h2 id="future-heading">Future improvements</h2>
+        <ul>
+          <li>Conduct user testing with international students</li>
+          <li>Add more health tip articles</li>
+          <li>Improve search ranking and relevance</li>
+          <li>Add a clearer content review workflow</li>
+          <li>Add multilingual summaries</li>
+          <li>Consider a CMS or static site generator in future</li>
+          <li>Expand accessibility testing with screen reader checks</li>
+        </ul>
+      </article>
+
+      <p class="content-meta case-study-links">
+        <a href="./audit-report.html">View audit report</a> ·
+        <a href="./about.html#source-policy">Source policy</a> ·
+        <a href="./index.html">Back to HealthLens</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">HealthLens</p>
+        <p class="footer-tagline">International Student Wellbeing Navigator — a portfolio demo project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <p class="footer-nav__title">Site</p>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./resources.html">Resources</a></li>
+          <li><a href="./guides.html">Health Tips</a></li>
+          <li><a href="./search.html">Search</a></li>
+          <li><a href="./international-essentials.html">International Essentials</a></li>
+          <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
+          <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>
+          <li><a href="./housing-bills.html">Housing &amp; Bills</a></li>
+          <li><a href="./money-spending.html">Money &amp; Spending</a></li>
+          <li><a href="./community-activities-sport.html">Community &amp; Sport</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./about.html#source-policy">Source Policy</a></li>
+          <li><a href="./case-study.html" aria-current="page">Case Study</a></li>
+          <li><a href="./audit-report.html">Audit Report</a></li>
+        </ul>
+      </nav>
+      <div class="footer-meta">
+        <p class="footer-disclaimer"><strong>Signposting only.</strong> Not medical, legal, financial or immigration advice. For emergencies, call 999.</p>
+        <p class="footer-copy">&copy; 2026 HealthLens</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footnote" role="note">HealthLens is not affiliated with Bristol SU, the University of Bristol, the NHS, GOV.UK or Samaritans. It signposts to official and expert support resources only.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
