@@ -1,13 +1,16 @@
 # HealthLens — International Student Wellbeing Navigator
 
 **Live demo:** https://li2043.github.io/HealthLens-Web/  
+**Project type:** Static multi-page information website  
+**Core technologies:** HTML, CSS, JavaScript, JSON, GitHub Pages
 
-## Introduction
 HealthLens is a multi-page information website designed to help international students in the UK find and understand trusted support resources for student life. It brings together resources and short guide summaries across study support, healthcare, mental wellbeing, housing, money, community, everyday life and urgent help.
-![HealthLens homepage](assets/screenshots/home-desktop.png)
+
 The project is not intended to replace official or professional advice. It signposts users to original sources and uses source labels, last-checked dates and clear limitations to help users understand how to interpret each resource.
 
----
+<p align="center">
+  <img src="./assets/screenshots/home-desktop.png" alt="HealthLens homepage showing the hero section, topic navigation and student support positioning" width="900">
+</p>
 
 ## Why I built this
 
@@ -24,17 +27,11 @@ A search engine can return many results, but it does not always explain:
 
 HealthLens explores how accessible front-end design, structured content and clear information architecture can make student support routes easier to navigate.
 
----
-
-### Mobile Layout
-![Mobile responsive view](assets/screenshots/mobile-view.png)
-```
-
 ## Key features
 
-### 1. Multi-page information architecture
+### Multi-page information architecture
 
-HealthLens is organised into topic hubs rather than a single long page. This helps separate different user needs and makes the site easier to scan.
+HealthLens is organised into topic hubs rather than a single long page. This separates different user needs and makes the site easier to scan.
 
 Current pages include:
 
@@ -54,9 +51,13 @@ Current pages include:
 | `case-study.html` | Portfolio-style explanation of the project process |
 | `audit-report.html` | Accessibility and content audit summary |
 
-### 2. Resource library
-![Resource Library search and filters](assets/screenshots/resources-search.png)
+### Resource library
+
 The Resource Library helps users search and filter support resources by topic. Each card includes a short summary, a suggested next step, a source link and source metadata.
+
+<p align="center">
+  <img src="./assets/screenshots/resources-search.png" alt="Resource Library page showing search input, category filters and resource cards" width="900">
+</p>
 
 Resource categories include:
 
@@ -69,9 +70,13 @@ Resource categories include:
 - Community
 - Urgent Help
 
-### 3. Curated guide cards
-![Source quality labels and last checked dates](assets/screenshots/source-labels.png)
+### Curated guide cards
+
 The project uses `data/articles.json` to manage short, source-based guide cards. These are not long blog posts or professional advice pages. They are structured summaries that help users understand where to start and which official or expert source to read next.
+
+<p align="center">
+  <img src="./assets/screenshots/guides-cards.png" alt="Curated guide cards showing topic badges, summaries, key points and source links" width="900">
+</p>
 
 Example guide topics include:
 
@@ -84,8 +89,8 @@ Example guide topics include:
 - using student discounts carefully
 - first-month checklist for new international students
 
-### 4. Global search
-![Global search results](assets/screenshots/search-results.png)
+### Global search
+
 The global search page builds a client-side search index from:
 
 - topic pages in `data/topics.json`
@@ -94,9 +99,13 @@ The global search page builds a client-side search index from:
 
 Users can search by keyword and filter results by content type or topic. Search results include metadata such as source type, topic, audience, risk level and last checked date.
 
+<p align="center">
+  <img src="./assets/screenshots/search-results.png" alt="Global search page showing results across topic pages, resources and curated guides" width="900">
+</p>
+
 The search is implemented with vanilla JavaScript and static JSON, so it works on GitHub Pages without a backend.
 
-### 5. Source quality labels
+### Source quality labels
 
 HealthLens uses source metadata to help users understand what kind of information they are viewing.
 
@@ -111,8 +120,11 @@ Source labels include:
 
 The project also uses **Last checked** dates. This means the date HealthLens last checked that the link worked and that the summary still matched the source. It does not mean the original source was updated on that date.
 
+<p align="center">
+  <img src="./assets/screenshots/source-labels.png" alt="Resource cards showing source quality labels, risk level and last checked dates" width="900">
+</p>
 
-### 6. Accessibility-informed design
+### Accessibility-informed design
 
 The project is designed with accessibility in mind. It includes:
 
@@ -130,7 +142,11 @@ The project is designed with accessibility in mind. It includes:
 
 This is a WCAG-informed student project, not a formal accessibility certification.
 
-### 7. Case study and documentation
+<p align="center">
+  <img src="./assets/screenshots/mobile-view.png" alt="Mobile view showing HealthLens responsive layout and readable card design" width="360">
+</p>
+
+### Case study and documentation
 
 The project includes documentation to make the design and development process easier to review:
 
@@ -146,17 +162,19 @@ The project includes documentation to make the design and development process ea
 
 These documents explain the project scope, accessibility checks, content boundaries, source policy, manual testing and future improvements.
 
----
+<p align="center">
+  <img src="./assets/screenshots/case-study.png" alt="Case study page explaining the project problem, users, information architecture and content model" width="900">
+</p>
 
 ## Technology used
 
-### 1. Front-end
+### Front-end
 
 - HTML
 - CSS
 - JavaScript
 
-### 2. Data and content structure
+### Data and content structure
 
 - JSON-based content files
 - `data/resources.json`
@@ -164,15 +182,13 @@ These documents explain the project scope, accessibility checks, content boundar
 - `data/topics.json`
 - `data/care-options.json`
 
-### 3. Design and workflow
+### Design and workflow
 
 - Git and GitHub
 - GitHub Pages deployment
 - Figma for layout planning and visual direction
 - Chrome DevTools for inspection and testing
 - Manual accessibility and content audit documents
-
----
 
 ## Project structure
 
@@ -202,12 +218,20 @@ HealthLens-Web/
 │   ├── accessibility-audit.md
 │   ├── content-audit.md
 │   └── manual-test-plan.md
+├── assets/
+│   └── screenshots/
+│       ├── home-desktop.png
+│       ├── resources-search.png
+│       ├── guides-cards.png
+│       ├── search-results.png
+│       ├── source-labels.png
+│       ├── mobile-view.png
+│       └── case-study.png
 ├── accessibility-checklist.md
 ├── accessibility-test-report.md
 ├── CHANGELOG.md
 └── README.md
 ```
----
 
 ## Design and content decisions
 
@@ -254,8 +278,6 @@ Guide cards use short summaries, key points and next-step language to help users
 
 The content avoids unsafe wording. For example, healthcare content is framed as service navigation and official signposting, not symptom assessment or medical advice.
 
----
-
 ## How this project reflects digital content and front-end work
 
 HealthLens was designed to demonstrate the overlap between front-end implementation, digital content structure, accessibility and user-centred communication.
@@ -274,8 +296,6 @@ The project demonstrates the ability to:
 
 These choices reflect the practical work involved in maintaining user-facing digital services: understanding user needs, translating content into usable page structures, keeping information accurate and accessible, and communicating clearly to technical and non-technical audiences.
 
----
-
 ## Running locally
 
 Because the site loads JSON files with JavaScript, it should be run through a local server rather than opened by double-clicking `index.html`.
@@ -292,8 +312,6 @@ Then open:
 http://localhost:8000
 ```
 
----
-
 ## Deployment
 
 The project is designed for GitHub Pages.
@@ -306,8 +324,6 @@ Recommended setup:
 4. Select deployment from the main branch.
 5. Use the project root as the publishing source.
 6. Check that internal links use relative paths.
-
----
 
 ## Testing checklist
 
@@ -328,8 +344,6 @@ Before publishing or sharing the project, check:
 - content does not overclaim professional advice
 - README and changelog match the current version
 
----
-
 ## Limitations
 
 HealthLens is a student project and should be interpreted as a portfolio prototype.
@@ -343,8 +357,6 @@ Current limitations:
 - Accessibility checks are WCAG-informed but not a formal certification.
 - The site has not yet been tested with a large group of real international student users.
 
----
-
 ## Future improvements
 
 Potential next steps:
@@ -357,8 +369,6 @@ Potential next steps:
 - improve screen reader testing
 - add more visual documentation and screenshots
 - migrate to a static site generator if the content grows
-
----
 
 ## Credits and source policy
 
@@ -379,7 +389,19 @@ If all icons are self-created:
 All decorative SVG illustrations and icons were created for this student project.
 ```
 
----
+## Screenshots to add
+
+Add screenshots to `assets/screenshots/` using the filenames below. The README already references these paths.
+
+| Filename | Suggested viewport | What to capture |
+|---|---|---|
+| `home-desktop.png` | Desktop, 1440 × 900 | Homepage hero, navigation and first topic cards |
+| `resources-search.png` | Desktop, 1440 × 900 | Resources page after searching `housing` or `GP`, showing filters and resource cards |
+| `guides-cards.png` | Desktop, 1440 × 900 | Guides page showing 3–4 curated guide cards with topic badges and key points |
+| `search-results.png` | Desktop, 1440 × 900 | Search page after searching `deposit` or `vitamin D`, showing result cards and filters |
+| `source-labels.png` | Desktop, cropped | Close-up of cards showing source type, risk level and last checked labels |
+| `mobile-view.png` | Mobile, 390 × 844 | Mobile layout showing readable hero/topic cards or resource cards |
+| `case-study.png` | Desktop, 1440 × 900 | Case study page showing problem, users, information architecture or content model |
 
 ## Version history
 
