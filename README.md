@@ -2,7 +2,30 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 0.9** · A multi-page static website for international student wellbeing and practical support signposting.
+**Version 1.0** · A multi-page static website for international student wellbeing and practical support signposting.
+
+---
+
+## V1.0 Update Summary
+
+**V1.0 — Global Search**
+
+HealthLens V1.0 adds a client-side global search system across topic pages, resources and health tips. The search index is built from JSON data files and rendered with accessible result cards. Search URLs support query parameters so results can be linked directly.
+
+### What V1.0 adds
+
+| Feature | Purpose |
+|--------|---------|
+| **`search.html`** | Global search page with keyword search, type filters and topic filters |
+| **`data/topics.json`** | Searchable metadata for all main site pages |
+| **Unified search index** | Combines topic pages, `resources.json` and `articles.json` |
+| **Type filters** | All, Topic pages, Resources, Guides |
+| **Topic filters** | Filter by student-life topic or urgent/academic categories |
+| **`URLSearchParams`** | Shareable search URLs such as `search.html?q=GP&type=guide` |
+| **Accessible status messages** | Live results summary with `role="status"` |
+| **No backend** | Pure vanilla JavaScript — works on GitHub Pages |
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 
@@ -43,6 +66,7 @@ HealthLens was expanded from a single-page resource finder into a **multi-page s
 | Page | File |
 |------|------|
 | Home | `index.html` |
+| Search | `search.html` |
 | Resources | `resources.html` |
 | Health Tips | `guides.html` |
 | International Essentials | `international-essentials.html` |
@@ -104,7 +128,7 @@ For a Web & Digital Content Coordinator role — particularly at a students' uni
 
 - HTML, CSS and JavaScript
 - Responsive layout
-- JSON-based content structure (`data/resources.json`, `data/care-options.json`, `data/articles.json`)
+- JSON-based content structure (`data/resources.json`, `data/care-options.json`, `data/articles.json`, `data/topics.json`)
 - Search and filtering
 - Accessible forms and navigation
 - Plain-English digital content

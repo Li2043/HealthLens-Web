@@ -1,11 +1,31 @@
 /**
  * HealthLens — International Student Wellbeing Navigator
- * Version 0.9 — multi-page static HTML, CSS and JavaScript
+ * Version 1.0 — multi-page static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
 const CARE_OPTIONS_URL = "./data/care-options.json";
 const ARTICLES_URL = "./data/articles.json";
+const TOPICS_URL = "./data/topics.json";
+
+const MAX_SEARCH_RESULTS = 20;
+
+const resourceCategoryToTopicFilter = {
+  academic: "academic",
+  "physical-wellbeing": "health-healthcare",
+  "mental-wellbeing": "mental-wellbeing",
+  housing: "housing-bills",
+  money: "money-spending",
+  "international-life": "international-essentials",
+  community: "community-activities-sport",
+  "urgent-help": "urgent-help"
+};
+
+const searchTypePriority = {
+  guide: 0,
+  resource: 1,
+  page: 2
+};
 
 const categoryLabels = {
   academic: "Academic",
@@ -63,6 +83,12 @@ let articlesLoaded = false;
 let articlesLoadFailed = false;
 let activeGuideTopic = "all";
 let guideSearchQuery = "";
+
+let searchIndexItems = [];
+let searchIndexLoaded = false;
+let searchIndexErrors = [];
+let activeSearchType = "all";
+let activeSearchTopic = "all";
 
 function getHeaderOffset() {
   const header = document.querySelector(".site-header");
@@ -1178,6 +1204,654 @@ async function initGuides() {
   }
 }
 
+function normaliseTopicPages(topics) {
+  if (!Array.isArray(topics)) {
+    return [];
+  }
+
+  return topics.map((topic) => ({
+    id: topic.id,
+    type: "page",
+    title: topic.title,
+    summary: topic.summary,
+    topic: topic.topic,
+    category: topic.topic,
+    audience: topic.audience || "International students",
+    sourceType: "Site page",
+    url: topic.url,
+    keywords: Array.isArray(topic.keywords) ? topic.keywords : [],
+    lastChecked: "",
+    topicFilterKey: topic.id,
+    meta: {
+      sourceLabels: []
+    }
+  }));
+}
+
+function normaliseResources(resources) {
+  if (!Array.isArray(resources)) {
+    return [];
+  }
+
+  return resources.map((resource) => {
+    const categoryLabel = getCategoryLabel(resource.category);
+    const keywords = [
+      resource.title,
+      categoryLabel,
+      resource.category,
+      resource.description,
+      resource.sourceLabel,
+      resource.sourceType,
+      resource.audience,
+      resource.nextStep,
+      resource.linkText
+    ].filter(Boolean);
+
+    return {
+      id: resource.id,
+      type: "resource",
+      title: resource.title,
+      summary: resource.description || resource.summary || "",
+      topic: categoryLabel,
+      category: categoryLabel,
+      audience: resource.audience || "All students",
+      sourceType: resource.sourceType || "Official source",
+      url: resource.sourceUrl,
+      keywords,
+      lastChecked: resource.lastChecked || "",
+      topicFilterKey:
+        resourceCategoryToTopicFilter[resource.category] || resource.category,
+      meta: {
+        sourceLabels: resource.sourceLabel ? [resource.sourceLabel] : [],
+        linkText: resource.linkText || "Open official resource",
+        isExternal: true
+      }
+    };
+  });
+}
+
+function normaliseArticles(articlesList) {
+  if (!Array.isArray(articlesList)) {
+    return [];
+  }
+
+  return articlesList.map((article) => {
+    const sourceLabels = (article.sources || []).map((source) => source.label);
+    const keywords = [
+      article.title,
+      article.topic,
+      article.audience,
+      article.summary,
+      article.whyItMatters,
+      article.sourceType,
+      ...(article.keyPoints || []),
+      ...sourceLabels
+    ].filter(Boolean);
+
+    return {
+      id: article.id,
+      type: "guide",
+      title: article.title,
+      summary: article.summary,
+      topic: article.topic,
+      category: article.topic,
+      audience: article.audience || "International students",
+      sourceType: article.sourceType || "Official source",
+      url: `./guides.html#${article.id}`,
+      keywords,
+      lastChecked: article.lastChecked || "",
+      topicFilterKey: article.topicSlug,
+      meta: {
+        sourceLabels,
+        isExternal: false
+      }
+    };
+  });
+}
+
+async function loadSearchIndex() {
+  if (searchIndexLoaded) {
+    return searchIndexItems;
+  }
+
+  searchIndexErrors = [];
+  const items = [];
+
+  const loaders = [
+    fetch(TOPICS_URL)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`topics.json (${response.status})`);
+        }
+        const data = await response.json();
+        const topics = Array.isArray(data) ? data : data.topics;
+        items.push(...normaliseTopicPages(topics));
+      })
+      .catch((error) => {
+        searchIndexErrors.push("Topic pages could not be loaded.");
+        console.error("HealthLens: unable to load topics for search.", error);
+      }),
+    fetch(RESOURCES_URL)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`resources.json (${response.status})`);
+        }
+        const data = await response.json();
+        const resources = Array.isArray(data) ? data : data.resources;
+        items.push(...normaliseResources(resources));
+      })
+      .catch((error) => {
+        searchIndexErrors.push("Support resources could not be loaded.");
+        console.error("HealthLens: unable to load resources for search.", error);
+      }),
+    fetch(ARTICLES_URL)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`articles.json (${response.status})`);
+        }
+        const data = await response.json();
+        const articlesList = Array.isArray(data) ? data : data.articles;
+        items.push(...normaliseArticles(articlesList));
+      })
+      .catch((error) => {
+        searchIndexErrors.push("Health tips could not be loaded.");
+        console.error("HealthLens: unable to load articles for search.", error);
+      })
+  ];
+
+  await Promise.all(loaders);
+  searchIndexItems = items;
+  searchIndexLoaded = true;
+  return searchIndexItems;
+}
+
+function buildSearchIndex() {
+  return searchIndexItems;
+}
+
+function tokenizeSearchQuery(query) {
+  return query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+}
+
+function scoreSearchItem(item, queryTokens, rawQuery) {
+  const raw = rawQuery.trim().toLowerCase();
+  if (!raw && queryTokens.length === 0) {
+    return 1;
+  }
+
+  const title = (item.title || "").toLowerCase();
+  const summary = (item.summary || "").toLowerCase();
+  const topic = (item.topic || "").toLowerCase();
+  const category = (item.category || "").toLowerCase();
+  const audience = (item.audience || "").toLowerCase();
+  const sourceType = (item.sourceType || "").toLowerCase();
+  const keywords = (item.keywords || []).join(" ").toLowerCase();
+  const sourceLabels = (item.meta?.sourceLabels || []).join(" ").toLowerCase();
+
+  let score = 0;
+
+  if (raw && title === raw) {
+    score += 80;
+  }
+
+  if (raw && title.includes(raw)) {
+    score += 50;
+  }
+
+  if (raw && summary.includes(raw)) {
+    score += 10;
+  }
+
+  if (raw && (topic.includes(raw) || category.includes(raw))) {
+    score += 30;
+  }
+
+  if (raw && keywords.includes(raw)) {
+    score += 20;
+  }
+
+  if (raw && sourceLabels.includes(raw)) {
+    score += 8;
+  }
+
+  queryTokens.forEach((token) => {
+    if (title.includes(token)) {
+      score += 25;
+    }
+
+    if (topic.includes(token) || category.includes(token)) {
+      score += 30;
+    }
+
+    if (keywords.includes(token)) {
+      score += 20;
+    }
+
+    if (summary.includes(token)) {
+      score += 10;
+    }
+
+    if (sourceLabels.includes(token)) {
+      score += 8;
+    }
+
+    if (audience.includes(token)) {
+      score += 5;
+    }
+
+    if (sourceType.includes(token)) {
+      score += 5;
+    }
+  });
+
+  return score;
+}
+
+function searchIndex(items, query, typeFilter, topicFilter) {
+  const queryTokens = tokenizeSearchQuery(query);
+  const hasQuery = query.trim().length > 0;
+  const hasTypeFilter = typeFilter && typeFilter !== "all";
+  const hasTopicFilter = topicFilter && topicFilter !== "all";
+
+  if (!hasQuery && !hasTypeFilter && !hasTopicFilter) {
+    return [];
+  }
+
+  let filtered = items;
+
+  if (hasTypeFilter) {
+    filtered = filtered.filter((item) => item.type === typeFilter);
+  }
+
+  if (hasTopicFilter) {
+    filtered = filtered.filter(
+      (item) => item.topicFilterKey === topicFilter
+    );
+  }
+
+  if (!hasQuery) {
+    return filtered
+      .slice()
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  const scored = filtered
+    .map((item) => ({
+      item,
+      score: scoreSearchItem(item, queryTokens, query)
+    }))
+    .filter((entry) => entry.score > 0);
+
+  scored.sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score;
+    }
+
+    const typeDiff =
+      (searchTypePriority[a.item.type] ?? 9) -
+      (searchTypePriority[b.item.type] ?? 9);
+
+    if (typeDiff !== 0) {
+      return typeDiff;
+    }
+
+    if (
+      a.item.type === "page" &&
+      a.item.title.toLowerCase() === query.trim().toLowerCase()
+    ) {
+      return -1;
+    }
+
+    if (
+      b.item.type === "page" &&
+      b.item.title.toLowerCase() === query.trim().toLowerCase()
+    ) {
+      return 1;
+    }
+
+    return a.item.title.localeCompare(b.item.title);
+  });
+
+  return scored.map((entry) => entry.item);
+}
+
+function getSearchResultTypeLabel(type) {
+  if (type === "page") {
+    return "Page";
+  }
+
+  if (type === "resource") {
+    return "Resource";
+  }
+
+  if (type === "guide") {
+    return "Guide";
+  }
+
+  return type;
+}
+
+function getSearchResultLink(item) {
+  if (item.type === "page") {
+    return {
+      text: "Open topic page",
+      ariaLabel: `Open topic page: ${item.title}`
+    };
+  }
+
+  if (item.type === "resource") {
+    return {
+      text: "Open official or expert resource",
+      ariaLabel: `${item.meta?.linkText || "Open official or expert resource"} (${item.meta?.sourceLabels?.[0] || item.title}, opens in new tab)`
+    };
+  }
+
+  return {
+    text: "Read health tip summary",
+    ariaLabel: `Read health tip summary: ${item.title}`
+  };
+}
+
+function createSearchResultCard(item) {
+  const article = document.createElement("article");
+  const linkInfo = getSearchResultLink(item);
+  const isExternal = Boolean(item.meta?.isExternal);
+  const typeClass = item.type;
+  const lastChecked = item.lastChecked
+    ? `<span class="search-meta__item">Last checked: ${escapeHtml(item.lastChecked)}</span>`
+    : "";
+
+  article.className = "search-result-card";
+  article.dataset.type = item.type;
+
+  article.innerHTML = `
+    <header class="search-result-card__header">
+      <span class="result-type-badge result-type-badge--${typeClass}">${escapeHtml(getSearchResultTypeLabel(item.type))}</span>
+      <h2 class="search-result-card__title">${escapeHtml(item.title)}</h2>
+    </header>
+    <p class="search-result-card__summary">${escapeHtml(item.summary)}</p>
+    <div class="search-meta">
+      <span class="search-meta__item"><strong>Topic:</strong> ${escapeHtml(item.topic || item.category || "General")}</span>
+      <span class="search-meta__item"><strong>Audience:</strong> ${escapeHtml(item.audience || "All students")}</span>
+      <span class="search-meta__item"><strong>Source type:</strong> ${escapeHtml(item.sourceType || "Not specified")}</span>
+      ${lastChecked}
+    </div>
+    <a
+      class="search-result-card__link"
+      href="${escapeHtml(item.url)}"
+      ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ""}
+      aria-label="${escapeHtml(linkInfo.ariaLabel)}"
+    >
+      ${escapeHtml(linkInfo.text)}${isExternal ? " (opens in new tab)" : ""}
+    </a>
+  `;
+
+  return article;
+}
+
+function renderSearchResults(results, totalCount) {
+  const resultsContainer = document.getElementById("search-results");
+  const emptyState = document.getElementById("search-empty-state");
+
+  if (!resultsContainer) {
+    return;
+  }
+
+  resultsContainer.innerHTML = "";
+
+  if (searchIndexErrors.length > 0) {
+    searchIndexErrors.forEach((message) => {
+      const errorMessage = document.createElement("p");
+      errorMessage.className = "search-empty-state";
+      errorMessage.setAttribute("role", "alert");
+      errorMessage.textContent = message;
+      resultsContainer.appendChild(errorMessage);
+    });
+  }
+
+  if (results.length === 0) {
+    if (emptyState) {
+      emptyState.hidden = false;
+    }
+    return;
+  }
+
+  if (emptyState) {
+    emptyState.hidden = true;
+  }
+
+  const visibleResults = results.slice(0, MAX_SEARCH_RESULTS);
+  visibleResults.forEach((item) => {
+    resultsContainer.appendChild(createSearchResultCard(item));
+  });
+
+  if (totalCount > MAX_SEARCH_RESULTS) {
+    const limitNote = document.createElement("p");
+    limitNote.className = "search-limit-note";
+    limitNote.textContent = `Showing ${MAX_SEARCH_RESULTS} of ${totalCount} results.`;
+    resultsContainer.appendChild(limitNote);
+  }
+}
+
+function updateSearchStatus(count, query, totalCount) {
+  const status = document.getElementById("search-status");
+
+  if (!status) {
+    return;
+  }
+
+  const trimmedQuery = query.trim();
+
+  if (!trimmedQuery && activeSearchType === "all" && activeSearchTopic === "all") {
+    status.textContent = "Enter a keyword to search topic pages, resources and health tips.";
+    return;
+  }
+
+  if (count === 0) {
+    status.textContent = trimmedQuery
+      ? `No matching results found for “${trimmedQuery}”.`
+      : "No matching results found for the selected filters.";
+    return;
+  }
+
+  if (totalCount > MAX_SEARCH_RESULTS) {
+    status.textContent = trimmedQuery
+      ? `Showing ${MAX_SEARCH_RESULTS} of ${totalCount} results for “${trimmedQuery}”.`
+      : `Showing ${MAX_SEARCH_RESULTS} of ${totalCount} results for the selected filters.`;
+    return;
+  }
+
+  status.textContent = trimmedQuery
+    ? `${count} result${count === 1 ? "" : "s"} found for “${trimmedQuery}”.`
+    : `${count} result${count === 1 ? "" : "s"} found for the selected filters.`;
+}
+
+function updateSearchURL(query, typeFilter, topicFilter) {
+  const params = new URLSearchParams();
+
+  if (query.trim()) {
+    params.set("q", query.trim());
+  }
+
+  if (typeFilter && typeFilter !== "all") {
+    params.set("type", typeFilter);
+  }
+
+  if (topicFilter && topicFilter !== "all") {
+    params.set("topic", topicFilter);
+  }
+
+  const queryString = params.toString();
+  const nextUrl = queryString
+    ? `${window.location.pathname}?${queryString}`
+    : window.location.pathname;
+
+  window.history.replaceState({}, "", nextUrl);
+}
+
+function syncSearchFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q") || "";
+  const type = params.get("type") || "all";
+  const topic = params.get("topic") || "all";
+  const searchInput = document.getElementById("global-search-input");
+  const topicSelect = document.getElementById("search-topic-filter");
+
+  activeSearchType = type;
+  activeSearchTopic = topic;
+
+  if (searchInput) {
+    searchInput.value = query;
+  }
+
+  if (topicSelect) {
+    topicSelect.value = topic;
+  }
+
+  document.querySelectorAll(".search-type-btn").forEach((button) => {
+    const isActive = button.dataset.type === type;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  return { query, type, topic };
+}
+
+function runGlobalSearch() {
+  const searchInput = document.getElementById("global-search-input");
+  const query = searchInput ? searchInput.value : "";
+  const items = buildSearchIndex();
+  const results = searchIndex(
+    items,
+    query,
+    activeSearchType,
+    activeSearchTopic
+  );
+
+  updateSearchURL(query, activeSearchType, activeSearchTopic);
+  renderSearchResults(results, results.length);
+  updateSearchStatus(
+    Math.min(results.length, MAX_SEARCH_RESULTS),
+    query,
+    results.length
+  );
+}
+
+function setActiveSearchType(button) {
+  document.querySelectorAll(".search-type-btn").forEach((btn) => {
+    const isActive = btn === button;
+    btn.classList.toggle("is-active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
+  });
+
+  activeSearchType = button.dataset.type;
+  runGlobalSearch();
+}
+
+async function initGlobalSearch() {
+  const searchPage = document.querySelector("[data-global-search-page]");
+
+  if (!searchPage) {
+    return;
+  }
+
+  const searchForm = document.getElementById("global-search-form");
+  const searchInput = document.getElementById("global-search-input");
+  const clearButton = document.getElementById("search-clear-btn");
+  const topicSelect = document.getElementById("search-topic-filter");
+  const typeButtons = document.querySelectorAll(".search-type-btn");
+  const resultsContainer = document.getElementById("search-results");
+  const status = document.getElementById("search-status");
+
+  if (resultsContainer) {
+    resultsContainer.innerHTML = "";
+    const loadingMessage = document.createElement("p");
+    loadingMessage.className = "search-loading";
+    loadingMessage.textContent = "Loading search index…";
+    resultsContainer.appendChild(loadingMessage);
+  }
+
+  if (status) {
+    status.textContent = "Loading search index…";
+  }
+
+  await loadSearchIndex();
+
+  if (resultsContainer) {
+    resultsContainer.innerHTML = "";
+  }
+
+  syncSearchFromURL();
+  runGlobalSearch();
+
+  if (searchForm) {
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      runGlobalSearch();
+    });
+  }
+
+  typeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setActiveSearchType(button);
+    });
+  });
+
+  if (topicSelect) {
+    topicSelect.addEventListener("change", () => {
+      activeSearchTopic = topicSelect.value;
+      runGlobalSearch();
+    });
+  }
+
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      if (searchInput) {
+        searchInput.value = "";
+      }
+
+      activeSearchType = "all";
+      activeSearchTopic = "all";
+
+      if (topicSelect) {
+        topicSelect.value = "all";
+      }
+
+      typeButtons.forEach((button) => {
+        const isAll = button.dataset.type === "all";
+        button.classList.toggle("is-active", isAll);
+        button.setAttribute("aria-pressed", String(isAll));
+      });
+
+      updateSearchURL("", "all", "all");
+      renderSearchResults([], 0);
+      updateSearchStatus(0, "", 0);
+
+      if (searchInput) {
+        searchInput.focus();
+      }
+    });
+  }
+}
+
+function initHeaderSearchEntry() {
+  const headerSearchForm = document.getElementById("header-search-form");
+
+  if (!headerSearchForm) {
+    return;
+  }
+
+  headerSearchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input = headerSearchForm.querySelector('input[type="search"]');
+    const query = input ? input.value.trim() : "";
+    const target = query
+      ? `./search.html?q=${encodeURIComponent(query)}`
+      : "./search.html";
+    window.location.href = target;
+  });
+}
+
 initThemeToggle();
 initInPageLinks();
 initMobileNav();
@@ -1187,3 +1861,5 @@ initCareOptions();
 initAccordion();
 initContactForm();
 initGuides();
+initGlobalSearch();
+initHeaderSearchEntry();

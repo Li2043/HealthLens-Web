@@ -1,0 +1,92 @@
+[
+  {
+    "id": "home",
+    "type": "page",
+    "title": "Home",
+    "summary": "HealthLens helps international students navigate trusted support for study, wellbeing, healthcare, housing, money, community and everyday life.",
+    "topic": "Overview",
+    "audience": "International students",
+    "url": "./index.html",
+    "keywords": ["international student", "wellbeing", "support", "student life", "UK"]
+  },
+  {
+    "id": "resources",
+    "type": "page",
+    "title": "Resource Library",
+    "summary": "Search and filter trusted official and expert resources for international student life in the UK.",
+    "topic": "Resources",
+    "audience": "International students",
+    "url": "./resources.html",
+    "keywords": ["resources", "support finder", "official links", "expert sources"]
+  },
+  {
+    "id": "international-essentials",
+    "type": "page",
+    "title": "International Essentials",
+    "summary": "Key resources for international students learning how UK university, healthcare, money and support systems work.",
+    "topic": "International Essentials",
+    "audience": "International students",
+    "url": "./international-essentials.html",
+    "keywords": ["international", "UKCISA", "visa", "healthcare", "bank", "first month", "student life"]
+  },
+  {
+    "id": "health-healthcare",
+    "type": "page",
+    "title": "Health & Healthcare",
+    "summary": "Practical signposting for GP registration, pharmacy, NHS 111, urgent care and everyday health information.",
+    "topic": "Health & Healthcare",
+    "audience": "International students",
+    "url": "./health-healthcare.html",
+    "keywords": ["health", "GP", "NHS", "pharmacy", "111", "999", "vitamin D", "medical care"]
+  },
+  {
+    "id": "mental-wellbeing",
+    "type": "page",
+    "title": "Mental Wellbeing",
+    "summary": "Resources for stress, loneliness, sleep, academic pressure, university wellbeing support and urgent mental health routes.",
+    "topic": "Mental Wellbeing",
+    "audience": "International students",
+    "url": "./mental-wellbeing.html",
+    "keywords": ["mental health", "stress", "loneliness", "sleep", "wellbeing", "Samaritans", "urgent support"]
+  },
+  {
+    "id": "housing-bills",
+    "type": "page",
+    "title": "Housing & Bills",
+    "summary": "Guidance and expert links for renting, deposits, repairs, bills and student housing advice.",
+    "topic": "Housing & Bills",
+    "audience": "International students",
+    "url": "./housing-bills.html",
+    "keywords": ["housing", "rent", "deposit", "repairs", "bills", "tenancy", "Shelter", "Citizens Advice"]
+  },
+  {
+    "id": "money-spending",
+    "type": "page",
+    "title": "Money & Everyday Spending",
+    "summary": "Resources for budgeting, student bank accounts, bills, discounts, safe spending and financial support.",
+    "topic": "Money & Spending",
+    "audience": "International students",
+    "url": "./money-spending.html",
+    "keywords": ["money", "budget", "bank", "student discounts", "shopping", "scams", "MoneyHelper"]
+  },
+  {
+    "id": "community-activities-sport",
+    "type": "page",
+    "title": "Community, Activities & Sport",
+    "summary": "Find student groups, volunteering, sport, low-cost activities and ways to build belonging.",
+    "topic": "Community & Sport",
+    "audience": "International students",
+    "url": "./community-activities-sport.html",
+    "keywords": ["community", "societies", "sport", "volunteering", "activities", "belonging", "friends"]
+  },
+  {
+    "id": "about",
+    "type": "page",
+    "title": "About & Source Policy",
+    "summary": "Learn what HealthLens is, how sources are selected, what the project does not do and how accessibility is considered.",
+    "topic": "About",
+    "audience": "International students",
+    "url": "./about.html",
+    "keywords": ["about", "source policy", "limitations", "accessibility", "student project"]
+  }
+]

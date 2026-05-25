@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Health tips for international students in the UK — short, source-based summaries with links to official and expert guidance.">
-  <title>Health Tips — HealthLens</title>
+  <meta name="description" content="Search HealthLens resources, guides and topic pages for international student wellbeing and practical support.">
+  <title>Search HealthLens — HealthLens</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <script>
@@ -44,7 +44,7 @@
           <li><a href="./housing-bills.html" title="Housing and Bills">Housing</a></li>
           <li><a href="./money-spending.html" title="Money and Spending">Money</a></li>
           <li><a href="./community-activities-sport.html" title="Community, Activities and Sport">Community</a></li>
-          <li><a href="./search.html" title="Search HealthLens">Search</a></li>
+          <li><a href="./search.html" aria-current="page" title="Search HealthLens">Search</a></li>
           <li><a href="./about.html">About</a></li>
         </ul>
       </nav>
@@ -68,55 +68,71 @@
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="topic-hero" aria-labelledby="guides-heading">
+  <main id="main-content" class="search-page" data-global-search-page>
+    <section class="topic-hero" aria-labelledby="search-page-heading">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol>
             <li><a href="./index.html">Home</a></li>
-            <li aria-current="page">Health Tips</li>
+            <li aria-current="page">Search</li>
           </ol>
         </nav>
-        <h1 id="guides-heading">Health Tips</h1>
-        <p class="topic-summary">Short, source-based health tips for international students navigating wellbeing and practical life in the UK.</p>
-        <p class="content-meta"><a href="./resources.html">Browse the Resource Library</a> for searchable support links.</p>
+        <h1 id="search-page-heading">Search HealthLens</h1>
+        <p class="topic-summary">Search across topic pages, official and expert resources, and health tips for international students in the UK.</p>
       </div>
     </section>
 
-    <section class="section section--alt curated-guides-library" aria-labelledby="guides-library-heading">
+    <section class="section section--alt" aria-labelledby="search-controls-heading">
       <div class="container">
-        <header class="section-header">
-          <h2 id="guides-library-heading">All health tips</h2>
-          <p class="section-intro">These tips summarise common student-life topics and signpost to official or expert sources. They do not replace professional advice.</p>
-        </header>
+        <h2 id="search-controls-heading" class="visually-hidden">Search controls</h2>
 
-        <div class="finder-controls">
-          <div class="search-wrapper">
-            <label for="guide-search">Search health tips</label>
-            <input type="search" id="guide-search" name="guide-search" autocomplete="off" placeholder="e.g. GP, budgeting, deposits, vitamin D">
+        <form id="global-search-form" class="search-form" action="./search.html" method="get" role="search">
+          <div class="search-form__row">
+            <label for="global-search-input">Search by keyword</label>
+            <input type="search" id="global-search-input" name="q" autocomplete="off" placeholder="e.g. GP, housing, budget, stress">
           </div>
+          <div class="search-form__actions">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="button" id="search-clear-btn" class="btn btn-secondary">Clear search</button>
+          </div>
+        </form>
+
+        <div class="search-controls">
           <fieldset class="filter-fieldset">
-            <legend>Filter by topic</legend>
-            <div class="guide-filters" role="group" aria-label="Guide topic filters">
-              <button type="button" class="guide-filter-btn is-active" data-topic="all" aria-pressed="true">All</button>
-              <button type="button" class="guide-filter-btn" data-topic="international-essentials" aria-pressed="false">International Essentials</button>
-              <button type="button" class="guide-filter-btn" data-topic="health-healthcare" aria-pressed="false">Health &amp; Healthcare</button>
-              <button type="button" class="guide-filter-btn" data-topic="mental-wellbeing" aria-pressed="false">Mental Wellbeing</button>
-              <button type="button" class="guide-filter-btn" data-topic="housing-bills" aria-pressed="false">Housing &amp; Bills</button>
-              <button type="button" class="guide-filter-btn" data-topic="money-spending" aria-pressed="false">Money &amp; Spending</button>
-              <button type="button" class="guide-filter-btn" data-topic="community-activities-sport" aria-pressed="false">Community &amp; Sport</button>
+            <legend>Filter by content type</legend>
+            <div class="search-type-filters" role="group" aria-label="Content type filters">
+              <button type="button" class="search-type-btn is-active" data-type="all" aria-pressed="true">All</button>
+              <button type="button" class="search-type-btn" data-type="page" aria-pressed="false">Topic pages</button>
+              <button type="button" class="search-type-btn" data-type="resource" aria-pressed="false">Resources</button>
+              <button type="button" class="search-type-btn" data-type="guide" aria-pressed="false">Guides</button>
             </div>
           </fieldset>
+
+          <div class="search-topic-filter">
+            <label for="search-topic-filter">Filter by topic</label>
+            <select id="search-topic-filter" name="topic">
+              <option value="all">All topics</option>
+              <option value="international-essentials">International Essentials</option>
+              <option value="health-healthcare">Health &amp; Healthcare</option>
+              <option value="mental-wellbeing">Mental Wellbeing</option>
+              <option value="housing-bills">Housing &amp; Bills</option>
+              <option value="money-spending">Money &amp; Spending</option>
+              <option value="community-activities-sport">Community &amp; Sport</option>
+              <option value="academic">Academic</option>
+              <option value="urgent-help">Urgent Help</option>
+            </select>
+          </div>
         </div>
 
-        <p id="guides-count" class="results-count" aria-live="polite" aria-atomic="true">Loading health tips…</p>
-        <p id="guides-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+        <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
 
-        <div class="guide-grid" data-guides-all aria-live="polite"></div>
+        <div id="search-results" class="search-results" aria-live="polite"></div>
+
+        <p id="search-empty-state" class="search-empty-state" hidden>No matching results found. Try a broader keyword such as GP, housing, money, stress or community.</p>
 
         <p class="support-note" role="note">
-          <strong>Please note:</strong> HealthLens health tips are source-based summaries for signposting only.
-          They do not provide medical, legal, financial or immigration advice. Always check the original source for current information.
+          <strong>Please note:</strong> HealthLens search signposts to topic pages, official resources and health tips.
+          It does not provide medical, legal, financial or immigration advice.
         </p>
       </div>
     </section>
@@ -133,8 +149,8 @@
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li><a href="./resources.html">Resources</a></li>
-          <li><a href="./guides.html" aria-current="page">Health Tips</a></li>
-          <li><a href="./search.html">Search</a></li>
+          <li><a href="./guides.html">Health Tips</a></li>
+          <li><a href="./search.html" aria-current="page">Search</a></li>
           <li><a href="./international-essentials.html">International Essentials</a></li>
           <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
           <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>

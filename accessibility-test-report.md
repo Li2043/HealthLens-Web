@@ -127,6 +127,36 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 
 ---
 
+## Global Search Tests (V1.0)
+
+| Test | Pass? | Notes |
+|------|-------|-------|
+| Search input has visible label | ✅ | “Search by keyword” label on `search.html` |
+| Search button is keyboard accessible | ✅ | Submit button in search form |
+| Type filters are keyboard accessible | ✅ | Real buttons with `aria-pressed` |
+| Topic filter has visible label | ✅ | “Filter by topic” label on select |
+| Results count announced through `role="status"` | ✅ | `#search-status` with `aria-live="polite"` |
+| No results state is clear | ✅ | `#search-empty-state` message shown when no matches |
+| Result cards have meaningful headings | ✅ | `<article class="search-result-card">` with descriptive titles |
+| Result links are descriptive | ✅ | “Open topic page”, “Open official or expert resource”, “Read health tip summary” |
+| Search works with URL query parameters | ✅ | `?q=`, `?type=` and `?topic=` supported |
+| Search page works in dark mode | ✅ | Shared theme toggle and search card styles |
+| Search page works on mobile | ✅ | Single-column layout; collapsible nav |
+| No console errors if JSON files fail | ✅ | Partial index load with alert messages; non-search pages unaffected |
+| Header Search nav link on all pages | ✅ | Links to `./search.html` |
+
+---
+
+## Fixes Made (V1.0)
+
+| Fix | Description |
+|-----|-------------|
+| **Global search** | Added `search.html`, `data/topics.json` and unified client-side search index |
+| **URL sharing** | Search state synced to URL with `URLSearchParams` |
+| **Accessible results** | Live status region, semantic result cards and descriptive links |
+
+---
+
 ## Health Tip Cards Tests (V0.9)
 
 | Test | Pass? | Notes |

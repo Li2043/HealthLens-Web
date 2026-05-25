@@ -4,6 +4,26 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [1.0] — May 2026
+
+### Added
+- **`search.html`** — global search page with keyword search, type filters and topic filters
+- **`data/topics.json`** — searchable metadata for Home, Resource Library, topic hubs and About
+- **Unified client-side search index** — combines topic pages, support resources and health tips
+- **`initGlobalSearch()`** and related helpers in `script.js` with defensive page guards
+- **Search result cards** — type badge, summary, topic, audience, source type, last checked and descriptive links
+- **URL query support** — `q`, `type` and `topic` parameters via `URLSearchParams`
+- **Header nav link** — Search entry point on all pages
+- **Topic page CTAs** — subtle “Search HealthLens” links with suggested keywords
+- Search CSS with dark mode and print support
+
+### Improved
+- Accessible live status messages for search results and empty states
+- Graceful partial failure when individual JSON files cannot load
+- README, CHANGELOG and accessibility test report updated for V1.0
+
+---
+
 ## [0.9] — May 2026
 
 ### Added
