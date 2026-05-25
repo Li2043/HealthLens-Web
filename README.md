@@ -1,11 +1,10 @@
 # HealthLens — International Student Wellbeing Navigator
 
 **Live demo:** https://li2043.github.io/HealthLens-Web/  
-**Version:** 1.2  
-**Project type:** Static multi-page website / front-end and digital content project
 
+## Introduction
 HealthLens is a multi-page information website designed to help international students in the UK find and understand trusted support resources for student life. It brings together resources and short guide summaries across study support, healthcare, mental wellbeing, housing, money, community, everyday life and urgent help.
-
+![HealthLens homepage](assets/screenshots/home-desktop.png)
 The project is not intended to replace official or professional advice. It signposts users to original sources and uses source labels, last-checked dates and clear limitations to help users understand how to interpret each resource.
 
 ---
@@ -27,9 +26,13 @@ HealthLens explores how accessible front-end design, structured content and clea
 
 ---
 
+### Mobile Layout
+![Mobile responsive view](assets/screenshots/mobile-view.png)
+```
+
 ## Key features
 
-### Multi-page information architecture
+### 1. Multi-page information architecture
 
 HealthLens is organised into topic hubs rather than a single long page. This helps separate different user needs and makes the site easier to scan.
 
@@ -51,8 +54,8 @@ Current pages include:
 | `case-study.html` | Portfolio-style explanation of the project process |
 | `audit-report.html` | Accessibility and content audit summary |
 
-### Resource library
-
+### 2. Resource library
+![Resource Library search and filters](assets/screenshots/resources-search.png)
 The Resource Library helps users search and filter support resources by topic. Each card includes a short summary, a suggested next step, a source link and source metadata.
 
 Resource categories include:
@@ -66,8 +69,8 @@ Resource categories include:
 - Community
 - Urgent Help
 
-### Curated guide cards
-
+### 3. Curated guide cards
+![Source quality labels and last checked dates](assets/screenshots/source-labels.png)
 The project uses `data/articles.json` to manage short, source-based guide cards. These are not long blog posts or professional advice pages. They are structured summaries that help users understand where to start and which official or expert source to read next.
 
 Example guide topics include:
@@ -81,8 +84,8 @@ Example guide topics include:
 - using student discounts carefully
 - first-month checklist for new international students
 
-### Global search
-
+### 4. Global search
+![Global search results](assets/screenshots/search-results.png)
 The global search page builds a client-side search index from:
 
 - topic pages in `data/topics.json`
@@ -93,7 +96,7 @@ Users can search by keyword and filter results by content type or topic. Search 
 
 The search is implemented with vanilla JavaScript and static JSON, so it works on GitHub Pages without a backend.
 
-### Source quality labels
+### 5. Source quality labels
 
 HealthLens uses source metadata to help users understand what kind of information they are viewing.
 
@@ -108,25 +111,8 @@ Source labels include:
 
 The project also uses **Last checked** dates. This means the date HealthLens last checked that the link worked and that the summary still matched the source. It does not mean the original source was updated on that date.
 
-### Responsible signposting
 
-Because the site covers healthcare, money, housing and international student information, it avoids presenting itself as a professional advice service.
-
-HealthLens does not provide:
-
-- medical advice
-- diagnosis
-- treatment recommendations
-- legal advice
-- financial advice
-- immigration advice
-- emergency support
-- product recommendations
-- affiliate or commercial endorsements
-
-Instead, the site uses careful wording such as “signposts to”, “official guidance”, “expert source”, “check the original source” and “seek professional advice where needed”.
-
-### Accessibility-informed design
+### 6. Accessibility-informed design
 
 The project is designed with accessibility in mind. It includes:
 
@@ -144,7 +130,7 @@ The project is designed with accessibility in mind. It includes:
 
 This is a WCAG-informed student project, not a formal accessibility certification.
 
-### Audit and case study documentation
+### 7. Case study and documentation
 
 The project includes documentation to make the design and development process easier to review:
 
@@ -164,13 +150,13 @@ These documents explain the project scope, accessibility checks, content boundar
 
 ## Technology used
 
-### Front-end
+### 1. Front-end
 
 - HTML
 - CSS
 - JavaScript
 
-### Data and content structure
+### 2. Data and content structure
 
 - JSON-based content files
 - `data/resources.json`
@@ -178,7 +164,7 @@ These documents explain the project scope, accessibility checks, content boundar
 - `data/topics.json`
 - `data/care-options.json`
 
-### Design and workflow
+### 3. Design and workflow
 
 - Git and GitHub
 - GitHub Pages deployment
@@ -221,43 +207,6 @@ HealthLens-Web/
 ├── CHANGELOG.md
 └── README.md
 ```
-
----
-
-## Screenshots
-
-Add screenshots after deployment or final visual review.
-
-Suggested screenshot files:
-
-```text
-assets/screenshots/home-desktop.png
-assets/screenshots/resources-search.png
-assets/screenshots/search-results.png
-assets/screenshots/source-labels.png
-assets/screenshots/mobile-view.png
-assets/screenshots/case-study.png
-```
-
-Suggested Markdown once screenshots are added:
-
-```markdown
-### Homepage
-![HealthLens homepage](assets/screenshots/home-desktop.png)
-
-### Resource Library
-![Resource Library search and filters](assets/screenshots/resources-search.png)
-
-### Global Search
-![Global search results](assets/screenshots/search-results.png)
-
-### Source Labels
-![Source quality labels and last checked dates](assets/screenshots/source-labels.png)
-
-### Mobile Layout
-![Mobile responsive view](assets/screenshots/mobile-view.png)
-```
-
 ---
 
 ## Design and content decisions
