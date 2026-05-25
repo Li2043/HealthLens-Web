@@ -4,6 +4,24 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [0.9] — May 2026
+
+### Added
+- **`data/articles.json`** — structured health tip data model with topic, audience, source metadata and risk level
+- **Health tip cards** — reusable `<article class="guide-card">` pattern with source links, key points and signposting disclaimers
+- **Topic page health tip sections** — tips filtered by `data-topic` on International Essentials, Health, Mental Wellbeing, Housing, Money and Community pages
+- **`guides.html`** — central Health Tips page with topic filter buttons and search
+- **`loadArticles()`, `renderGuideCards()`, `filterArticlesByTopic()`, `renderFeaturedGuidesForPage()`** in `script.js`
+- Guide card CSS with dark mode and print support
+- Footer link to Health Tips (nav kept compact — Health Tips not added to top nav)
+
+### Improved
+- Editorial layer beyond resource links — short plain-English summaries that signpost to official or expert sources
+- Empty state messaging when a topic has no guides yet
+- README, CHANGELOG and accessibility test report updated for V0.9
+
+---
+
 ## [0.8] — May 2026
 
 ### Added

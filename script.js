@@ -1,10 +1,11 @@
 /**
  * HealthLens — International Student Wellbeing Navigator
- * Version 0.8 — multi-page static HTML, CSS and JavaScript
+ * Version 0.9 — multi-page static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
 const CARE_OPTIONS_URL = "./data/care-options.json";
+const ARTICLES_URL = "./data/articles.json";
 
 const categoryLabels = {
   academic: "Academic",
@@ -56,6 +57,12 @@ let searchQuery = "";
 let careOptions = [];
 let careOptionsLoaded = false;
 let careOptionsLoadFailed = false;
+
+let articles = [];
+let articlesLoaded = false;
+let articlesLoadFailed = false;
+let activeGuideTopic = "all";
+let guideSearchQuery = "";
 
 function getHeaderOffset() {
   const header = document.querySelector(".site-header");
@@ -859,6 +866,318 @@ function initFeaturedResourcesOnly() {
   loadSupportResources();
 }
 
+function filterArticlesByTopic(topicSlug, articlesList) {
+  if (!topicSlug || topicSlug === "all") {
+    return articlesList;
+  }
+
+  return articlesList.filter((article) => article.topicSlug === topicSlug);
+}
+
+function articleMatchesGuideSearch(article, query) {
+  const normalizedQuery = query.trim().toLowerCase();
+  if (!normalizedQuery) {
+    return true;
+  }
+
+  const searchableText = [
+    article.title,
+    article.summary,
+    article.whyItMatters,
+    article.topic,
+    article.audience,
+    article.sourceType,
+    article.riskLevel,
+    ...(article.keyPoints || [])
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return searchableText.includes(normalizedQuery);
+}
+
+function createGuideCard(article, options = {}) {
+  const maxKeyPoints = options.maxKeyPoints ?? 3;
+  const showReadGuideLink = options.showReadGuideLink ?? false;
+  const showWhyItMatters = options.showWhyItMatters ?? true;
+  const keyPoints = (article.keyPoints || []).slice(0, maxKeyPoints);
+  const sourceTypeClass = (article.sourceType || "official-source")
+    .toLowerCase()
+    .replace(/\s+/g, "-");
+
+  const articleEl = document.createElement("article");
+  articleEl.className = "guide-card";
+  articleEl.id = article.id;
+  articleEl.dataset.topic = article.topicSlug;
+
+  const sourceLinks = (article.sources || [])
+    .map((source) => {
+      const linkLabel = `${source.label} (opens in new tab)`;
+      return `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(linkLabel)}">${escapeHtml(source.label)}</a></li>`;
+    })
+    .join("");
+
+  const readGuideLink = showReadGuideLink
+    ? `<a class="guide-card__read-link" href="./guides.html#${escapeHtml(article.id)}">Read health tip: ${escapeHtml(article.title)}</a>`
+    : "";
+
+  const whyItMatters = showWhyItMatters
+    ? `<p class="guide-card__why"><strong>Why it matters:</strong> ${escapeHtml(article.whyItMatters)}</p>`
+    : "";
+
+  articleEl.innerHTML = `
+    <header class="guide-card__header">
+      <span class="guide-badge guide-badge--topic">${escapeHtml(article.topic)}</span>
+      <h3 class="guide-card__title">${escapeHtml(article.title)}</h3>
+    </header>
+    <p class="guide-card__summary">${escapeHtml(article.summary)}</p>
+    ${whyItMatters}
+    <div class="guide-meta">
+      <span class="guide-meta__item"><strong>Audience:</strong> ${escapeHtml(article.audience)}</span>
+      <span class="guide-meta__item">${escapeHtml(article.readTime)}</span>
+      <span class="source-type-label source-type-label--${sourceTypeClass}">${escapeHtml(article.sourceType)}</span>
+      <span class="guide-meta__item">Last checked: ${escapeHtml(article.lastChecked)}</span>
+      <span class="guide-meta__item guide-meta__risk"><strong>Risk level:</strong> ${escapeHtml(article.riskLevel)}</span>
+    </div>
+    <div class="guide-key-points">
+      <strong>Key points</strong>
+      <ul>${renderListItems(keyPoints)}</ul>
+    </div>
+    <div class="guide-sources">
+      <strong>Official and expert sources</strong>
+      <ul>${sourceLinks}</ul>
+    </div>
+    <p class="guide-card__disclaimer" role="note">
+      <strong>Signposting only.</strong> This health tip summarises trusted sources and does not provide medical, legal, financial or immigration advice. Check the original source for current information.
+    </p>
+    ${readGuideLink}
+  `;
+
+  return articleEl;
+}
+
+function renderGuideCards(articlesToRender, container, options = {}) {
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  if (!articlesToRender.length) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "guide-empty-state";
+    emptyMessage.textContent =
+      options.emptyMessage ||
+      "No health tips are available for this topic yet.";
+    container.appendChild(emptyMessage);
+    return;
+  }
+
+  articlesToRender.forEach((article) => {
+    container.appendChild(createGuideCard(article, options));
+  });
+}
+
+async function loadArticles() {
+  if (articlesLoaded) {
+    return articles;
+  }
+
+  if (articlesLoadFailed) {
+    return [];
+  }
+
+  try {
+    const response = await fetch(ARTICLES_URL);
+
+    if (!response.ok) {
+      throw new Error(`Failed to load articles: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const articleList = Array.isArray(data) ? data : data.articles;
+
+    if (!Array.isArray(articleList)) {
+      throw new Error("Articles data is invalid");
+    }
+
+    articles = articleList;
+    articlesLoaded = true;
+    articlesLoadFailed = false;
+    return articles;
+  } catch (error) {
+    console.error("HealthLens: unable to load health tips.", error);
+    articlesLoadFailed = true;
+    articlesLoaded = false;
+    return [];
+  }
+}
+
+async function renderFeaturedGuidesForPage() {
+  const guideContainers = document.querySelectorAll("[data-guides-container]");
+  if (!guideContainers.length) {
+    return;
+  }
+
+  guideContainers.forEach((container) => {
+    container.innerHTML = "";
+    const loadingMessage = document.createElement("p");
+    loadingMessage.className = "guide-loading";
+    loadingMessage.textContent = "Loading health tips…";
+    container.appendChild(loadingMessage);
+  });
+
+  const loadedArticles = await loadArticles();
+
+  guideContainers.forEach((container) => {
+    const topicSlug = container.dataset.topic || "all";
+
+    if (articlesLoadFailed) {
+      container.innerHTML = "";
+      const errorMessage = document.createElement("p");
+      errorMessage.className = "guide-empty-state";
+      errorMessage.setAttribute("role", "alert");
+      errorMessage.textContent = "Health tips could not be loaded. Please try again later.";
+      container.appendChild(errorMessage);
+      return;
+    }
+
+    const filtered = filterArticlesByTopic(topicSlug, loadedArticles);
+    renderGuideCards(filtered, container, {
+      showReadGuideLink: true,
+      maxKeyPoints: 3,
+      showWhyItMatters: false
+    });
+  });
+}
+
+function renderGuidesLibrary() {
+  const guidesGrid = document.querySelector("[data-guides-all]");
+  const guidesCount = document.getElementById("guides-count");
+  const guidesStatus = document.getElementById("guides-status");
+
+  if (!guidesGrid || !articlesLoaded) {
+    return;
+  }
+
+  if (articlesLoadFailed) {
+    guidesGrid.innerHTML = "";
+    const errorMessage = document.createElement("p");
+    errorMessage.className = "guide-empty-state";
+    errorMessage.setAttribute("role", "alert");
+    errorMessage.textContent = "Health tips could not be loaded. Please try again later.";
+    guidesGrid.appendChild(errorMessage);
+
+    if (guidesCount) {
+      guidesCount.textContent = "Health tips unavailable";
+    }
+
+    if (guidesStatus) {
+      guidesStatus.textContent = "Health tips could not be loaded.";
+    }
+
+    return;
+  }
+
+  let filtered = filterArticlesByTopic(activeGuideTopic, articles);
+  filtered = filtered.filter((article) =>
+    articleMatchesGuideSearch(article, guideSearchQuery)
+  );
+
+  renderGuideCards(filtered, guidesGrid, {
+    showReadGuideLink: false,
+    maxKeyPoints: 3,
+    showWhyItMatters: true,
+    emptyMessage: "No health tips match your search. Try a different topic or search term."
+  });
+
+  const total = articles.length;
+  const countMessage = filtered.length > 0
+    ? `Showing ${filtered.length} of ${total} health tips`
+    : "Showing 0 health tips";
+
+  const statusMessage = filtered.length > 0
+    ? `${filtered.length} health tip${filtered.length === 1 ? "" : "s"} found.`
+    : "No matching health tips found.";
+
+  if (guidesCount) {
+    guidesCount.textContent = countMessage;
+  }
+
+  if (guidesStatus) {
+    guidesStatus.textContent = statusMessage;
+  }
+}
+
+function setActiveGuideFilter(button) {
+  const filterButtons = document.querySelectorAll(".guide-filter-btn");
+  filterButtons.forEach((btn) => {
+    const isActive = btn === button;
+    btn.classList.toggle("is-active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
+  });
+
+  activeGuideTopic = button.dataset.topic;
+  renderGuidesLibrary();
+}
+
+async function initGuidesPage() {
+  const guidesGrid = document.querySelector("[data-guides-all]");
+  if (!guidesGrid) {
+    return;
+  }
+
+  const filterButtons = document.querySelectorAll(".guide-filter-btn");
+  const guideSearchInput = document.getElementById("guide-search");
+
+  guidesGrid.innerHTML = "";
+  const loadingMessage = document.createElement("p");
+  loadingMessage.className = "guide-loading";
+  loadingMessage.textContent = "Loading health tips…";
+  guidesGrid.appendChild(loadingMessage);
+
+  await loadArticles();
+  renderGuidesLibrary();
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setActiveGuideFilter(button);
+    });
+  });
+
+  if (guideSearchInput) {
+    guideSearchInput.addEventListener("input", (event) => {
+      guideSearchQuery = event.target.value;
+      renderGuidesLibrary();
+    });
+  }
+
+  const hashId = window.location.hash.replace("#", "");
+  if (hashId) {
+    const targetGuide = document.getElementById(hashId);
+    if (targetGuide) {
+      scrollToElement(targetGuide);
+    }
+  }
+}
+
+async function initGuides() {
+  const guideContainers = document.querySelector("[data-guides-container]");
+  const guidesPage = document.querySelector("[data-guides-all]");
+
+  if (!guideContainers && !guidesPage) {
+    return;
+  }
+
+  if (guideContainers) {
+    await renderFeaturedGuidesForPage();
+  }
+
+  if (guidesPage) {
+    await initGuidesPage();
+  }
+}
+
 initThemeToggle();
 initInPageLinks();
 initMobileNav();
@@ -867,3 +1186,4 @@ initFeaturedResourcesOnly();
 initCareOptions();
 initAccordion();
 initContactForm();
+initGuides();

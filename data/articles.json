@@ -1,0 +1,246 @@
+[
+  {
+    "id": "getting-medical-care-as-a-student",
+    "title": "Getting medical care as a student",
+    "topic": "Health & Healthcare",
+    "topicSlug": "health-healthcare",
+    "audience": "International students in the UK",
+    "summary": "A short guide to registering with a GP, using NHS services and knowing where to find official healthcare information as a student.",
+    "whyItMatters": "International students may be unfamiliar with how UK healthcare access works.",
+    "keyPoints": [
+      "Registering with a GP near university can make it easier to access care when needed.",
+      "NHS 111 can help when you need medical help now but it is not life-threatening.",
+      "Always use official NHS or university guidance for current healthcare information."
+    ],
+    "sourceType": "Official source",
+    "riskLevel": "Signposting only",
+    "lastChecked": "2026-05",
+    "readTime": "2 min read",
+    "sources": [
+      {
+        "label": "NHS: Getting medical care as a student",
+        "url": "https://www.nhs.uk/nhs-services/getting-medical-care-as-a-student/"
+      },
+      {
+        "label": "UKCISA: Healthcare",
+        "url": "https://www.ukcisa.org.uk/student-advice/life-in-the-uk/healthcare/"
+      }
+    ],
+    "relatedResources": ["health-welfare", "international-support"]
+  },
+  {
+    "id": "vitamin-d-uk-winter",
+    "title": "Vitamin D in the UK winter",
+    "topic": "Health & Healthcare",
+    "topicSlug": "health-healthcare",
+    "audience": "International students",
+    "summary": "A short guide to official UK information about vitamin D, autumn and winter sunlight, and where to read NHS guidance.",
+    "whyItMatters": "Students arriving from sunnier countries may not expect how limited UK winter sunlight can affect vitamin D guidance.",
+    "keyPoints": [
+      "NHS guidance says people in the UK should consider taking a daily vitamin D supplement during autumn and winter.",
+      "This guide does not provide personal medical advice or dosage advice.",
+      "Students should read NHS guidance or speak to a healthcare professional if unsure."
+    ],
+    "sourceType": "Official source",
+    "riskLevel": "Public health information",
+    "lastChecked": "2026-05",
+    "readTime": "2 min read",
+    "sources": [
+      {
+        "label": "NHS: Vitamin D",
+        "url": "https://www.nhs.uk/conditions/vitamins-and-minerals/vitamin-d/"
+      },
+      {
+        "label": "GOV.UK: Vitamin D deficiency migrant health guide",
+        "url": "https://www.gov.uk/guidance/vitamin-d-deficiency-migrant-health-guide"
+      }
+    ],
+    "relatedResources": ["health-welfare"]
+  },
+  {
+    "id": "pharmacy-gp-111-999",
+    "title": "Pharmacy, GP, NHS 111 or 999?",
+    "topic": "Health & Healthcare",
+    "topicSlug": "health-healthcare",
+    "audience": "International students",
+    "summary": "A service-navigation guide explaining common UK healthcare routes without assessing symptoms.",
+    "whyItMatters": "Students new to the UK may not know the difference between pharmacy advice, GP appointments, NHS 111 and emergency services.",
+    "keyPoints": [
+      "Pharmacies can advise on common minor illnesses and medicines questions.",
+      "NHS 111 is for medical help now when it is not life-threatening.",
+      "Call 999 or go to A&E for life-threatening emergencies or serious injuries."
+    ],
+    "sourceType": "Official source",
+    "riskLevel": "Signposting only",
+    "lastChecked": "2026-05",
+    "readTime": "3 min read",
+    "sources": [
+      {
+        "label": "NHS: How pharmacies can help",
+        "url": "https://www.nhs.uk/nhs-services/pharmacies/how-pharmacies-can-help/"
+      },
+      {
+        "label": "NHS: When to use 111",
+        "url": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-use-111/"
+      },
+      {
+        "label": "NHS: When to call 999",
+        "url": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-call-999/"
+      }
+    ],
+    "relatedResources": ["urgent-mental-health"]
+  },
+  {
+    "id": "assessment-stress",
+    "title": "Managing stress during assessment periods",
+    "topic": "Mental Wellbeing",
+    "topicSlug": "mental-wellbeing",
+    "audience": "University students",
+    "summary": "A short guide to recognising assessment pressure, using support early and finding trusted wellbeing resources.",
+    "whyItMatters": "Academic pressure can affect sleep, motivation and confidence, especially for students adjusting to a new education system.",
+    "keyPoints": [
+      "Asking for help early is usually better than waiting until problems escalate.",
+      "University wellbeing services and student support teams can help students understand available options.",
+      "Urgent mental health concerns should use official urgent support routes."
+    ],
+    "sourceType": "Official source",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05",
+    "readTime": "2 min read",
+    "sources": [
+      {
+        "label": "University of Bristol wellbeing support",
+        "url": "https://www.bristol.ac.uk/study/undergraduate/student-life/wellbeing/"
+      },
+      {
+        "label": "NHS Every Mind Matters",
+        "url": "https://www.nhs.uk/every-mind-matters/"
+      }
+    ],
+    "relatedResources": ["mental-wellbeing", "academic-stress"]
+  },
+  {
+    "id": "tenancy-deposits",
+    "title": "Understanding tenancy deposits",
+    "topic": "Housing & Bills",
+    "topicSlug": "housing-bills",
+    "audience": "Students renting in the UK",
+    "summary": "A short guide to deposit protection, common renting concerns and where to find expert housing advice.",
+    "whyItMatters": "International students may be unfamiliar with UK renting rules and may not know where to get advice.",
+    "keyPoints": [
+      "Deposits and tenancy responsibilities should be checked through expert housing advice.",
+      "Students should keep written records of agreements, payments and repair requests.",
+      "This guide signposts to housing advice and does not provide legal advice."
+    ],
+    "sourceType": "Expert source",
+    "riskLevel": "Check original source",
+    "lastChecked": "2026-05",
+    "readTime": "2 min read",
+    "sources": [
+      {
+        "label": "Shelter: Student housing",
+        "url": "https://england.shelter.org.uk/housing_advice/private_renting/student_housing"
+      },
+      {
+        "label": "Citizens Advice: Housing",
+        "url": "https://www.citizensadvice.org.uk/housing/"
+      },
+      {
+        "label": "Bristol SU Housing Advice",
+        "url": "https://www.bristolsu.org.uk/housing-advice"
+      }
+    ],
+    "relatedResources": ["housing-concerns"]
+  },
+  {
+    "id": "budgeting-university-life",
+    "title": "Budgeting for university life",
+    "topic": "Money & Spending",
+    "topicSlug": "money-spending",
+    "audience": "International students",
+    "summary": "A guide to planning everyday costs, recurring bills and safer spending habits as a student in the UK.",
+    "whyItMatters": "International students often need to adapt to a new cost-of-living environment, banking system and spending pattern.",
+    "keyPoints": [
+      "Budgeting should include rent, bills, food, transport, course costs and social spending.",
+      "Student discounts can help, but they should not replace a basic budget.",
+      "This guide signposts to money guidance and does not provide financial advice."
+    ],
+    "sourceType": "Expert source",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05",
+    "readTime": "2 min read",
+    "sources": [
+      {
+        "label": "MoneyHelper: Student and graduate money",
+        "url": "https://www.moneyhelper.org.uk/en/family-and-care/student-and-graduate-money"
+      },
+      {
+        "label": "UCAS: Budgeting",
+        "url": "https://www.ucas.com/money-and-student-life/money/budgeting"
+      }
+    ],
+    "relatedResources": ["financial-worries"]
+  },
+  {
+    "id": "student-discounts-without-overspending",
+    "title": "Student discounts without overspending",
+    "topic": "Money & Spending",
+    "topicSlug": "money-spending",
+    "audience": "Students in the UK",
+    "summary": "A short guide to using student discounts carefully without turning savings into unnecessary spending.",
+    "whyItMatters": "Discount platforms can be useful, but they can also encourage purchases students did not originally need.",
+    "keyPoints": [
+      "Check whether a discount reduces an expense you already planned.",
+      "Compare total cost, not only percentage discount.",
+      "Avoid treating discount platforms as financial advice."
+    ],
+    "sourceType": "Student-facing resource",
+    "riskLevel": "Practical student guidance",
+    "lastChecked": "2026-05",
+    "readTime": "2 min read",
+    "sources": [
+      {
+        "label": "MoneyHelper: Budgeting for university",
+        "url": "https://www.moneyhelper.org.uk/en/family-and-care/student-and-graduate-money/budgeting-for-college-or-university"
+      },
+      {
+        "label": "Save the Student",
+        "url": "https://www.savethestudent.org/"
+      }
+    ],
+    "relatedResources": ["financial-worries"]
+  },
+  {
+    "id": "first-month-uk-checklist",
+    "title": "First month in the UK checklist",
+    "topic": "International Essentials",
+    "topicSlug": "international-essentials",
+    "audience": "New international students",
+    "summary": "A practical checklist for the first month in the UK, including healthcare, banking, support services and everyday setup.",
+    "whyItMatters": "New international students often need to complete several practical tasks before they feel settled.",
+    "keyPoints": [
+      "Register with a GP and learn how NHS services work.",
+      "Set up essential practical services such as banking, SIM card and university support access.",
+      "Use UKCISA and university guidance for current international student information."
+    ],
+    "sourceType": "Expert source",
+    "riskLevel": "Practical student guidance",
+    "lastChecked": "2026-05",
+    "readTime": "3 min read",
+    "sources": [
+      {
+        "label": "UKCISA Student Advice",
+        "url": "https://www.ukcisa.org.uk/student-advice/"
+      },
+      {
+        "label": "UKCISA Healthcare",
+        "url": "https://www.ukcisa.org.uk/student-advice/life-in-the-uk/healthcare/"
+      },
+      {
+        "label": "University of Bristol International Support",
+        "url": "https://www.bristol.ac.uk/international/why/support/"
+      }
+    ],
+    "relatedResources": ["international-support"]
+  }
+]

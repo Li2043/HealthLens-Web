@@ -2,7 +2,33 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 0.8** · A multi-page static website for international student wellbeing and practical support signposting.
+**Version 0.9** · A multi-page static website for international student wellbeing and practical support signposting.
+
+---
+
+## V0.9 Update Summary
+
+**V0.9 — Articles data model and health tip cards**
+
+This version adds `data/articles.json` and a reusable health tip card pattern. The articles are short, source-based summaries designed to help international students understand common student-life topics and find official or expert sources. The tips do not replace professional advice and are written with clear content boundaries.
+
+### What V0.9 adds
+
+| Feature | Purpose |
+|--------|---------|
+| **`data/articles.json`** | Structured guide schema with topic, audience, source type, risk level, read time and last checked |
+| **Health tip cards** | Reusable `<article class="guide-card">` pattern rendered from JSON |
+| **Topic page sections** | Health tips filtered by `data-topic` on each topic hub |
+| **`guides.html`** | Central Health Tips page with topic filters and search |
+| **Source-based summaries** | Plain-English editorial layer — not copied external content |
+| **Responsible signposting** | Visible disclaimers, descriptive source links, risk level labels |
+| **Accessibility** | Semantic articles, labelled search, keyboard-accessible filter buttons, dark mode and print support |
+
+### Articles schema (summary)
+
+Each guide includes: `id`, `title`, `topic`, `topicSlug`, `audience`, `summary`, `whyItMatters`, `keyPoints`, `sourceType`, `riskLevel`, `lastChecked`, `readTime`, `sources`, and optional `relatedResources`.
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 
@@ -18,6 +44,7 @@ HealthLens was expanded from a single-page resource finder into a **multi-page s
 |------|------|
 | Home | `index.html` |
 | Resources | `resources.html` |
+| Health Tips | `guides.html` |
 | International Essentials | `international-essentials.html` |
 | Health & Healthcare | `health-healthcare.html` |
 | Mental Wellbeing | `mental-wellbeing.html` |
@@ -77,7 +104,7 @@ For a Web & Digital Content Coordinator role — particularly at a students' uni
 
 - HTML, CSS and JavaScript
 - Responsive layout
-- JSON-based content structure (`data/resources.json`, `data/care-options.json`)
+- JSON-based content structure (`data/resources.json`, `data/care-options.json`, `data/articles.json`)
 - Search and filtering
 - Accessible forms and navigation
 - Plain-English digital content

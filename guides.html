@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Search and filter trusted resources for international student life in the UK. Official and expert links with source labels and suggested next steps.">
-  <title>Resource Library — HealthLens</title>
+  <meta name="description" content="Health tips for international students in the UK — short, source-based summaries with links to official and expert guidance.">
+  <title>Health Tips — HealthLens</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <script>
@@ -33,10 +33,11 @@
         <span class="site-logo__mark" aria-hidden="true"></span>
         <span class="site-logo__text">HealthLens</span>
       </a>
+
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
         <ul class="nav-list nav-list--global">
           <li><a href="./index.html">Home</a></li>
-          <li><a href="./resources.html" aria-current="page" title="Resources">Resources</a></li>
+          <li><a href="./resources.html" title="Resources">Resources</a></li>
           <li><a href="./international-essentials.html" title="International Essentials">International</a></li>
           <li><a href="./health-healthcare.html" title="Health and Healthcare">Health</a></li>
           <li><a href="./mental-wellbeing.html" title="Mental Wellbeing">Mental</a></li>
@@ -46,10 +47,11 @@
           <li><a href="./about.html">About</a></li>
         </ul>
       </nav>
+
       <div class="header-actions">
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
           <span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true" hidden>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -66,61 +68,55 @@
   </header>
 
   <main id="main-content">
-    <section class="topic-hero" aria-labelledby="resources-heading">
+    <section class="topic-hero" aria-labelledby="guides-heading">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol>
             <li><a href="./index.html">Home</a></li>
-            <li aria-current="page">Resources</li>
+            <li aria-current="page">Health Tips</li>
           </ol>
         </nav>
-        <h1 id="resources-heading">Resource Library</h1>
-        <p class="topic-summary">Search and filter trusted resources for international student life in the UK. Resources are grouped by topic and include official or expert links where possible.</p>
-        <p class="content-meta"><a href="./guides.html">Browse health tips</a> for short, source-based topic summaries.</p>
+        <h1 id="guides-heading">Health Tips</h1>
+        <p class="topic-summary">Short, source-based health tips for international students navigating wellbeing and practical life in the UK.</p>
+        <p class="content-meta"><a href="./resources.html">Browse the Resource Library</a> for searchable support links.</p>
       </div>
     </section>
 
-    <section id="support-finder" class="section section--alt support-finder" aria-labelledby="support-finder-heading">
+    <section class="section section--alt curated-guides-library" aria-labelledby="guides-library-heading">
       <div class="container">
         <header class="section-header">
-          <p class="section-eyebrow">Support Finder</p>
-          <h2 id="support-finder-heading">Browse all resources</h2>
-          <p class="content-meta">Content last reviewed: May 2026.</p>
+          <h2 id="guides-library-heading">All health tips</h2>
+          <p class="section-intro">These tips summarise common student-life topics and signpost to official or expert sources. They do not replace professional advice.</p>
         </header>
 
         <div class="finder-controls">
           <div class="search-wrapper">
-            <label for="resource-search">Search support resources</label>
-            <input type="search" id="resource-search" name="resource-search" autocomplete="off" placeholder="e.g. academic, housing, money, international, urgent">
+            <label for="guide-search">Search health tips</label>
+            <input type="search" id="guide-search" name="guide-search" autocomplete="off" placeholder="e.g. GP, budgeting, deposits, vitamin D">
           </div>
           <fieldset class="filter-fieldset">
-            <legend>Filter by category</legend>
-            <div class="filter-buttons" role="group" aria-label="Category filters">
-              <button type="button" class="filter-btn is-active" data-category="all" aria-pressed="true">All</button>
-              <button type="button" class="filter-btn" data-category="academic" aria-pressed="false">Academic</button>
-              <button type="button" class="filter-btn" data-category="physical-wellbeing" aria-pressed="false">Physical Wellbeing</button>
-              <button type="button" class="filter-btn" data-category="mental-wellbeing" aria-pressed="false">Mental Wellbeing</button>
-              <button type="button" class="filter-btn" data-category="housing" aria-pressed="false">Housing</button>
-              <button type="button" class="filter-btn" data-category="money" aria-pressed="false">Money</button>
-              <button type="button" class="filter-btn" data-category="international-life" aria-pressed="false">International Life</button>
-              <button type="button" class="filter-btn" data-category="community" aria-pressed="false">Community</button>
-              <button type="button" class="filter-btn" data-category="urgent-help" aria-pressed="false">Urgent Help</button>
+            <legend>Filter by topic</legend>
+            <div class="guide-filters" role="group" aria-label="Guide topic filters">
+              <button type="button" class="guide-filter-btn is-active" data-topic="all" aria-pressed="true">All</button>
+              <button type="button" class="guide-filter-btn" data-topic="international-essentials" aria-pressed="false">International Essentials</button>
+              <button type="button" class="guide-filter-btn" data-topic="health-healthcare" aria-pressed="false">Health &amp; Healthcare</button>
+              <button type="button" class="guide-filter-btn" data-topic="mental-wellbeing" aria-pressed="false">Mental Wellbeing</button>
+              <button type="button" class="guide-filter-btn" data-topic="housing-bills" aria-pressed="false">Housing &amp; Bills</button>
+              <button type="button" class="guide-filter-btn" data-topic="money-spending" aria-pressed="false">Money &amp; Spending</button>
+              <button type="button" class="guide-filter-btn" data-topic="community-activities-sport" aria-pressed="false">Community &amp; Sport</button>
             </div>
           </fieldset>
         </div>
 
-        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true">Loading support resources…</p>
-        <p id="results-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+        <p id="guides-count" class="results-count" aria-live="polite" aria-atomic="true">Loading health tips…</p>
+        <p id="guides-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
 
-        <div id="resource-grid" class="resource-grid"></div>
+        <div class="guide-grid" data-guides-all aria-live="polite"></div>
 
-        <p class="support-note support-note--urgent" role="note">
-          <strong>Please note:</strong> This student project signposts to official and expert services.
-          It does not provide medical, legal, financial, immigration or emergency advice.
-          If you or someone else is in immediate danger, call 999 or go to A&amp;E.
+        <p class="support-note" role="note">
+          <strong>Please note:</strong> HealthLens health tips are source-based summaries for signposting only.
+          They do not provide medical, legal, financial or immigration advice. Always check the original source for current information.
         </p>
-
-        <p id="no-results" class="no-results" hidden>No matching resources found. Try a different search term or category.</p>
       </div>
     </section>
   </main>
@@ -136,7 +132,7 @@
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li><a href="./resources.html">Resources</a></li>
-          <li><a href="./guides.html">Health Tips</a></li>
+          <li><a href="./guides.html" aria-current="page">Health Tips</a></li>
           <li><a href="./international-essentials.html">International Essentials</a></li>
           <li><a href="./health-healthcare.html">Health &amp; Healthcare</a></li>
           <li><a href="./mental-wellbeing.html">Mental Wellbeing</a></li>

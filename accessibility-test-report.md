@@ -127,6 +127,35 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 
 ---
 
+## Health Tip Cards Tests (V0.9)
+
+| Test | Pass? | Notes |
+|------|-------|-------|
+| Guide cards have clear headings | ✅ | `<article class="guide-card">` with descriptive `h3` titles |
+| Guide links are descriptive | ✅ | Source links use organisation labels; no “click here” |
+| Topic pages render correct guides | ✅ | Filtered by `data-topic` on six topic hub pages |
+| Empty state appears where no tips exist | ✅ | Community & Sport shows “No health tips are available for this topic yet.” |
+| `guides.html` search and filters work | ✅ | Topic filter buttons and `#guide-search` filter title/summary |
+| Keyboard navigation through guide cards and filters | ✅ | Tab through filter buttons, search input and source links |
+| Metadata readable in light and dark mode | ✅ | Source type, audience, read time, last checked and risk level as text |
+| Print output includes guide summaries and source links | ✅ | Guide cards print with URLs appended to external links |
+| No diagnostic, legal, financial or immigration advice wording | ✅ | Signposting-only disclaimers on every guide card |
+| Console free of errors on pages without guide containers | ✅ | `initGuides()` exits when no `[data-guides-container]` or `[data-guides-all]` |
+| Data loads from `articles.json` | ✅ | Requires local HTTP server for `fetch()` |
+
+---
+
+## Fixes Made (V0.9)
+
+| Fix | Description |
+|-----|-------------|
+| **Articles data model** | Added `data/articles.json` with 8 health tips and structured metadata |
+| **Health tip card rendering** | Reusable JS functions with defensive container checks |
+| **Health Tips page** | `guides.html` with topic filters and search; linked from footer and topic pages |
+| **Print and dark mode** | Guide card styles extended for `data-theme="dark"` and `@media print` |
+
+---
+
 ## Multi-page Testing Checklist (V0.8)
 
 | Test | Pass? | Notes |
