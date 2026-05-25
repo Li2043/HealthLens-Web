@@ -1,6 +1,6 @@
 /**
  * HealthLens — International Student Wellbeing Navigator
- * Version 1.0 — multi-page static HTML, CSS and JavaScript
+ * Version 1.1 — multi-page static HTML, CSS and JavaScript
  */
 
 const RESOURCES_URL = "./data/resources.json";
@@ -139,6 +139,7 @@ function getCategoryLabel(category) {
 function normalizeResource(resource) {
   return {
     ...resource,
+    ...normaliseSourceMetadata(resource),
     categoryLabel: getCategoryLabel(resource.category)
   };
 }
@@ -165,15 +166,121 @@ function renderListItems(items) {
     .join("");
 }
 
+function formatDateForDisplay(isoDate) {
+  if (!isoDate) {
+    return "Not checked";
+  }
+
+  let normalized = String(isoDate).trim();
+  if (/^\d{4}-\d{2}$/.test(normalized)) {
+    normalized = `${normalized}-01`;
+  }
+
+  const date = new Date(`${normalized}T12:00:00`);
+  if (Number.isNaN(date.getTime())) {
+    return "Not checked";
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(date);
+}
+
+function getSourceTypeClass(sourceType) {
+  const typeMap = {
+    "Official source": "official",
+    "Expert source": "expert",
+    "Student-facing resource": "student",
+    "Commercial platform": "commercial",
+    "Project note": "project",
+    "Site page": "site"
+  };
+
+  return typeMap[sourceType] || "project";
+}
+
+function normaliseSourceMetadata(item) {
+  return {
+    sourceType: item.sourceType || "Official source",
+    sourceAuthority: item.sourceAuthority || "",
+    audience: item.audience || "All students",
+    region: item.region || "UK",
+    riskLevel: item.riskLevel || "General information",
+    lastChecked: item.lastChecked || "",
+    reviewFrequency: item.reviewFrequency || "",
+    sourceNote: item.sourceNote || "",
+    readTime: item.readTime || ""
+  };
+}
+
+function renderSourceMetadata(item, options = {}) {
+  const meta = normaliseSourceMetadata(item);
+  const typeClass = getSourceTypeClass(meta.sourceType);
+  const parts = [];
+
+  if (meta.riskLevel === "Urgent support") {
+    parts.push(
+      `<span class="risk-label risk-label--urgent">${escapeHtml(meta.riskLevel)}</span>`
+    );
+  }
+
+  parts.push(
+    `<span class="source-label source-label--${typeClass}">${escapeHtml(meta.sourceType)}</span>`
+  );
+
+  if (options.showRisk && meta.riskLevel && meta.riskLevel !== "Urgent support") {
+    parts.push(`<span class="risk-label">${escapeHtml(meta.riskLevel)}</span>`);
+  }
+
+  if (meta.sourceAuthority) {
+    parts.push(
+      `<span class="source-meta__item">${escapeHtml(meta.sourceAuthority)}</span>`
+    );
+  }
+
+  if (options.showAudience && meta.audience) {
+    parts.push(
+      `<span class="source-meta__item">${escapeHtml(meta.audience)}</span>`
+    );
+  }
+
+  if (options.showRegion && meta.region) {
+    parts.push(`<span class="source-meta__item">${escapeHtml(meta.region)}</span>`);
+  }
+
+  if (options.showReadTime && meta.readTime) {
+    parts.push(`<span class="source-meta__item">${escapeHtml(meta.readTime)}</span>`);
+  }
+
+  if (meta.sourceType === "Commercial platform") {
+    parts.push(
+      `<span class="source-meta__item">Check terms before using</span>`
+    );
+  }
+
+  parts.push(
+    `<span class="last-checked">Last checked: ${escapeHtml(formatDateForDisplay(meta.lastChecked))}</span>`
+  );
+
+  const separator = '<span class="source-meta__sep" aria-hidden="true"> · </span>';
+  const inner = parts.join(separator);
+
+  if (options.compact) {
+    return `<p class="source-meta source-meta--compact">${inner}</p>`;
+  }
+
+  return `<div class="source-meta">${inner}</div>`;
+}
+
 function createResourceCard(resource) {
   const article = document.createElement("article");
   const isUrgent = resource.urgency.toLowerCase() === "high";
   const linkAriaLabel = `${resource.linkText} (${resource.sourceLabel}, opens official page in new tab)`;
-  const sourceType = resource.sourceType || "Official source";
-  const audience = resource.audience || "All students";
-  const sourceTypeClass = sourceType.toLowerCase().replace(/\s+/g, "-");
-  const lastChecked = resource.lastChecked
-    ? `<span class="resource-card__checked">Last checked: ${escapeHtml(resource.lastChecked)}</span>`
+  const meta = normaliseSourceMetadata(resource);
+  const sourceNoteBlock = meta.sourceNote
+    ? `<p class="resource-card__source-note" role="note">${escapeHtml(meta.sourceNote)}</p>`
     : "";
 
   article.className = isUrgent
@@ -189,11 +296,7 @@ function createResourceCard(resource) {
     </div>
     <h3 class="resource-card__title">${escapeHtml(resource.title)}</h3>
     <p class="resource-card__description">${escapeHtml(resource.description)}</p>
-    <div class="resource-card__labels">
-      <span class="source-type-label source-type-label--${sourceTypeClass}">${escapeHtml(sourceType)}</span>
-      <span class="audience-label">${escapeHtml(audience)}</span>
-      ${lastChecked}
-    </div>
+    ${renderSourceMetadata(resource, { showRisk: true, compact: true })}
     <span class="urgency-badge ${getUrgencyClass(resource.urgency)}" aria-label="Urgency level: ${resource.urgency}">
       ${escapeHtml(resource.urgency)} urgency
     </span>
@@ -202,9 +305,10 @@ function createResourceCard(resource) {
       ${escapeHtml(resource.nextStep)}
     </div>
     <div class="resource-card__source">
-      <strong>${escapeHtml(sourceType)}</strong>
+      <strong>Linked source</strong>
       <p>${escapeHtml(resource.sourceLabel)}</p>
     </div>
+    ${sourceNoteBlock}
     <a
       class="resource-card__link"
       href="${escapeHtml(resource.sourceUrl)}"
@@ -927,9 +1031,10 @@ function createGuideCard(article, options = {}) {
   const showReadGuideLink = options.showReadGuideLink ?? false;
   const showWhyItMatters = options.showWhyItMatters ?? true;
   const keyPoints = (article.keyPoints || []).slice(0, maxKeyPoints);
-  const sourceTypeClass = (article.sourceType || "official-source")
-    .toLowerCase()
-    .replace(/\s+/g, "-");
+  const meta = normaliseSourceMetadata(article);
+  const sourceNoteBlock = meta.sourceNote
+    ? `<p class="guide-card__source-note" role="note">${escapeHtml(meta.sourceNote)}</p>`
+    : "";
 
   const articleEl = document.createElement("article");
   articleEl.className = "guide-card";
@@ -958,13 +1063,12 @@ function createGuideCard(article, options = {}) {
     </header>
     <p class="guide-card__summary">${escapeHtml(article.summary)}</p>
     ${whyItMatters}
-    <div class="guide-meta">
-      <span class="guide-meta__item"><strong>Audience:</strong> ${escapeHtml(article.audience)}</span>
-      <span class="guide-meta__item">${escapeHtml(article.readTime)}</span>
-      <span class="source-type-label source-type-label--${sourceTypeClass}">${escapeHtml(article.sourceType)}</span>
-      <span class="guide-meta__item">Last checked: ${escapeHtml(article.lastChecked)}</span>
-      <span class="guide-meta__item guide-meta__risk"><strong>Risk level:</strong> ${escapeHtml(article.riskLevel)}</span>
-    </div>
+    ${renderSourceMetadata(article, {
+      showAudience: true,
+      showReadTime: true,
+      showRisk: true,
+      compact: true
+    })}
     <div class="guide-key-points">
       <strong>Key points</strong>
       <ul>${renderListItems(keyPoints)}</ul>
@@ -973,6 +1077,7 @@ function createGuideCard(article, options = {}) {
       <strong>Official and expert sources</strong>
       <ul>${sourceLinks}</ul>
     </div>
+    ${sourceNoteBlock}
     <p class="guide-card__disclaimer" role="note">
       <strong>Signposting only.</strong> This health tip summarises trusted sources and does not provide medical, legal, financial or immigration advice. Check the original source for current information.
     </p>
@@ -1209,23 +1314,38 @@ function normaliseTopicPages(topics) {
     return [];
   }
 
-  return topics.map((topic) => ({
-    id: topic.id,
-    type: "page",
-    title: topic.title,
-    summary: topic.summary,
-    topic: topic.topic,
-    category: topic.topic,
-    audience: topic.audience || "International students",
-    sourceType: "Site page",
-    url: topic.url,
-    keywords: Array.isArray(topic.keywords) ? topic.keywords : [],
-    lastChecked: "",
-    topicFilterKey: topic.id,
-    meta: {
-      sourceLabels: []
-    }
-  }));
+  return topics.map((topic) => {
+    const meta = normaliseSourceMetadata(topic);
+
+    return {
+      id: topic.id,
+      type: "page",
+      title: topic.title,
+      summary: topic.summary,
+      topic: topic.topic,
+      category: topic.topic,
+      audience: meta.audience,
+      sourceType: topic.sourceType || "Site page",
+      sourceAuthority: meta.sourceAuthority,
+      region: meta.region,
+      riskLevel: meta.riskLevel,
+      lastChecked: meta.lastChecked,
+      reviewFrequency: meta.reviewFrequency,
+      sourceNote: meta.sourceNote,
+      url: topic.url,
+      keywords: [
+        ...(Array.isArray(topic.keywords) ? topic.keywords : []),
+        meta.sourceType,
+        meta.sourceAuthority,
+        meta.riskLevel,
+        formatDateForDisplay(meta.lastChecked)
+      ].filter(Boolean),
+      topicFilterKey: topic.id,
+      meta: {
+        sourceLabels: meta.sourceAuthority ? [meta.sourceAuthority] : []
+      }
+    };
+  });
 }
 
 function normaliseResources(resources) {
@@ -1235,16 +1355,23 @@ function normaliseResources(resources) {
 
   return resources.map((resource) => {
     const categoryLabel = getCategoryLabel(resource.category);
+    const meta = normaliseSourceMetadata(resource);
     const keywords = [
       resource.title,
       categoryLabel,
       resource.category,
       resource.description,
       resource.sourceLabel,
-      resource.sourceType,
-      resource.audience,
+      meta.sourceType,
+      meta.sourceAuthority,
+      meta.audience,
+      meta.region,
+      meta.riskLevel,
+      meta.sourceNote,
       resource.nextStep,
-      resource.linkText
+      resource.linkText,
+      formatDateForDisplay(meta.lastChecked),
+      "last checked"
     ].filter(Boolean);
 
     return {
@@ -1254,11 +1381,15 @@ function normaliseResources(resources) {
       summary: resource.description || resource.summary || "",
       topic: categoryLabel,
       category: categoryLabel,
-      audience: resource.audience || "All students",
-      sourceType: resource.sourceType || "Official source",
+      audience: meta.audience,
+      sourceType: meta.sourceType,
+      sourceAuthority: meta.sourceAuthority,
+      region: meta.region,
+      riskLevel: meta.riskLevel,
+      sourceNote: meta.sourceNote,
       url: resource.sourceUrl,
       keywords,
-      lastChecked: resource.lastChecked || "",
+      lastChecked: meta.lastChecked,
       topicFilterKey:
         resourceCategoryToTopicFilter[resource.category] || resource.category,
       meta: {
@@ -1277,13 +1408,21 @@ function normaliseArticles(articlesList) {
 
   return articlesList.map((article) => {
     const sourceLabels = (article.sources || []).map((source) => source.label);
+    const meta = normaliseSourceMetadata(article);
     const keywords = [
       article.title,
       article.topic,
-      article.audience,
+      meta.audience,
       article.summary,
       article.whyItMatters,
-      article.sourceType,
+      meta.sourceType,
+      meta.sourceAuthority,
+      meta.region,
+      meta.riskLevel,
+      meta.sourceNote,
+      article.readTime,
+      formatDateForDisplay(meta.lastChecked),
+      "last checked",
       ...(article.keyPoints || []),
       ...sourceLabels
     ].filter(Boolean);
@@ -1295,11 +1434,16 @@ function normaliseArticles(articlesList) {
       summary: article.summary,
       topic: article.topic,
       category: article.topic,
-      audience: article.audience || "International students",
-      sourceType: article.sourceType || "Official source",
+      audience: meta.audience,
+      sourceType: meta.sourceType,
+      sourceAuthority: meta.sourceAuthority,
+      region: meta.region,
+      riskLevel: meta.riskLevel,
+      sourceNote: meta.sourceNote,
+      readTime: meta.readTime,
       url: `./guides.html#${article.id}`,
       keywords,
-      lastChecked: article.lastChecked || "",
+      lastChecked: meta.lastChecked,
       topicFilterKey: article.topicSlug,
       meta: {
         sourceLabels,
@@ -1385,8 +1529,12 @@ function scoreSearchItem(item, queryTokens, rawQuery) {
   const category = (item.category || "").toLowerCase();
   const audience = (item.audience || "").toLowerCase();
   const sourceType = (item.sourceType || "").toLowerCase();
+  const sourceAuthority = (item.sourceAuthority || "").toLowerCase();
+  const riskLevel = (item.riskLevel || "").toLowerCase();
+  const sourceNote = (item.sourceNote || "").toLowerCase();
   const keywords = (item.keywords || []).join(" ").toLowerCase();
   const sourceLabels = (item.meta?.sourceLabels || []).join(" ").toLowerCase();
+  const lastCheckedDisplay = formatDateForDisplay(item.lastChecked).toLowerCase();
 
   let score = 0;
 
@@ -1412,6 +1560,14 @@ function scoreSearchItem(item, queryTokens, rawQuery) {
 
   if (raw && sourceLabels.includes(raw)) {
     score += 8;
+  }
+
+  if (raw && sourceAuthority.includes(raw)) {
+    score += 20;
+  }
+
+  if (raw && (sourceType.includes(raw) || riskLevel.includes(raw) || lastCheckedDisplay.includes(raw))) {
+    score += 10;
   }
 
   queryTokens.forEach((token) => {
@@ -1440,6 +1596,18 @@ function scoreSearchItem(item, queryTokens, rawQuery) {
     }
 
     if (sourceType.includes(token)) {
+      score += 5;
+    }
+
+    if (sourceAuthority.includes(token)) {
+      score += 20;
+    }
+
+    if (riskLevel.includes(token)) {
+      score += 10;
+    }
+
+    if (lastCheckedDisplay.includes(token) || sourceNote.includes(token)) {
       score += 5;
     }
   });
@@ -1557,9 +1725,6 @@ function createSearchResultCard(item) {
   const linkInfo = getSearchResultLink(item);
   const isExternal = Boolean(item.meta?.isExternal);
   const typeClass = item.type;
-  const lastChecked = item.lastChecked
-    ? `<span class="search-meta__item">Last checked: ${escapeHtml(item.lastChecked)}</span>`
-    : "";
 
   article.className = "search-result-card";
   article.dataset.type = item.type;
@@ -1570,12 +1735,8 @@ function createSearchResultCard(item) {
       <h2 class="search-result-card__title">${escapeHtml(item.title)}</h2>
     </header>
     <p class="search-result-card__summary">${escapeHtml(item.summary)}</p>
-    <div class="search-meta">
-      <span class="search-meta__item"><strong>Topic:</strong> ${escapeHtml(item.topic || item.category || "General")}</span>
-      <span class="search-meta__item"><strong>Audience:</strong> ${escapeHtml(item.audience || "All students")}</span>
-      <span class="search-meta__item"><strong>Source type:</strong> ${escapeHtml(item.sourceType || "Not specified")}</span>
-      ${lastChecked}
-    </div>
+    <p class="search-meta search-meta__topic"><strong>Topic:</strong> ${escapeHtml(item.topic || item.category || "General")}</p>
+    ${renderSourceMetadata(item, { showRisk: true, compact: true })}
     <a
       class="search-result-card__link"
       href="${escapeHtml(item.url)}"

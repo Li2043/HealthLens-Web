@@ -1476,6 +1476,182 @@ html[data-theme="dark"] .result-type-badge--guide {
   border-color: #d8b4fe;
 }
 
+.source-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
+  margin: 0 0 var(--space-sm);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.source-meta--compact {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-alt);
+  border-left: 3px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.source-meta__item,
+.last-checked {
+  display: inline;
+}
+
+.source-meta__sep {
+  color: var(--color-text-muted);
+}
+
+.source-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.source-label--official {
+  color: #1e40af;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.source-label--expert {
+  color: #0f766e;
+  background: #ecfdf5;
+  border-color: #99f6e4;
+}
+
+.source-label--student {
+  color: #6b21a8;
+  background: #faf5ff;
+  border-color: #d8b4fe;
+}
+
+.source-label--commercial {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+
+.source-label--project,
+.source-label--site {
+  color: #334155;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.risk-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+}
+
+.risk-label--urgent {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.resource-card__source-note,
+.guide-card__source-note {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+}
+
+.search-meta__topic {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.source-legend {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+
+.source-legend summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.source-legend summary:focus-visible {
+  outline: 3px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.source-legend__intro {
+  margin: var(--space-sm) 0 var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.source-legend__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+html[data-theme="dark"] .source-label--official {
+  color: #93c5fd;
+  background: rgba(30, 64, 175, 0.2);
+  border-color: rgba(147, 197, 253, 0.35);
+}
+
+html[data-theme="dark"] .source-label--expert {
+  color: #5eead4;
+  background: rgba(15, 118, 110, 0.2);
+  border-color: rgba(94, 234, 212, 0.35);
+}
+
+html[data-theme="dark"] .source-label--student {
+  color: #d8b4fe;
+  background: rgba(107, 33, 168, 0.2);
+  border-color: rgba(216, 180, 254, 0.35);
+}
+
+html[data-theme="dark"] .source-label--commercial {
+  color: #fcd34d;
+  background: rgba(146, 64, 14, 0.2);
+  border-color: rgba(252, 211, 77, 0.35);
+}
+
+html[data-theme="dark"] .source-label--project,
+html[data-theme="dark"] .source-label--site {
+  color: #cbd5e1;
+  background: rgba(51, 65, 85, 0.35);
+  border-color: rgba(203, 213, 225, 0.25);
+}
+
+html[data-theme="dark"] .risk-label--urgent {
+  color: #fca5a5;
+  background: rgba(153, 27, 27, 0.25);
+  border-color: rgba(252, 165, 165, 0.35);
+}
+
+html[data-theme="dark"] .source-meta--compact {
+  background: rgba(255, 255, 255, 0.04);
+  border-left-color: var(--color-border);
+}
+
 .audience-label {
   color: var(--color-text-muted);
   background: var(--color-bg-alt);
@@ -1948,6 +2124,27 @@ html[data-theme="dark"] .result-type-badge--guide {
   background: var(--color-bg-alt);
   border-left: 4px solid var(--color-primary);
   border-radius: var(--radius-md);
+}
+
+.source-policy-definitions {
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.source-policy-definitions dt {
+  margin-top: var(--space-md);
+  font-weight: 700;
+}
+
+.source-policy-definitions dd {
+  margin: var(--space-xs) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.source-policy h3 {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-lg);
 }
 
 /* Wellbeing tips */
@@ -2806,10 +3003,18 @@ html[data-theme="dark"] .care-option-card--emergency .care-option-card__link:hov
   }
 
   .category-pill,
-  .urgency-badge {
+  .urgency-badge,
+  .source-label,
+  .risk-label {
     border: 1pt solid #000 !important;
     color: #000 !important;
     background: #fff !important;
+  }
+
+  .source-meta,
+  .source-meta--compact,
+  .last-checked {
+    color: #000 !important;
   }
 
   .accordion-item {

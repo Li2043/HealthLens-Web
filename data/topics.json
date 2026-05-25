@@ -7,7 +7,14 @@
     "topic": "Overview",
     "audience": "International students",
     "url": "./index.html",
-    "keywords": ["international student", "wellbeing", "support", "student life", "UK"]
+    "keywords": ["international student", "wellbeing", "support", "student life", "UK"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "resources",
@@ -17,7 +24,14 @@
     "topic": "Resources",
     "audience": "International students",
     "url": "./resources.html",
-    "keywords": ["resources", "support finder", "official links", "expert sources"]
+    "keywords": ["resources", "support finder", "official links", "expert sources"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "international-essentials",
@@ -27,7 +41,14 @@
     "topic": "International Essentials",
     "audience": "International students",
     "url": "./international-essentials.html",
-    "keywords": ["international", "UKCISA", "visa", "healthcare", "bank", "first month", "student life"]
+    "keywords": ["international", "UKCISA", "visa", "healthcare", "bank", "first month", "student life"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "health-healthcare",
@@ -37,7 +58,14 @@
     "topic": "Health & Healthcare",
     "audience": "International students",
     "url": "./health-healthcare.html",
-    "keywords": ["health", "GP", "NHS", "pharmacy", "111", "999", "vitamin D", "medical care"]
+    "keywords": ["health", "GP", "NHS", "pharmacy", "111", "999", "vitamin D", "medical care"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "mental-wellbeing",
@@ -47,7 +75,14 @@
     "topic": "Mental Wellbeing",
     "audience": "International students",
     "url": "./mental-wellbeing.html",
-    "keywords": ["mental health", "stress", "loneliness", "sleep", "wellbeing", "Samaritans", "urgent support"]
+    "keywords": ["mental health", "stress", "loneliness", "sleep", "wellbeing", "Samaritans", "urgent support"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "housing-bills",
@@ -57,7 +92,14 @@
     "topic": "Housing & Bills",
     "audience": "International students",
     "url": "./housing-bills.html",
-    "keywords": ["housing", "rent", "deposit", "repairs", "bills", "tenancy", "Shelter", "Citizens Advice"]
+    "keywords": ["housing", "rent", "deposit", "repairs", "bills", "tenancy", "Shelter", "Citizens Advice"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "money-spending",
@@ -67,7 +109,14 @@
     "topic": "Money & Spending",
     "audience": "International students",
     "url": "./money-spending.html",
-    "keywords": ["money", "budget", "bank", "student discounts", "shopping", "scams", "MoneyHelper"]
+    "keywords": ["money", "budget", "bank", "student discounts", "shopping", "scams", "MoneyHelper"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "community-activities-sport",
@@ -77,7 +126,14 @@
     "topic": "Community & Sport",
     "audience": "International students",
     "url": "./community-activities-sport.html",
-    "keywords": ["community", "societies", "sport", "volunteering", "activities", "belonging", "friends"]
+    "keywords": ["community", "societies", "sport", "volunteering", "activities", "belonging", "friends"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   },
   {
     "id": "about",
@@ -87,6 +143,13 @@
     "topic": "About",
     "audience": "International students",
     "url": "./about.html",
-    "keywords": ["about", "source policy", "limitations", "accessibility", "student project"]
+    "keywords": ["about", "source policy", "limitations", "accessibility", "student project"],
+    "sourceType": "Site page",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "General information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Every 3 months",
+    "sourceNote": "HealthLens topic page. Check linked original sources for the latest information."
   }
 ]

@@ -127,6 +127,33 @@ No critical accessibility blockers identified during V0.5 manual keyboard review
 
 ---
 
+## Source Quality Labels Tests (V1.1)
+
+| Test | Pass? | Notes |
+|------|-------|-------|
+| Source labels are visible text, not colour-only | ✅ | Badge text plus border styling on `.source-label` |
+| Last checked dates are readable | ✅ | Formatted as “25 May 2026” via `formatDateForDisplay()` |
+| Badges have sufficient contrast in light mode | ✅ | Official, expert, urgent and commercial variants checked |
+| Badges have sufficient contrast in dark mode | ✅ | Dark theme overrides for all label types |
+| Metadata does not disrupt heading hierarchy | ✅ | Metadata in `p` / compact rows below card titles |
+| Search results still have clear titles and links | ✅ | Topic line plus metadata row preserved |
+| Source legend is keyboard accessible | ✅ | Native `<details>` / `<summary>` on resources and search pages |
+| Print output includes source type and last checked | ✅ | Print CSS includes `.source-label`, `.source-meta`, `.last-checked` |
+| Commercial platform labels not shown as official/expert | ✅ | Separate `.source-label--commercial` styling and wording |
+| “Last checked” wording used consistently | ✅ | No “Last updated” for external sources |
+
+---
+
+## Fixes Made (V1.1)
+
+| Fix | Description |
+|-----|-------------|
+| **Source metadata system** | Standardised fields across `resources.json`, `articles.json` and `topics.json` |
+| **Shared rendering** | Single `renderSourceMetadata()` helper for cards and search results |
+| **Source policy expansion** | About page explains labels, last checked meaning and maintenance policy |
+
+---
+
 ## Global Search Tests (V1.0)
 
 | Test | Pass? | Notes |

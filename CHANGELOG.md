@@ -4,6 +4,23 @@ All notable changes to HealthLens are documented in this file.
 
 ---
 
+## [1.1] — May 2026
+
+### Added
+- **Source metadata schema** — `sourceType`, `sourceAuthority`, `audience`, `region`, `riskLevel`, `lastChecked`, `reviewFrequency`, `sourceNote` across JSON data files
+- **Readable source badges** — `.source-label`, `.source-meta`, `.last-checked`, `.risk-label` on resource cards, health tip cards and search results
+- **`formatDateForDisplay()`, `getSourceTypeClass()`, `renderSourceMetadata()`, `normaliseSourceMetadata()`** — shared metadata rendering in `script.js`
+- **Source label legend** — collapsible legend on `resources.html` and `search.html`
+- **Expanded About / Source Policy** — label definitions, “Last checked” meaning, content limitations and proposed maintenance schedule
+
+### Changed
+- All resources and articles use ISO `lastChecked` dates (`2026-05-25`)
+- Health tips use `Project note` as source type with `HealthLens` as authority
+- Topic pages in `data/topics.json` include site page metadata for search
+- Search index includes authority, risk level and formatted last checked values
+
+---
+
 ## [1.0] — May 2026
 
 ### Added

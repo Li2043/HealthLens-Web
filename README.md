@@ -2,7 +2,28 @@
 
 **Live demo:** [https://li2043.github.io/HealthLens-Web/](https://li2043.github.io/HealthLens-Web/)
 
-**Version 1.0** · A multi-page static website for international student wellbeing and practical support signposting.
+**Version 1.1** · A multi-page static website for international student wellbeing and practical support signposting.
+
+---
+
+## V1.1 Update Summary
+
+**V1.1 — Source quality labels and last checked dates**
+
+HealthLens V1.1 adds a source metadata system across resources, health tips and search results. Items now include source type, source authority, audience, region, risk level, last checked date, review frequency and source notes. This improves content governance, transparency and trust.
+
+| Field | Purpose |
+|-------|---------|
+| **sourceType** | Official, expert, student-facing, commercial, project note or site page |
+| **sourceAuthority** | Organisation name (NHS, UKCISA, HealthLens, etc.) |
+| **lastChecked** | When this project last reviewed the link and summary (`YYYY-MM-DD`) |
+| **riskLevel** | Urgent support, signposting only, check original source, etc. |
+| **reviewFrequency** | Suggested maintenance interval for portfolio demos |
+| **sourceNote** | How to interpret the source safely |
+
+**Important:** “Last checked” refers to when this project last reviewed the link and summary. It does not claim the original source was updated on that date.
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full version history.
 
 ---
 

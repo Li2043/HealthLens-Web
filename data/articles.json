@@ -12,9 +12,13 @@
       "NHS 111 can help when you need medical help now but it is not life-threatening.",
       "Always use official NHS or university guidance for current healthcare information."
     ],
-    "sourceType": "Official source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
     "riskLevel": "Signposting only",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created summary based on official NHS and UKCISA sources. Check linked original sources for the latest information.",
     "readTime": "2 min read",
     "sources": [
       {
@@ -41,9 +45,13 @@
       "This guide does not provide personal medical advice or dosage advice.",
       "Students should read NHS guidance or speak to a healthcare professional if unsure."
     ],
-    "sourceType": "Official source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
     "riskLevel": "Public health information",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created summary based on official NHS and GOV.UK sources. Does not provide personal medical advice.",
     "readTime": "2 min read",
     "sources": [
       {
@@ -70,9 +78,13 @@
       "NHS 111 is for medical help now when it is not life-threatening.",
       "Call 999 or go to A&E for life-threatening emergencies or serious injuries."
     ],
-    "sourceType": "Official source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
     "riskLevel": "Signposting only",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created service navigation summary. Does not assess symptoms or recommend treatment.",
     "readTime": "3 min read",
     "sources": [
       {
@@ -103,9 +115,13 @@
       "University wellbeing services and student support teams can help students understand available options.",
       "Urgent mental health concerns should use official urgent support routes."
     ],
-    "sourceType": "Official source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
     "riskLevel": "General information",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created summary based on university and NHS wellbeing signposting. Does not provide medical advice.",
     "readTime": "2 min read",
     "sources": [
       {
@@ -132,9 +148,13 @@
       "Students should keep written records of agreements, payments and repair requests.",
       "This guide signposts to housing advice and does not provide legal advice."
     ],
-    "sourceType": "Expert source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "England",
     "riskLevel": "Check original source",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created summary based on Shelter, Citizens Advice and Bristol SU housing signposting. Does not provide legal advice.",
     "readTime": "2 min read",
     "sources": [
       {
@@ -165,9 +185,13 @@
       "Student discounts can help, but they should not replace a basic budget.",
       "This guide signposts to money guidance and does not provide financial advice."
     ],
-    "sourceType": "Expert source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
     "riskLevel": "General information",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created summary based on MoneyHelper and UCAS signposting. Does not provide financial advice.",
     "readTime": "2 min read",
     "sources": [
       {
@@ -194,9 +218,13 @@
       "Compare total cost, not only percentage discount.",
       "Avoid treating discount platforms as financial advice."
     ],
-    "sourceType": "Student-facing resource",
-    "riskLevel": "Practical student guidance",
-    "lastChecked": "2026-05",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
+    "riskLevel": "Commercial information",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created summary referencing student money guidance and Save the Student. Commercial platforms are not financial advice or product recommendations.",
     "readTime": "2 min read",
     "sources": [
       {
@@ -223,9 +251,13 @@
       "Set up essential practical services such as banking, SIM card and university support access.",
       "Use UKCISA and university guidance for current international student information."
     ],
-    "sourceType": "Expert source",
+    "sourceType": "Project note",
+    "sourceAuthority": "HealthLens",
+    "region": "UK",
     "riskLevel": "Practical student guidance",
-    "lastChecked": "2026-05",
+    "lastChecked": "2026-05-25",
+    "reviewFrequency": "Before each application/demo",
+    "sourceNote": "HealthLens-created checklist based on UKCISA and university signposting. Check linked original sources for current guidance.",
     "readTime": "3 min read",
     "sources": [
       {
